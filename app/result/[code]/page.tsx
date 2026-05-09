@@ -3,9 +3,12 @@ import Link from "next/link";
 import BrandCard, { getBrandTypeData } from "@/components/BrandCard";
 import ShareButton from "@/components/ShareButton";
 import EmailCapture from "@/components/EmailCapture";
+import IndustrySelector from "@/components/IndustrySelector";
 import { decodeAnswers, scoreQuiz } from "@/lib/quiz-state";
 import { AXES, type StrengthLabel } from "@/lib/brand-type-engine";
 import { BRAND_DIRECTIONS } from "@/lib/brand-direction";
+import { BRAND_VISUAL_RECOMMENDATIONS } from "@/lib/brand-visual-recommendations";
+import { INDUSTRY_ASSETS, type IndustryValue } from "@/lib/industry-assets";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata(
@@ -36,19 +39,21 @@ const AXIS_LABELS: Record<string, { name: string; poleA: string; poleB: string }
 
 interface Props {
   params: Promise<{ code: string }>;
-  searchParams: Promise<{ answers?: string }>;
+  searchParams: Promise<{ answers?: string; industry?: string }>;
 }
 
 export default async function ResultPage({ params, searchParams }: Props) {
   const { code } = await params;
-  const { answers: encodedAnswers } = await searchParams;
+  const { answers: encodedAnswers, industry } = await searchParams;
 
   const type = getBrandTypeData(code);
   if (!type) notFound();
 
   const direction = BRAND_DIRECTIONS[code];
+  const visual = BRAND_VISUAL_RECOMMENDATIONS[code];
+  const industryKey = industry as IndustryValue | undefined;
+  const industryAssets = industryKey ? INDUSTRY_ASSETS[industryKey] : null;
 
-  // Derive strengths from scoring result if answers are available
   let strengths: StrengthLabel[] | undefined;
   let scoringResult;
 
@@ -65,7 +70,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
         ];
       }
     } catch {
-      // Malformed answers — still show result by code, just without axis breakdown
+      // Malformed answers — still show result by code
     }
   }
 
@@ -86,7 +91,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
       </header>
 
       <main className="result-main">
-        {/* Card */}
+        {/* Brand card */}
         <BrandCard
           code={code}
           strengths={strengths}
@@ -102,6 +107,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
           <h1 className="result-name">{type.name}</h1>
           <p className="result-tagline">&ldquo;{type.line}&rdquo;</p>
 
+          {/* Axis readings */}
           {scoringResult && (
             <>
               <div className="result-axes">
@@ -135,10 +141,10 @@ export default async function ResultPage({ params, searchParams }: Props) {
             </>
           )}
 
+          {/* Brand Direction */}
           {direction && (
             <div className="result-direction">
               <p className="result-section-head">Brand Direction</p>
-
               <div className="result-direction-grid">
                 <div className="result-direction-item">
                   <span className="result-direction-label">Brand energy</span>
@@ -165,6 +171,112 @@ export default async function ResultPage({ params, searchParams }: Props) {
                   <span className="result-direction-value">{direction.nextStep}</span>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* Recommended Design System */}
+          {visual && (
+            <div className="rec-section">
+              <p className="result-section-head">Recommended Design System</p>
+
+              <div className="rec-grid">
+                <div className="rec-item">
+                  <span className="rec-label">Color mood</span>
+                  <span className="rec-value">{visual.colorMood}</span>
+                </div>
+
+                <div className="rec-item">
+                  <span className="rec-label">Palette</span>
+                  <ul className="rec-palette-list">
+                    {visual.recommendedPalette.map((p, i) => (
+                      <li key={i} className="rec-palette-item">{p}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rec-item">
+                  <span className="rec-label">Typography</span>
+                  <span className="rec-value">{visual.typographyStyle}</span>
+                  <span className="rec-fonts">
+                    Possible fonts: {visual.possibleFonts.join(" · ")}
+                  </span>
+                </div>
+
+                <div className="rec-item">
+                  <span className="rec-label">Layout</span>
+                  <span className="rec-value">{visual.layoutStyle}</span>
+                </div>
+
+                <div className="rec-item">
+                  <span className="rec-label">Image direction</span>
+                  <span className="rec-value">{visual.imageDirection}</span>
+                </div>
+
+                <div className="rec-item">
+                  <span className="rec-label">Avoid</span>
+                  <ul className="rec-avoid-list">
+                    {visual.avoidDesignChoices.map((a, i) => (
+                      <li key={i} className="rec-avoid-item">{a}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Industry selector */}
+          <div className="industry-section">
+            <IndustrySelector
+              code={code}
+              answers={encodedAnswers}
+              current={industry ?? ""}
+            />
+          </div>
+
+          {/* What to design first */}
+          {industryAssets && (
+            <div className="assets-section">
+              <p className="result-section-head">
+                What to design first
+              </p>
+              <p className="assets-context">
+                For {industryAssets.label}
+              </p>
+
+              <div className="assets-group">
+                <span className="assets-group-label">Primary</span>
+                <ol className="assets-list assets-list-primary">
+                  {industryAssets.primaryAssets.map((a, i) => (
+                    <li key={i} className="assets-item">
+                      <span className="assets-num">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="assets-text">{a}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="assets-group">
+                <span className="assets-group-label">Next</span>
+                <ol className="assets-list" start={4}>
+                  {industryAssets.secondaryAssets.map((a, i) => (
+                    <li key={i} className="assets-item">
+                      <span className="assets-num">{String(i + 4).padStart(2, "0")}</span>
+                      <span className="assets-text">{a}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {industryAssets.optionalAssets.length > 0 && (
+                <div className="assets-group assets-group-optional">
+                  <span className="assets-group-label">Also consider</span>
+                  <ul className="assets-optional-list">
+                    {industryAssets.optionalAssets.map((a, i) => (
+                      <li key={i} className="assets-optional-item">{a}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
 

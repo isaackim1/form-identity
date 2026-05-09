@@ -658,6 +658,239 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 
 /* ===================================================
+   RECOMMENDED DESIGN SYSTEM
+   =================================================== */
+
+.rec-section { margin-bottom: 48px; }
+
+.rec-grid {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--parchment);
+}
+
+.rec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--parchment);
+}
+
+.rec-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.rec-value {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--charcoal);
+}
+
+.rec-fonts {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--stone);
+  font-style: italic;
+}
+
+.rec-palette-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rec-palette-item {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--charcoal);
+}
+
+.rec-palette-item::before {
+  content: "·";
+  margin-right: 8px;
+  color: var(--stone);
+}
+
+.rec-avoid-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rec-avoid-item {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--charcoal);
+}
+
+.rec-avoid-item::before {
+  content: "—";
+  margin-right: 8px;
+  color: var(--stone);
+}
+
+/* ===================================================
+   INDUSTRY SELECTOR
+   =================================================== */
+
+.industry-section { margin-bottom: 48px; }
+
+.industry-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.industry-selector-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.industry-select-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.industry-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 1px solid var(--parchment);
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink);
+  padding: 10px 40px 10px 14px;
+  cursor: pointer;
+  outline: none;
+  min-width: 240px;
+  transition: border-color var(--dur-1) var(--ease);
+}
+
+.industry-select:hover,
+.industry-select:focus {
+  border-color: var(--stone);
+}
+
+.industry-select-arrow {
+  position: absolute;
+  right: 14px;
+  font-size: 11px;
+  color: var(--stone);
+  pointer-events: none;
+}
+
+/* ===================================================
+   ASSET RECOMMENDATIONS
+   =================================================== */
+
+.assets-section { margin-bottom: 48px; }
+
+.assets-context {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--charcoal);
+  margin: 4px 0 24px;
+}
+
+.assets-group {
+  margin-bottom: 24px;
+}
+
+.assets-group-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 8px;
+}
+
+.assets-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--parchment);
+}
+
+.assets-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--parchment);
+}
+
+.assets-num {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--stone);
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.assets-text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--charcoal);
+}
+
+.assets-list-primary .assets-text {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.assets-group-optional { margin-top: 8px; }
+
+.assets-optional-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.assets-optional-item {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--stone);
+}
+
+.assets-optional-item::before {
+  content: "·";
+  margin-right: 8px;
+  color: var(--parchment);
+}
+
+/* ===================================================
    TYPES GALLERY PAGE
    =================================================== */
 
