@@ -79,6 +79,13 @@ export interface BrandSpecInput {
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
 
+export const AXES = [
+  { id: "E" as const, name: "Expression",  poleA: "Outward",  poleB: "Inward"       },
+  { id: "S" as const, name: "Substance",   poleA: "Concrete", poleB: "Conceptual"   },
+  { id: "O" as const, name: "Orientation", poleA: "Logic",    poleB: "Relationship"  },
+  { id: "T" as const, name: "Structure",   poleA: "Defined",  poleB: "Fluid"        },
+] as const;
+
 const STRENGTH_THRESHOLDS: ReadonlyArray<{ label: StrengthLabel; max: number }> = [
   { label: "Slight",   max: 0.15 },
   { label: "Moderate", max: 0.35 },

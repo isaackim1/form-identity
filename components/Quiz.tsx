@@ -4,13 +4,11 @@ import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { QUESTIONS, type Question } from "@/lib/questions";
 import { encodeAnswers, scoreQuiz, type Answers } from "@/lib/quiz-state";
+import { AXES } from "@/lib/brand-type-engine";
 
-const AXIS_POLES: Record<string, { poleA: string; poleB: string }> = {
-  E: { poleA: "Outward",  poleB: "Inward"       },
-  S: { poleA: "Concrete", poleB: "Conceptual"   },
-  O: { poleA: "Logic",    poleB: "Relationship"  },
-  T: { poleA: "Defined",  poleB: "Fluid"        },
-};
+const AXIS_POLES: Record<string, { poleA: string; poleB: string }> = Object.fromEntries(
+  AXES.map(ax => [ax.id, { poleA: ax.poleA, poleB: ax.poleB }])
+);
 
 type OptionId = "AA" | "A" | "B" | "BB";
 

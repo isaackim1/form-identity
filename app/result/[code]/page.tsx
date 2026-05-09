@@ -3,6 +3,7 @@ import Link from "next/link";
 import BrandCard, { getBrandTypeData } from "@/components/BrandCard";
 import { decodeAnswers, scoreQuiz } from "@/lib/quiz-state";
 import type { StrengthLabel } from "@/lib/brand-type-engine";
+import { AXES } from "@/lib/brand-type-engine";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata(
@@ -27,12 +28,9 @@ export async function generateMetadata(
   };
 }
 
-const AXIS_LABELS: Record<string, { name: string; poleA: string; poleB: string }> = {
-  E: { name: "Expression",  poleA: "Outward",  poleB: "Inward"       },
-  S: { name: "Substance",   poleA: "Concrete", poleB: "Conceptual"   },
-  O: { name: "Orientation", poleA: "Logic",    poleB: "Relationship"  },
-  T: { name: "Structure",   poleA: "Defined",  poleB: "Fluid"        },
-};
+const AXIS_LABELS: Record<string, { name: string; poleA: string; poleB: string }> = Object.fromEntries(
+  AXES.map(ax => [ax.id, { name: ax.name, poleA: ax.poleA, poleB: ax.poleB }])
+);
 
 const STRENGTH_TO_LABEL: Record<StrengthLabel, number> = {
   Slight: 1, Moderate: 2, Clear: 3, Strong: 4,

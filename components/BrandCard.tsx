@@ -1,4 +1,5 @@
 import type { StrengthLabel } from "@/lib/brand-type-engine";
+import { AXES } from "@/lib/brand-type-engine";
 
 // 16 brand types — canonical data from design bundle
 export const BRAND_TYPES = [
@@ -25,14 +26,6 @@ export type BrandTypeCode = typeof BRAND_TYPES[number]["code"];
 export function getBrandTypeData(code: string) {
   return BRAND_TYPES.find(t => t.code === code) ?? null;
 }
-
-// Axes in code-letter order: E, S, O, T
-const AXES = [
-  { id: "E", name: "Expression",  poleA: "Outward",  poleB: "Inward"      },
-  { id: "S", name: "Substance",   poleA: "Concrete", poleB: "Conceptual"  },
-  { id: "O", name: "Orientation", poleA: "Logic",    poleB: "Relationship"},
-  { id: "T", name: "Structure",   poleA: "Defined",  poleB: "Fluid"       },
-] as const;
 
 // Which letter maps to side A per axis position
 const AXIS_SIDES = [
