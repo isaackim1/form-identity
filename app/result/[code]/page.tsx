@@ -130,6 +130,10 @@ export default async function ResultPage({ params, searchParams }: Props) {
               )}
             </>
           )}
+
+          <Link href="/types" className="result-all-types-link">
+            See all 16 types →
+          </Link>
         </div>
       </main>
     </div>
