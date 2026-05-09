@@ -4,9 +4,10 @@ import { useState, FormEvent } from "react";
 
 interface EmailCaptureProps {
   code: string;
+  answers?: string;
 }
 
-export default function EmailCapture({ code }: EmailCaptureProps) {
+export default function EmailCapture({ code, answers }: EmailCaptureProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -20,7 +21,7 @@ export default function EmailCapture({ code }: EmailCaptureProps) {
       const res = await fetch("/api/capture", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, code }),
+        body: JSON.stringify({ email, code, answers }),
       });
       const data = await res.json() as { ok: boolean; error?: string };
       if (data.ok) {
@@ -39,7 +40,9 @@ export default function EmailCapture({ code }: EmailCaptureProps) {
     return (
       <div style={{ marginBottom: "32px" }}>
         <p className="result-section-head" style={{ marginBottom: "12px" }}>Email me my result</p>
-        <p className="email-capture-message">Thank you — check your inbox.</p>
+        <p className="email-capture-message">
+          Your Brand Direction has been saved. The next version will help you turn this type into a visual identity system.
+        </p>
       </div>
     );
   }
@@ -62,7 +65,7 @@ export default function EmailCapture({ code }: EmailCaptureProps) {
           type="submit"
           disabled={status === "loading"}
         >
-          {status === "loading" ? "Sending…" : "Send"}
+          {status === "loading" ? "Saving…" : "Save"}
         </button>
       </form>
       {status === "error" && (

@@ -4,8 +4,8 @@ import BrandCard, { getBrandTypeData } from "@/components/BrandCard";
 import ShareButton from "@/components/ShareButton";
 import EmailCapture from "@/components/EmailCapture";
 import { decodeAnswers, scoreQuiz } from "@/lib/quiz-state";
-import type { StrengthLabel } from "@/lib/brand-type-engine";
-import { AXES } from "@/lib/brand-type-engine";
+import { AXES, type StrengthLabel } from "@/lib/brand-type-engine";
+import { BRAND_DIRECTIONS } from "@/lib/brand-direction";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata(
@@ -34,10 +34,6 @@ const AXIS_LABELS: Record<string, { name: string; poleA: string; poleB: string }
   AXES.map(ax => [ax.id, { name: ax.name, poleA: ax.poleA, poleB: ax.poleB }])
 );
 
-const STRENGTH_TO_LABEL: Record<StrengthLabel, number> = {
-  Slight: 1, Moderate: 2, Clear: 3, Strong: 4,
-};
-
 interface Props {
   params: Promise<{ code: string }>;
   searchParams: Promise<{ answers?: string }>;
@@ -50,20 +46,26 @@ export default async function ResultPage({ params, searchParams }: Props) {
   const type = getBrandTypeData(code);
   if (!type) notFound();
 
+  const direction = BRAND_DIRECTIONS[code];
+
   // Derive strengths from scoring result if answers are available
   let strengths: StrengthLabel[] | undefined;
   let scoringResult;
 
   if (encodedAnswers) {
-    const answers = decodeAnswers(encodedAnswers);
-    scoringResult = scoreQuiz(answers);
-    if (scoringResult.code === code) {
-      strengths = [
-        scoringResult.axes.E.strength,
-        scoringResult.axes.S.strength,
-        scoringResult.axes.O.strength,
-        scoringResult.axes.T.strength,
-      ];
+    try {
+      const answers = decodeAnswers(encodedAnswers);
+      scoringResult = scoreQuiz(answers);
+      if (scoringResult.code === code) {
+        strengths = [
+          scoringResult.axes.E.strength,
+          scoringResult.axes.S.strength,
+          scoringResult.axes.O.strength,
+          scoringResult.axes.T.strength,
+        ];
+      }
+    } catch {
+      // Malformed answers — still show result by code, just without axis breakdown
     }
   }
 
@@ -98,7 +100,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
           </div>
 
           <h1 className="result-name">{type.name}</h1>
-          <p className="result-tagline">"{type.line}"</p>
+          <p className="result-tagline">&ldquo;{type.line}&rdquo;</p>
 
           {scoringResult && (
             <>
@@ -133,9 +135,42 @@ export default async function ResultPage({ params, searchParams }: Props) {
             </>
           )}
 
+          {direction && (
+            <div className="result-direction">
+              <p className="result-section-head">Brand Direction</p>
+
+              <div className="result-direction-grid">
+                <div className="result-direction-item">
+                  <span className="result-direction-label">Brand energy</span>
+                  <span className="result-direction-value">{direction.energy}</span>
+                </div>
+                <div className="result-direction-item">
+                  <span className="result-direction-label">Visual direction</span>
+                  <span className="result-direction-value">{direction.visual}</span>
+                </div>
+                <div className="result-direction-item">
+                  <span className="result-direction-label">Voice direction</span>
+                  <span className="result-direction-value">{direction.voice}</span>
+                </div>
+                <div className="result-direction-item">
+                  <span className="result-direction-label">Avoid</span>
+                  <span className="result-direction-value">{direction.avoid}</span>
+                </div>
+                <div className="result-direction-item">
+                  <span className="result-direction-label">Best for</span>
+                  <span className="result-direction-value">{direction.bestFor}</span>
+                </div>
+                <div className="result-direction-item result-direction-next">
+                  <span className="result-direction-label">Next step</span>
+                  <span className="result-direction-value">{direction.nextStep}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
           <ShareButton code={code} typeName={type.name} tagline={type.line} />
 
-          <EmailCapture code={code} />
+          <EmailCapture code={code} answers={encodedAnswers} />
 
           <Link href="/types" className="result-all-types-link">
             See all 16 types →

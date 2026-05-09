@@ -617,6 +617,47 @@ h1, h2, h3, h4, p { margin: 0; }
 .result-retake:hover { background: var(--graphite-10); }
 
 /* ===================================================
+   BRAND DIRECTION
+   =================================================== */
+
+.result-direction { margin-bottom: 48px; }
+
+.result-direction-grid {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--parchment);
+}
+
+.result-direction-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--parchment);
+}
+
+.result-direction-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.result-direction-value {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--charcoal);
+}
+
+.result-direction-next .result-direction-value {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ===================================================
    TYPES GALLERY PAGE
    =================================================== */
 

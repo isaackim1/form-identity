@@ -101,7 +101,7 @@ export default async function Image(
               fontFamily: "Georgia, serif",
             }}
           >
-            "{tagline}"
+            &ldquo;{tagline}&rdquo;
           </div>
         </div>
 

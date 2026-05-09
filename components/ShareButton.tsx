@@ -8,14 +8,22 @@ interface ShareButtonProps {
   tagline: string;
 }
 
+function getSiteUrl(): string {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (typeof window !== "undefined") return window.location.origin;
+  return "";
+}
+
 export default function ShareButton({ code, typeName, tagline }: ShareButtonProps) {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "fallback">("idle");
   const [fallbackUrl, setFallbackUrl] = useState("");
 
-  const resultUrl = `https://formidentity.com/result/${code}`;
+  function getResultUrl() {
+    return `${getSiteUrl()}/result/${code}`;
+  }
 
   function handleCopyLink() {
-    const url = (typeof window !== "undefined" ? window.location.origin : "https://formidentity.com") + `/result/${code}`;
+    const url = getResultUrl();
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url).then(() => {
         setCopyState("copied");
@@ -30,6 +38,7 @@ export default function ShareButton({ code, typeName, tagline }: ShareButtonProp
     }
   }
 
+  const resultUrl = getResultUrl();
   const tweetText = encodeURIComponent(`I'm ${typeName} — "${tagline}" — Find your brand type:`);
   const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}&url=${encodeURIComponent(resultUrl)}`;
   const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(resultUrl)}`;

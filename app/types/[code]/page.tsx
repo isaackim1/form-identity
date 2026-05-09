@@ -72,7 +72,7 @@ export default async function TypeDetailPage(
           </div>
 
           <h1 className="result-name">{type.name}</h1>
-          <p className="result-tagline">"{type.line}"</p>
+          <p className="result-tagline">&ldquo;{type.line}&rdquo;</p>
 
           {/* Axis definitions */}
           <div className="result-axes">

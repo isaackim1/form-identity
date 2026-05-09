@@ -88,9 +88,6 @@ export default function BrandCard({ code, strengths, index = 1, total = 16 }: Br
   const stats = deriveStats(code, resolvedStrengths);
   const idxLabel = String(index).padStart(2, "0") + " / " + String(total).padStart(2, "0");
 
-  const totalSignal = stats.reduce((s, x) => s + STRENGTH_NUM[x.strength], 0);
-  const avgSignal = Math.round(totalSignal / 4);
-
   return (
     <article className="card" style={{ "--card-color": type.color } as React.CSSProperties}>
       <div className="card-color-block">
@@ -107,7 +104,7 @@ export default function BrandCard({ code, strengths, index = 1, total = 16 }: Br
 
       <div className="card-body">
         <p className="card-character">
-          <span className="quote">"</span>{type.line}
+          <span className="quote">&ldquo;</span>{type.line}
         </p>
 
         <div className="card-stats">
