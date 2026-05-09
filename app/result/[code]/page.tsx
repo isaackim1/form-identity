@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BrandCard, { getBrandTypeData } from "@/components/BrandCard";
+import BrandDirectionGrid from "@/components/BrandDirectionGrid";
+import RecommendedDesignSystem from "@/components/RecommendedDesignSystem";
+import TemplatePreviewCard from "@/components/TemplatePreviewCard";
 import ShareButton from "@/components/ShareButton";
 import EmailCapture from "@/components/EmailCapture";
 import IndustrySelector from "@/components/IndustrySelector";
@@ -53,6 +56,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
   const visual = BRAND_VISUAL_RECOMMENDATIONS[code];
   const industryKey = industry as IndustryValue | undefined;
   const industryAssets = industryKey ? INDUSTRY_ASSETS[industryKey] : null;
+  const typeColor = type.color;
 
   let strengths: StrengthLabel[] | undefined;
   let scoringResult;
@@ -91,14 +95,13 @@ export default async function ResultPage({ params, searchParams }: Props) {
       </header>
 
       <main className="result-main">
-        {/* Brand card */}
+        {/* ── Diagnosis ──────────────────────────────── */}
         <BrandCard
           code={code}
           strengths={strengths}
           index={index > 0 ? index : 1}
         />
 
-        {/* Meta */}
         <div className="result-meta">
           <div className="result-eyebrow">
             <span className="t-overline">Your brand type</span>
@@ -107,7 +110,6 @@ export default async function ResultPage({ params, searchParams }: Props) {
           <h1 className="result-name">{type.name}</h1>
           <p className="result-tagline">&ldquo;{type.line}&rdquo;</p>
 
-          {/* Axis readings */}
           {scoringResult && (
             <>
               <div className="result-axes">
@@ -141,90 +143,22 @@ export default async function ResultPage({ params, searchParams }: Props) {
             </>
           )}
 
-          {/* Brand Direction */}
+          {/* ── Visual Translation ──────────────────── */}
+
           {direction && (
-            <div className="result-direction">
-              <p className="result-section-head">Brand Direction</p>
-              <div className="result-direction-grid">
-                <div className="result-direction-item">
-                  <span className="result-direction-label">Brand energy</span>
-                  <span className="result-direction-value">{direction.energy}</span>
-                </div>
-                <div className="result-direction-item">
-                  <span className="result-direction-label">Visual direction</span>
-                  <span className="result-direction-value">{direction.visual}</span>
-                </div>
-                <div className="result-direction-item">
-                  <span className="result-direction-label">Voice direction</span>
-                  <span className="result-direction-value">{direction.voice}</span>
-                </div>
-                <div className="result-direction-item">
-                  <span className="result-direction-label">Avoid</span>
-                  <span className="result-direction-value">{direction.avoid}</span>
-                </div>
-                <div className="result-direction-item">
-                  <span className="result-direction-label">Best for</span>
-                  <span className="result-direction-value">{direction.bestFor}</span>
-                </div>
-                <div className="result-direction-item result-direction-next">
-                  <span className="result-direction-label">Next step</span>
-                  <span className="result-direction-value">{direction.nextStep}</span>
-                </div>
-              </div>
-            </div>
+            <BrandDirectionGrid direction={direction} typeColor={typeColor} />
           )}
 
-          {/* Recommended Design System */}
           {visual && (
-            <div className="rec-section">
-              <p className="result-section-head">Recommended Design System</p>
-
-              <div className="rec-grid">
-                <div className="rec-item">
-                  <span className="rec-label">Color mood</span>
-                  <span className="rec-value">{visual.colorMood}</span>
-                </div>
-
-                <div className="rec-item">
-                  <span className="rec-label">Palette</span>
-                  <ul className="rec-palette-list">
-                    {visual.recommendedPalette.map((p, i) => (
-                      <li key={i} className="rec-palette-item">{p}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="rec-item">
-                  <span className="rec-label">Typography</span>
-                  <span className="rec-value">{visual.typographyStyle}</span>
-                  <span className="rec-fonts">
-                    Possible fonts: {visual.possibleFonts.join(" · ")}
-                  </span>
-                </div>
-
-                <div className="rec-item">
-                  <span className="rec-label">Layout</span>
-                  <span className="rec-value">{visual.layoutStyle}</span>
-                </div>
-
-                <div className="rec-item">
-                  <span className="rec-label">Image direction</span>
-                  <span className="rec-value">{visual.imageDirection}</span>
-                </div>
-
-                <div className="rec-item">
-                  <span className="rec-label">Avoid</span>
-                  <ul className="rec-avoid-list">
-                    {visual.avoidDesignChoices.map((a, i) => (
-                      <li key={i} className="rec-avoid-item">{a}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <RecommendedDesignSystem
+              visual={visual}
+              typeName={type.name}
+              tagline={type.line}
+            />
           )}
 
-          {/* Industry selector */}
+          {/* ── Industry + Templates ────────────────── */}
+
           <div className="industry-section">
             <IndustrySelector
               code={code}
@@ -233,50 +167,39 @@ export default async function ResultPage({ params, searchParams }: Props) {
             />
           </div>
 
-          {/* What to design first */}
           {industryAssets && (
-            <div className="assets-section">
-              <p className="result-section-head">
-                What to design first
-              </p>
-              <p className="assets-context">
-                For {industryAssets.label}
-              </p>
+            <div className="template-section">
+              <p className="result-section-head">What to design first</p>
+              <p className="template-context">For {industryAssets.label}</p>
 
-              <div className="assets-group">
-                <span className="assets-group-label">Primary</span>
-                <ol className="assets-list assets-list-primary">
-                  {industryAssets.primaryAssets.map((a, i) => (
-                    <li key={i} className="assets-item">
-                      <span className="assets-num">{String(i + 1).padStart(2, "0")}</span>
-                      <span className="assets-text">{a}</span>
-                    </li>
-                  ))}
-                </ol>
+              <div className="template-grid">
+                {industryAssets.primaryAssets.map((asset, i) => (
+                  <TemplatePreviewCard
+                    key={`p-${i}`}
+                    assetName={asset}
+                    category="primary"
+                    index={i + 1}
+                    typeColor={typeColor}
+                  />
+                ))}
+                {industryAssets.secondaryAssets.map((asset, i) => (
+                  <TemplatePreviewCard
+                    key={`s-${i}`}
+                    assetName={asset}
+                    category="secondary"
+                    index={i + 4}
+                    typeColor={typeColor}
+                  />
+                ))}
+                {industryAssets.optionalAssets.map((asset, i) => (
+                  <TemplatePreviewCard
+                    key={`o-${i}`}
+                    assetName={asset}
+                    category="optional"
+                    typeColor={typeColor}
+                  />
+                ))}
               </div>
-
-              <div className="assets-group">
-                <span className="assets-group-label">Next</span>
-                <ol className="assets-list" start={4}>
-                  {industryAssets.secondaryAssets.map((a, i) => (
-                    <li key={i} className="assets-item">
-                      <span className="assets-num">{String(i + 4).padStart(2, "0")}</span>
-                      <span className="assets-text">{a}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              {industryAssets.optionalAssets.length > 0 && (
-                <div className="assets-group assets-group-optional">
-                  <span className="assets-group-label">Also consider</span>
-                  <ul className="assets-optional-list">
-                    {industryAssets.optionalAssets.map((a, i) => (
-                      <li key={i} className="assets-optional-item">{a}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
           )}
 
