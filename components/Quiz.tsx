@@ -16,8 +16,8 @@ type OptionId = "AA" | "A" | "B" | "BB";
 
 const OPTIONS: { id: OptionId; label: string; side: "A" | "B" }[] = [
   { id: "AA", label: "Definitely", side: "A" },
-  { id: "A",  label: "Lean",       side: "A" },
-  { id: "B",  label: "Lean",       side: "B" },
+  { id: "A",  label: "Lean A",    side: "A" },
+  { id: "B",  label: "Lean B",    side: "B" },
   { id: "BB", label: "Definitely", side: "B" },
 ];
 

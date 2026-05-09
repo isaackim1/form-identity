@@ -382,7 +382,6 @@ h1, h2, h3, h4, p { margin: 0; }
 .card-stats {
   border-top: 1px solid var(--ink);
   padding-top: 12px;
-  margin-bottom: auto;
 }
 
 .stats-head {
@@ -440,9 +439,10 @@ h1, h2, h3, h4, p { margin: 0; }
   justify-content: space-between;
   align-items: center;
   padding-top: 16px;
-  margin-top: 16px;
+  margin-top: auto;
   border-top: 1px solid var(--ink);
   font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
 }
 .mono-code { letter-spacing: 0.22em; }
 
