@@ -1,0 +1,300 @@
+{
+  "meta": {
+    "version": "1.0",
+    "generated": "2026-05-05",
+    "status": "LOCKED"
+  },
+  "business": {
+    "name": "Form Identity",
+    "tagline": "Correct design for every business",
+    "website": "formidentity.com",
+    "founder": {
+      "name": "Isaac",
+      "title": "Founder",
+      "email": "hello@formidentity.com"
+    }
+  },
+  "brand_type": {
+    "code": "ICLD",
+    "name": "The Expert",
+    "character": "Inward energy. Concrete deliverables. Logic-driven decisions. Defined structure.",
+    "extended": "Form Identity communicates through depth and precision \u2014 not volume. The work speaks before the brand does.",
+    "axes": {
+      "E": {
+        "score": 22,
+        "direction": "Inward",
+        "strength": "Clear"
+      },
+      "S": {
+        "score": 4,
+        "direction": "Concrete",
+        "strength": "Strong"
+      },
+      "O": {
+        "score": 10,
+        "direction": "Logic",
+        "strength": "Clear"
+      },
+      "T": {
+        "score": 7,
+        "direction": "Defined",
+        "strength": "Strong"
+      }
+    }
+  },
+  "logo": {
+    "type": "wordmark",
+    "text": "Form Identity",
+    "font": "Inter",
+    "weight": 300,
+    "tracking": "-0.02em",
+    "sizes": {
+      "large": "32px",
+      "standard": "22px",
+      "small": "16px",
+      "minimum": "12px"
+    },
+    "minimum_print": "6mm",
+    "clear_space": "cap-height on all sides"
+  },
+  "colour": {
+    "primary": {
+      "name": "Graphite",
+      "hex": "#282830",
+      "wcag_ratio": 13.07,
+      "cmyk_delta_e": 3.8,
+      "passes_AA": true,
+      "passes_AAA": true
+    },
+    "tints": {
+      "10": "#E0DED7",
+      "20": "#CCCAC5",
+      "40": "#A3A1A0",
+      "60": "#7A797A",
+      "80": "#515055"
+    },
+    "accent": {
+      "hex": "#302828",
+      "hue": 0.0,
+      "rule": "One use per composition. Bezold Rule applies."
+    },
+    "neutrals": {
+      "Ink": "#1A1A18",
+      "Charcoal": "#3D3D3A",
+      "Stone": "#8C8880",
+      "Parchment": "#E0DBD0",
+      "Warm White": "#F5F2EA"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "sans": "Inter",
+      "serif": "EB Garamond"
+    },
+    "scale_ratio": 1.414,
+    "styles": {
+      "sans": {
+        "Display": {
+          "size": "64px",
+          "weight": 300,
+          "leading": 1.05,
+          "tracking": "-0.02em"
+        },
+        "H1": {
+          "size": "45px",
+          "weight": 400,
+          "leading": 1.1,
+          "tracking": "-0.01em"
+        },
+        "H2": {
+          "size": "32px",
+          "weight": 400,
+          "leading": 1.2,
+          "tracking": "0"
+        },
+        "H3": {
+          "size": "22px",
+          "weight": 500,
+          "leading": 1.3,
+          "tracking": "0"
+        },
+        "Body": {
+          "size": "16px",
+          "weight": 400,
+          "leading": 1.6,
+          "tracking": "0"
+        },
+        "Caption": {
+          "size": "11px",
+          "weight": 400,
+          "leading": 1.5,
+          "tracking": "+0.02em"
+        },
+        "Overline": {
+          "size": "11px",
+          "weight": 500,
+          "leading": 1.4,
+          "tracking": "+0.12em",
+          "transform": "uppercase"
+        }
+      },
+      "serif": {
+        "H1": {
+          "size": "45px",
+          "weight": 400,
+          "leading": 1.1,
+          "tracking": "-0.01em"
+        },
+        "H2": {
+          "size": "32px",
+          "weight": 400,
+          "leading": 1.2,
+          "tracking": "0"
+        },
+        "H3": {
+          "size": "22px",
+          "style": "italic",
+          "leading": 1.3,
+          "tracking": "0"
+        },
+        "Body": {
+          "size": "17px",
+          "weight": 400,
+          "leading": 1.65,
+          "tracking": "0"
+        },
+        "Caption": {
+          "size": "11px",
+          "style": "italic",
+          "leading": 1.5,
+          "tracking": "+0.02em"
+        }
+      }
+    }
+  },
+  "grids": {
+    "A4": {
+      "frame_px": {
+        "w": 595,
+        "h": 842
+      },
+      "columns": 4,
+      "rows": 5,
+      "col_gutter_px": 12,
+      "row_gutter_px": 19,
+      "field_height_px": 121,
+      "margins_px": {
+        "top": 91,
+        "bottom": 70,
+        "left": 57,
+        "right": 57
+      }
+    },
+    "A5": {
+      "frame_px": {
+        "w": 420,
+        "h": 595
+      },
+      "columns": 4,
+      "rows": 5,
+      "col_gutter_px": 12,
+      "row_gutter_px": 19,
+      "field_height_px": 95,
+      "margins_px": {
+        "top": 32,
+        "bottom": 21,
+        "left": 24,
+        "right": 24
+      }
+    },
+    "business_card": {
+      "frame_px": {
+        "w": 482,
+        "h": 312
+      },
+      "scale": "2x",
+      "print_mm": "85\u00d755",
+      "columns": 4,
+      "rows": 3,
+      "col_gutter_px": 6,
+      "row_gutter_px": 12,
+      "field_height_px": 66,
+      "margins_px": {
+        "all": 46
+      }
+    },
+    "instagram_post": {
+      "frame_px": {
+        "w": 1080,
+        "h": 1080
+      },
+      "columns": 4,
+      "rows": 4,
+      "col_gutter_px": 16,
+      "row_gutter_px": 24,
+      "field_height_px": 216,
+      "margins_px": {
+        "all": 40
+      }
+    },
+    "instagram_story": {
+      "frame_px": {
+        "w": 1080,
+        "h": 1920
+      },
+      "columns": 4,
+      "rows": 9,
+      "col_gutter_px": 32,
+      "row_gutter_px": 38,
+      "field_height_px": 152,
+      "margins_px": {
+        "top_bottom": 124,
+        "left_right": 40
+      }
+    },
+    "email_signature": {
+      "frame_px": {
+        "w": 600,
+        "h": 200
+      },
+      "columns": 4,
+      "rows": 2,
+      "col_gutter_px": 10,
+      "row_gutter_px": 16,
+      "field_height_px": 64,
+      "margins_px": {
+        "left_right": 15,
+        "top_bottom": 28
+      }
+    },
+    "pitch_deck": {
+      "frame_px": {
+        "w": 1920,
+        "h": 1080
+      },
+      "columns": 6,
+      "rows": 4,
+      "col_gutter_px": 24,
+      "row_gutter_px": 32,
+      "field_height_px": 192,
+      "margins_px": {
+        "top_bottom": 72,
+        "left_right": 108
+      }
+    }
+  },
+  "rules": {
+    "immutable": [
+      "Never use pure black #000000 or pure white #FFFFFF",
+      "Never use a colour outside the brand specification",
+      "Never use a type size outside the 7-level scale",
+      "Never use weight 700 more than once per composition",
+      "Every spacing value must be a multiple of 8px",
+      "Every text element must use a named text style",
+      "Every colour must use a named colour style",
+      "All content stays within margin boundaries",
+      "Accent: one use per composition \u2014 Bezold Rule",
+      "When in doubt \u2014 use less. Restraint is always correct."
+    ]
+  }
+}
