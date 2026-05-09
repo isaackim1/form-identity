@@ -108,7 +108,9 @@ export default function Quiz() {
                 <span className="opt-side">{opt.side}</span>
                 <span className="opt-strength">{opt.label}</span>
               </div>
-              <div className="opt-body">{opt.side === "A" ? q.a : q.b}</div>
+              <div className="opt-body">
+                {opt.id === "AA" ? q.a : opt.id === "A" ? q.aLean : opt.id === "B" ? q.bLean : q.b}
+              </div>
             </button>
           ))}
         </div>

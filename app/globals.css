@@ -762,6 +762,54 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 
 /* ===================================================
+   NOT FOUND (404)
+   =================================================== */
+
+.notfound-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.notfound-main {
+  flex: 1;
+  padding: 80px 64px;
+  max-width: 720px;
+}
+
+.notfound-headline {
+  font-family: var(--font-sans);
+  font-size: 56px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.notfound-sub {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--stone);
+  margin: 0 0 48px;
+}
+
+.notfound-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .notfound-main { padding: 48px 24px; }
+  .notfound-headline { font-size: 36px; }
+}
+
+/* ===================================================
    EMAIL CAPTURE
    =================================================== */
 
