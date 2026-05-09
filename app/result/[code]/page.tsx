@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BrandCard, { getBrandTypeData } from "@/components/BrandCard";
+import ShareButton from "@/components/ShareButton";
 import { decodeAnswers, scoreQuiz } from "@/lib/quiz-state";
 import type { StrengthLabel } from "@/lib/brand-type-engine";
 import { AXES } from "@/lib/brand-type-engine";
@@ -130,6 +131,8 @@ export default async function ResultPage({ params, searchParams }: Props) {
               )}
             </>
           )}
+
+          <ShareButton code={code} typeName={type.name} tagline={type.line} />
 
           <Link href="/types" className="result-all-types-link">
             See all 16 types →
