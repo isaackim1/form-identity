@@ -1,0 +1,2210 @@
+{
+  "meta": {
+    "name": "Form Identity Design System",
+    "version": "1.0",
+    "description": "Constraint-driven branding system. 16 Brand Types \u00d7 4 colour options = 64 pre-validated identities.",
+    "axes": {
+      "E": {
+        "name": "Expression",
+        "poles": [
+          "Outward",
+          "Inward"
+        ],
+        "code": [
+          "O",
+          "I"
+        ]
+      },
+      "S": {
+        "name": "Substance",
+        "poles": [
+          "Concrete",
+          "Conceptual"
+        ],
+        "code": [
+          "C",
+          "A"
+        ]
+      },
+      "O": {
+        "name": "Orientation",
+        "poles": [
+          "Logic",
+          "Relationship"
+        ],
+        "code": [
+          "L",
+          "R"
+        ]
+      },
+      "T": {
+        "name": "Structure",
+        "poles": [
+          "Defined",
+          "Fluid"
+        ],
+        "code": [
+          "D",
+          "F"
+        ]
+      }
+    },
+    "scoring": {
+      "range": [
+        4,
+        28
+      ],
+      "midpoint": 16,
+      "max_distance": 12,
+      "strength_thresholds": {
+        "Slight": 0.15,
+        "Moderate": 0.35,
+        "Clear": 0.6,
+        "Strong": 1.0
+      }
+    }
+  },
+  "brand_types": {
+    "OCLD": {
+      "name": "The Ambassador",
+      "character": "Outward energy. Concrete deliverables. Logic-driven decisions. Defined structure.",
+      "colour_direction": "Warm, active, trustworthy. Colours that open doors."
+    },
+    "OCRD": {
+      "name": "The Connector",
+      "character": "Outward energy. Concrete deliverables. Relationship-led. Defined structure.",
+      "colour_direction": "Warm, social, approachable. Colours that invite."
+    },
+    "OCLF": {
+      "name": "The Maker",
+      "character": "Outward energy. Concrete deliverables. Logic-driven. Fluid structure.",
+      "colour_direction": "Warm, energetic, hands-on. Colours that suggest momentum."
+    },
+    "OCRF": {
+      "name": "The Host",
+      "character": "Outward energy. Concrete deliverables. Relationship-led. Fluid structure.",
+      "colour_direction": "Warm, welcoming, celebratory. Colours that gather people."
+    },
+    "OALD": {
+      "name": "The Strategist",
+      "character": "Outward energy. Conceptual value. Logic-driven. Defined structure.",
+      "colour_direction": "Bold, intelligent, forward-facing. Colours that signal vision."
+    },
+    "OARD": {
+      "name": "The Guide",
+      "character": "Outward energy. Conceptual value. Relationship-led. Defined structure.",
+      "colour_direction": "Warm, aspirational, guiding. Colours that inspire movement."
+    },
+    "OALF": {
+      "name": "The Catalyst",
+      "character": "Outward energy. Conceptual value. Logic-driven. Fluid structure.",
+      "colour_direction": "Dynamic, provocative, energetic. Colours that disrupt."
+    },
+    "OARF": {
+      "name": "The Advocate",
+      "character": "Outward energy. Conceptual value. Relationship-led. Fluid structure.",
+      "colour_direction": "Passionate, human, expressive. Colours that move people."
+    },
+    "ICLD": {
+      "name": "The Expert",
+      "character": "Inward energy. Concrete deliverables. Logic-driven decisions. Defined structure.",
+      "extended": "Form Identity communicates through depth and precision \u2014 not volume. The work speaks before the brand does.",
+      "colour_direction": "Cool, dark, muted, minimal. Colours that signal mastery without announcement.",
+      "colour_logic": {
+        "E_inward": "Cool palette, low saturation. No warm-dominant hues.",
+        "S_concrete": "Depth over lightness. Grounded, real tones that signal something has been made.",
+        "O_logic": "Precise, unsentimental. Colours that communicate competence before warmth.",
+        "T_defined": "Controlled range. One primary, tightly bounded. Nothing added without reason."
+      }
+    },
+    "ICRD": {
+      "name": "The Craftsperson",
+      "character": "Inward energy. Concrete deliverables. Relationship-led. Defined structure.",
+      "colour_direction": "Cool but warm-accented. Colours that show care in the making."
+    },
+    "ICLF": {
+      "name": "The Artisan",
+      "character": "Inward energy. Concrete deliverables. Logic-driven. Fluid structure.",
+      "colour_direction": "Precise but organic. Colours of the studio and workshop."
+    },
+    "ICRF": {
+      "name": "The Practitioner",
+      "character": "Inward energy. Concrete deliverables. Relationship-led. Fluid structure.",
+      "colour_direction": "Natural, personal, careful. Colours that show presence."
+    },
+    "IALD": {
+      "name": "The Philosopher",
+      "character": "Inward energy. Conceptual value. Logic-driven. Defined structure.",
+      "colour_direction": "Austere, precise, intellectual. Colours of the library and laboratory."
+    },
+    "IARD": {
+      "name": "The Counsellor",
+      "character": "Inward energy. Conceptual value. Relationship-led. Defined structure.",
+      "colour_direction": "Calm, considered, trustworthy. Colours that hold space."
+    },
+    "IALF": {
+      "name": "The Visionary",
+      "character": "Inward energy. Conceptual value. Logic-driven. Fluid structure.",
+      "colour_direction": "Spare, unexpected, singular. Colours that arrive fully formed."
+    },
+    "IARF": {
+      "name": "The Poet",
+      "character": "Inward energy. Conceptual value. Relationship-led. Fluid structure.",
+      "colour_direction": "Soft, layered, intimate. Colours of the inner world made visible."
+    }
+  },
+  "colour_options": {
+    "ICLD": {
+      "options": [
+        {
+          "id": 1,
+          "name": "Forest",
+          "hex": "#1C3D2E",
+          "tag": "Grounded",
+          "why": "The deepest green in the system. Conveys craft, quiet authority, and precision without announcing itself.",
+          "coverage": "Professional services \u00b7 Craft \u00b7 Sustainability",
+          "wcag_vs_warm_white": "9.65:1",
+          "cmyk_delta_e": 4.8
+        },
+        {
+          "id": 2,
+          "name": "Midnight",
+          "hex": "#1A2744",
+          "tag": "Authoritative",
+          "why": "Deep navy built for maximum trust at maximum contrast. Institutional weight without institutional coldness.",
+          "coverage": "Consulting \u00b7 Finance \u00b7 Technology \u00b7 Legal",
+          "wcag_vs_warm_white": "13.24:1",
+          "cmyk_delta_e": 3.2
+        },
+        {
+          "id": 3,
+          "name": "Slate",
+          "hex": "#2D3545",
+          "tag": "Precise",
+          "why": "Blue-grey that sits between navy and graphite. Disappears into the system; the work leads.",
+          "coverage": "Architecture \u00b7 Editorial \u00b7 Any sector",
+          "wcag_vs_warm_white": "11.06:1",
+          "cmyk_delta_e": 5.1
+        },
+        {
+          "id": 4,
+          "name": "Deep Teal",
+          "hex": "#1A3835",
+          "tag": "Distinct",
+          "why": "The most singular option. Occupies a space almost no small business brand claims.",
+          "coverage": "Strategy \u00b7 Health \u00b7 Professional services",
+          "wcag_vs_warm_white": "11.34:1",
+          "cmyk_delta_e": 4.4
+        }
+      ],
+      "selected": {
+        "id": 5,
+        "name": "Graphite",
+        "hex": "#282830",
+        "tag": "Essential",
+        "why": "Near-black cool \u2014 stripped to expertise, nothing decorative.",
+        "coverage": "Any sector. Maximum restraint.",
+        "wcag_vs_warm_white": "13.07:1",
+        "cmyk_delta_e": 3.8,
+        "override_note": "Client selection. Outside original 4 ICLD options \u2014 chosen for maximum neutrality."
+      },
+      "active": "Graphite"
+    }
+  },
+  "neutrals": {
+    "Ink": {
+      "hex": "#1A1A18",
+      "L_star": 10,
+      "use": "Body text, headings"
+    },
+    "Charcoal": {
+      "hex": "#3D3D3A",
+      "L_star": 24,
+      "use": "Secondary text, captions on dark"
+    },
+    "Stone": {
+      "hex": "#8C8880",
+      "L_star": 56,
+      "use": "Captions, labels, rules"
+    },
+    "Parchment": {
+      "hex": "#E0DBD0",
+      "L_star": 86,
+      "use": "Dividers, backgrounds, tint references"
+    },
+    "Warm White": {
+      "hex": "#F5F2EA",
+      "L_star": 95,
+      "use": "Primary background, reversed text"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "sans": "Inter",
+      "serif": "EB Garamond"
+    },
+    "scale_ratio": 1.414,
+    "scale_note": "\u221a2 \u2014 each step is 41.4% larger than the previous",
+    "styles": {
+      "sans": {
+        "Display": {
+          "size": 64,
+          "weight": 300,
+          "leading": 1.05,
+          "tracking": "-0.02em"
+        },
+        "H1": {
+          "size": 45,
+          "weight": 400,
+          "leading": 1.1,
+          "tracking": "-0.01em"
+        },
+        "H2": {
+          "size": 32,
+          "weight": 400,
+          "leading": 1.2,
+          "tracking": "0"
+        },
+        "H3": {
+          "size": 22,
+          "weight": 500,
+          "leading": 1.3,
+          "tracking": "0"
+        },
+        "Body": {
+          "size": 16,
+          "weight": 400,
+          "leading": 1.6,
+          "tracking": "0"
+        },
+        "Caption": {
+          "size": 11,
+          "weight": 400,
+          "leading": 1.5,
+          "tracking": "+0.02em"
+        },
+        "Overline": {
+          "size": 11,
+          "weight": 500,
+          "leading": 1.4,
+          "tracking": "+0.12em",
+          "transform": "UPPERCASE"
+        }
+      },
+      "serif": {
+        "H1": {
+          "size": 45,
+          "weight": 400,
+          "leading": 1.1,
+          "tracking": "-0.01em"
+        },
+        "H2": {
+          "size": 32,
+          "weight": 400,
+          "leading": 1.2,
+          "tracking": "0"
+        },
+        "H3": {
+          "size": 22,
+          "style": "italic",
+          "leading": 1.3,
+          "tracking": "0"
+        },
+        "Body": {
+          "size": 17,
+          "weight": 400,
+          "leading": 1.65,
+          "tracking": "0"
+        },
+        "Caption": {
+          "size": 11,
+          "style": "italic",
+          "leading": 1.5,
+          "tracking": "+0.02em"
+        }
+      }
+    }
+  },
+  "grids": {
+    "A4": {
+      "frame": {
+        "width": 595,
+        "height": 842
+      },
+      "columns": 4,
+      "rows": 5,
+      "col_gutter": 12,
+      "row_gutter": 19,
+      "field_height": 121,
+      "margins": {
+        "top": 91,
+        "bottom": 70,
+        "left": 57,
+        "right": 57
+      },
+      "formula": "Body size (12px) = col gutter. Line height (19px) = row gutter. Field = 6 lines \u00d7 19px \u2248 121px."
+    },
+    "A5": {
+      "frame": {
+        "width": 420,
+        "height": 595
+      },
+      "columns": 4,
+      "rows": 5,
+      "col_gutter": 12,
+      "row_gutter": 19,
+      "field_height": 95,
+      "margins": {
+        "top": 32,
+        "bottom": 21,
+        "left": 24,
+        "right": 24
+      }
+    },
+    "business_card": {
+      "frame": {
+        "width": 482,
+        "height": 312,
+        "scale": "2x",
+        "print_mm": "85\u00d755mm"
+      },
+      "columns": 4,
+      "rows": 3,
+      "col_gutter": 6,
+      "row_gutter": 12,
+      "field_height": 66,
+      "margins": {
+        "all": 46
+      }
+    },
+    "instagram_post": {
+      "frame": {
+        "width": 1080,
+        "height": 1080
+      },
+      "columns": 4,
+      "rows": 4,
+      "col_gutter": 16,
+      "row_gutter": 24,
+      "field_height": 216,
+      "margins": {
+        "all": 40
+      }
+    },
+    "instagram_story": {
+      "frame": {
+        "width": 1080,
+        "height": 1920
+      },
+      "columns": 4,
+      "rows": 9,
+      "col_gutter": 32,
+      "row_gutter": 38,
+      "field_height": 152,
+      "margins": {
+        "top_bottom": 124,
+        "left_right": 40
+      }
+    },
+    "email_signature": {
+      "frame": {
+        "width": 600,
+        "height": 200
+      },
+      "columns": 4,
+      "rows": 2,
+      "col_gutter": 10,
+      "row_gutter": 16,
+      "field_height": 64,
+      "margins": {
+        "left_right": 15,
+        "top_bottom": 28
+      }
+    },
+    "pitch_deck": {
+      "frame": {
+        "width": 1920,
+        "height": 1080
+      },
+      "columns": 6,
+      "rows": 4,
+      "col_gutter": 24,
+      "row_gutter": 32,
+      "field_height": 192,
+      "margins": {
+        "top_bottom": 72,
+        "left_right": 108
+      }
+    },
+    "_meta": {
+      "total_formats": 69,
+      "original_locked": 10,
+      "new_calculated": 29,
+      "inherited": 30,
+      "formula": "All values derived from M\u00fcller-Brockmann. Body size \u2192 line height \u2192 field height \u2192 row gutter \u2192 column gutter \u2192 margins.",
+      "categories": [
+        "Print Documents",
+        "Print Marketing",
+        "Digital Social",
+        "Digital Email",
+        "Brand Assets",
+        "Brand Documentation"
+      ]
+    },
+    "new_formats": {
+      "a3_poster_portrait": {
+        "name": "A3 Poster Portrait",
+        "cluster": "A",
+        "frame": {
+          "w": 842,
+          "h": 1191,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 92,
+          "bottom": 92,
+          "left": 57,
+          "right": 57
+        },
+        "columns": 4,
+        "rows": 6,
+        "col_gutter": 12,
+        "row_gutter": 19,
+        "col_width": 173,
+        "field_height": 152,
+        "type_area": {
+          "w": 728,
+          "h": 1007
+        },
+        "verify": {
+          "cols": "57+(4\u00d7173)+(3\u00d712)+57 = 842 \u2713",
+          "rows": "92+(6\u00d7152)+(5\u00d719)+92 = 1191 \u2713"
+        },
+        "verified": true,
+        "real_size": "297\u00d7420mm",
+        "type_rule": "Display+H1 dominant. Body only in narrow text panels.",
+        "layout_rules": {
+          "hero_zone": "cols 1-4, rows 1-2 (full bleed image or primary headline)",
+          "headline_zone": "cols 1-3, row 1 (Display or H1)",
+          "image_zone": "cols 1-4, rows 1-3 (60-80% of surface per M\u00fcller-Brockmann)",
+          "body_zone": "cols 1-2, rows 4-5",
+          "cta_zone": "cols 1-4, row 6 (full width)",
+          "logo_zone": "col 4, row 6 (bottom-right)",
+          "rule": "One element occupies 60-80% of surface. Everything else is subordinate."
+        },
+        "notes": "Field 152px = 8 lines \u00d7 19px. M\u00fcller-Brockmann used A3 for dominant-image layouts."
+      },
+      "certificate_a3_landscape": {
+        "name": "Certificate A3 Landscape",
+        "cluster": "A",
+        "frame": {
+          "w": 1191,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 80,
+          "bottom": 81,
+          "left": 57,
+          "right": 57
+        },
+        "columns": 4,
+        "rows": 5,
+        "col_gutter": 19,
+        "row_gutter": 19,
+        "col_width": 255,
+        "field_height": 121,
+        "type_area": {
+          "w": 1077,
+          "h": 681
+        },
+        "verify": {
+          "cols": "57+(4\u00d7255)+(3\u00d719)+57 = 1191 \u2713",
+          "rows": "80+(5\u00d7121)+(4\u00d719)+81 = 842 \u2713"
+        },
+        "verified": true,
+        "real_size": "420\u00d7297mm landscape",
+        "type_rule": "Display (recipient name), H2 (title), Body (details), Caption (issuer/date).",
+        "layout_rules": {
+          "issuer_logo": "cols 1-2, row 1 (top-left)",
+          "title_zone": "cols 1-4, row 1 (overline: CERTIFICATE OF...)",
+          "recipient_zone": "cols 1-4, rows 2-3 (Display: recipient name centred)",
+          "detail_zone": "cols 1-4, row 4 (body: achievement description)",
+          "signature_zone": "cols 1-2, row 5 (signature line left)",
+          "date_zone": "cols 3-4, row 5 (date + seal right)",
+          "rule": "Centred hierarchy. Formal, open spacing. No body below row 4."
+        },
+        "notes": "Same column count as A4 despite wider format \u2014 wider columns produce formal spacing appropriate to a certificate."
+      },
+      "compliments_slip_dl": {
+        "name": "Compliments Slip DL",
+        "cluster": "A",
+        "frame": {
+          "w": 595,
+          "h": 281,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 68,
+          "bottom": 69,
+          "left": 57,
+          "right": 57
+        },
+        "columns": 4,
+        "rows": 2,
+        "col_gutter": 19,
+        "row_gutter": 16,
+        "col_width": 106,
+        "field_height": 64,
+        "type_area": {
+          "w": 481,
+          "h": 144
+        },
+        "verify": {
+          "cols": "57+(4\u00d7106)+(3\u00d719)+57 = 595 \u2713",
+          "rows": "68+(2\u00d764)+(1\u00d716)+69 = 281 \u2713"
+        },
+        "verified": true,
+        "real_size": "210\u00d799mm",
+        "type_rule": "H3 (company name), Body (single message line), Caption (contact details).",
+        "layout_rules": {
+          "logo_zone": "cols 1-2, row 1 (top-left)",
+          "message_zone": "cols 1-3, row 2 (with compliments / message)",
+          "contact_zone": "col 4, row 1-2 (right-aligned, stacked captions)",
+          "rule": "Logo anchors top-left. Contact anchors right. Message fills centre-left."
+        },
+        "notes": "Same width as A4 \u2014 inherits A4 column spec. Row gutter uses 10pt/16px (Cluster B) as this is brief-read at close distance. Col gutter uses Cluster A (19px) for A4 width consistency."
+      },
+      "envelope_dl": {
+        "name": "Envelope DL",
+        "cluster": "C",
+        "frame": {
+          "w": 624,
+          "h": 312,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 26,
+          "bottom": 178,
+          "left": 14,
+          "right": 14
+        },
+        "columns": 3,
+        "rows": 2,
+        "col_gutter": 4,
+        "row_gutter": 12,
+        "col_width": 196,
+        "field_height": 48,
+        "type_area": {
+          "w": 596,
+          "h": 108
+        },
+        "verify": {
+          "cols": "14+(3\u00d7196)+(2\u00d74)+14 = 624 \u2713",
+          "rows": "26+(2\u00d748)+(1\u00d712)+178 = 312 \u2713"
+        },
+        "verified": true,
+        "real_size": "220\u00d7110mm",
+        "type_rule": "Caption only (7.5pt / 8pt). No headlines on envelopes.",
+        "layout_rules": {
+          "logo_zone": "col 1, row 1 (top-left, small \u2014 Caption size only)",
+          "address_zone": "cols 2-3, rows 1-2 (recipient address)",
+          "return_zone": "col 1, row 2 (return address or blank)",
+          "rule": "Large bottom margin is correct \u2014 address concentrates in upper third."
+        },
+        "notes": "Bottom 178px = blank zone below address (standard envelope layout). Large bottom margin is intentional."
+      },
+      "envelope_c5_landscape": {
+        "name": "Envelope C5 Landscape",
+        "cluster": "B",
+        "frame": {
+          "w": 649,
+          "h": 459,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 46,
+          "bottom": 141,
+          "left": 16,
+          "right": 16
+        },
+        "columns": 3,
+        "rows": 3,
+        "col_gutter": 10,
+        "row_gutter": 16,
+        "col_width": 199,
+        "field_height": 80,
+        "type_area": {
+          "w": 617,
+          "h": 272
+        },
+        "verify": {
+          "cols": "16+(3\u00d7199)+(2\u00d710)+16 = 649 \u2713",
+          "rows": "46+(3\u00d780)+(2\u00d716)+141 = 459 \u2713"
+        },
+        "verified": true,
+        "real_size": "229\u00d7162mm landscape",
+        "type_rule": "Caption only. Address in cols 2-3, rows 1-2.",
+        "layout_rules": {
+          "logo_zone": "col 1, row 1",
+          "address_zone": "cols 2-3, rows 1-2",
+          "sender_zone": "col 1, row 3 (optional return address)",
+          "rule": "Content concentrates in upper two-thirds. Row 3 = sender footer or blank."
+        },
+        "notes": "Larger bottom margin reflects C5 format \u2014 content in upper two-thirds."
+      },
+      "envelope_c4_landscape": {
+        "name": "Envelope C4 Landscape",
+        "cluster": "A",
+        "frame": {
+          "w": 907,
+          "h": 649,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 68,
+          "bottom": 68,
+          "left": 57,
+          "right": 57
+        },
+        "columns": 4,
+        "rows": 4,
+        "col_gutter": 19,
+        "row_gutter": 19,
+        "col_width": 184,
+        "field_height": 114,
+        "type_area": {
+          "w": 793,
+          "h": 513
+        },
+        "verify": {
+          "cols": "57+(4\u00d7184)+(3\u00d719)+57 = 907 \u2713",
+          "rows": "68+(4\u00d7114)+(3\u00d719)+68 = 649 \u2713"
+        },
+        "verified": true,
+        "real_size": "320\u00d7229mm landscape",
+        "type_rule": "Caption only. Address in cols 2-4, rows 2-3.",
+        "layout_rules": {
+          "logo_zone": "col 1, row 1",
+          "address_zone": "cols 2-4, rows 2-3",
+          "stamp_zone": "col 4, row 1 (top-right)",
+          "rule": "C4 holds unfolded A4. Address zone mirrors A4 letterhead address position."
+        },
+        "notes": "C4 holds unfolded A4 documents. Logo zone col 1 row 1."
+      },
+      "event_ticket": {
+        "name": "Event Ticket",
+        "cluster": "C",
+        "frame": {
+          "w": 539,
+          "h": 213,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 52,
+          "bottom": 53,
+          "left": 13,
+          "right": 13
+        },
+        "columns": 4,
+        "rows": 2,
+        "col_gutter": 7,
+        "row_gutter": 12,
+        "col_width": 123,
+        "field_height": 48,
+        "type_area": {
+          "w": 513,
+          "h": 108
+        },
+        "verify": {
+          "cols": "13+(4\u00d7123)+(3\u00d77)+13 = 539 \u2713",
+          "rows": "52+(2\u00d748)+(1\u00d712)+53 = 213 \u2713"
+        },
+        "verified": true,
+        "real_size": "190\u00d775mm",
+        "type_rule": "H3 (event name), Caption (date/time/venue). No body text.",
+        "layout_rules": {
+          "brand_zone": "col 1, row 1 (logo + overline)",
+          "event_zone": "cols 1-3, rows 1-2 (H3 event name + caption details)",
+          "stub_zone": "col 4, rows 1-2 (tear-off: barcode/number/QR code)",
+          "perforation": "Vertical dashed line between col 3 and col 4",
+          "rule": "Cols 1-3 = main body. Col 4 = tear-off stub. Perforation between."
+        },
+        "notes": "@1x. Export at actual size (190\u00d775mm at 300dpi = 2244\u00d7886px). Draw tear-off perforation line at col 3 right edge."
+      },
+      "table_tent_card": {
+        "name": "Table Tent Card",
+        "cluster": "B",
+        "frame": {
+          "w": 283,
+          "h": 595,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 25,
+          "bottom": 26,
+          "left": 11,
+          "right": 11
+        },
+        "columns": 2,
+        "rows": 5,
+        "col_gutter": 9,
+        "row_gutter": 16,
+        "col_width": 126,
+        "field_height": 96,
+        "type_area": {
+          "w": 261,
+          "h": 544
+        },
+        "verify": {
+          "cols": "11+(2\u00d7126)+(1\u00d79)+11 = 283 \u2713",
+          "rows": "25+(5\u00d796)+(4\u00d716)+26 = 595 \u2713"
+        },
+        "verified": true,
+        "real_size": "100\u00d7210mm portrait",
+        "type_rule": "H2 (heading top), Body (middle), Caption (URL/contact bottom).",
+        "layout_rules": {
+          "front_logo": "cols 1-2, row 1 (top of front face)",
+          "front_headline": "cols 1-2, rows 2-3 (H2 centred)",
+          "front_body": "cols 1-2, rows 3-4 (body text)",
+          "front_cta": "cols 1-2, row 5 (Caption URL)",
+          "back_mirror": "Bottom half mirrors vertically (folds behind)",
+          "rule": "Build as 2 frames stacked. Top frame = front. Bottom frame = back (inverted)."
+        },
+        "notes": "Real tent card has front and back. Build 2 frames. Bottom frame content inverts vertically for fold-behind display."
+      },
+      "sticky_note": {
+        "name": "Sticky Note",
+        "cluster": "B",
+        "frame": {
+          "w": 283,
+          "h": 283,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 29,
+          "bottom": 30,
+          "left": 15,
+          "right": 15
+        },
+        "columns": 2,
+        "rows": 3,
+        "col_gutter": 11,
+        "row_gutter": 16,
+        "col_width": 121,
+        "field_height": 64,
+        "type_area": {
+          "w": 253,
+          "h": 224
+        },
+        "verify": {
+          "cols": "15+(2\u00d7121)+(1\u00d711)+15 = 283 \u2713",
+          "rows": "29+(3\u00d764)+(2\u00d716)+30 = 283 \u2713"
+        },
+        "verified": true,
+        "real_size": "100\u00d7100mm square",
+        "type_rule": "Body (writing lines), Caption (brand mark bottom-right only).",
+        "layout_rules": {
+          "writing_zone": "cols 1-2, rows 1-2 (ruled lines at 16px intervals)",
+          "brand_zone": "col 2, row 3 (small logo stamp \u2014 Caption size only)",
+          "rule": "Brand appears once as a small stamp. Nothing else. The note is for writing."
+        },
+        "notes": "Grid is deliberately minimal. Brand appears only as small logo in col 2 row 3."
+      },
+      "name_badge_lanyard": {
+        "name": "Name Badge / Lanyard Card",
+        "cluster": "C",
+        "frame": {
+          "w": 482,
+          "h": 680,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 94,
+          "bottom": 94,
+          "left": 24,
+          "right": 24
+        },
+        "columns": 4,
+        "rows": 7,
+        "col_gutter": 6,
+        "row_gutter": 12,
+        "col_width": 104,
+        "field_height": 60,
+        "type_area": {
+          "w": 434,
+          "h": 492
+        },
+        "verify": {
+          "cols": "24+(4\u00d7104)+(3\u00d76)+24 = 482 \u2713",
+          "rows": "94+(7\u00d760)+(6\u00d712)+94 = 680 \u2713"
+        },
+        "verified": true,
+        "real_size": "85\u00d7120mm",
+        "type_rule": "H2 (name), H3 (role/company), Caption (details below).",
+        "layout_rules": {
+          "hole_zone": "top 94px margin (hole punch \u2014 outside grid)",
+          "logo_zone": "cols 1-4, row 1 (brand mark top)",
+          "photo_zone": "cols 1-2, rows 2-4 (optional headshot)",
+          "name_zone": "cols 1-4, rows 2-3 (H2 \u2014 name, large)",
+          "role_zone": "cols 1-4, rows 4-5 (H3 \u2014 role/company)",
+          "detail_zone": "cols 1-4, rows 6-7 (Caption \u2014 details/QR)",
+          "rule": "Large top/bottom margins are intentional \u2014 they create the professional white space. Never crowd the margins."
+        },
+        "notes": "@2x \u2014 export @0.5x for print. Large margins (94px) create the white space essential to badge quality."
+      },
+      "rollup_banner_scale": {
+        "name": "Roll-up Banner @1:10 scale",
+        "cluster": "C",
+        "frame": {
+          "w": 241,
+          "h": 567,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 79,
+          "bottom": 80,
+          "left": 10,
+          "right": 10
+        },
+        "columns": 3,
+        "rows": 7,
+        "col_gutter": 7,
+        "row_gutter": 12,
+        "col_width": 69,
+        "field_height": 48,
+        "type_area": {
+          "w": 221,
+          "h": 408
+        },
+        "verify": {
+          "cols": "10+(3\u00d769)+(2\u00d77)+10 = 241 \u2713",
+          "rows": "79+(7\u00d748)+(6\u00d712)+80 = 567 \u2713"
+        },
+        "verified": true,
+        "real_size": "850\u00d72000mm (1:10 scale)",
+        "scale_note": "1:10 \u2014 every mm in Figma = 10mm real. Export at 10\u00d7 scale for print.",
+        "type_rule": "Display (headline), H2 (subhead), Caption (URL/contact). Type scaled 1:10.",
+        "layout_rules": {
+          "logo_zone": "cols 1-3, row 1 (top \u2014 largest element)",
+          "headline_zone": "cols 1-3, rows 2-3 (Display at real-world 85pt = 8.5pt in Figma)",
+          "image_zone": "cols 1-3, rows 3-5 (full-width image)",
+          "subhead_zone": "cols 1-3, row 5 (H2)",
+          "cta_zone": "cols 1-3, rows 6-7 (URL + contact)",
+          "rule": "Logo top. Headline immediately below. Image fills centre. CTA bottom. Classic roll-up hierarchy."
+        },
+        "notes": "CRITICAL: Type sizes are 10\u00d7 SMALLER than intended display. Display at 85px real = 8.5px in Figma frame. Use minimum 6pt for smallest text."
+      },
+      "packaging_label_70x35": {
+        "name": "Packaging Label 70\u00d735mm",
+        "cluster": "C",
+        "frame": {
+          "w": 397,
+          "h": 198,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 45,
+          "bottom": 45,
+          "left": 8,
+          "right": 8
+        },
+        "columns": 3,
+        "rows": 2,
+        "col_gutter": 6,
+        "row_gutter": 12,
+        "col_width": 123,
+        "field_height": 48,
+        "type_area": {
+          "w": 381,
+          "h": 108
+        },
+        "verify": {
+          "cols": "8+(3\u00d7123)+(2\u00d76)+8 = 397 \u2713",
+          "rows": "45+(2\u00d748)+(1\u00d712)+45 = 198 \u2713"
+        },
+        "verified": true,
+        "real_size": "70\u00d735mm",
+        "type_rule": "H3 (product name), Caption (volume/ingredients/barcode).",
+        "layout_rules": {
+          "brand_zone": "col 1, row 1 (logo small)",
+          "product_zone": "cols 1-2, rows 1-2 (H3 product name + Caption description)",
+          "barcode_zone": "col 3, rows 1-2 (barcode \u2014 reserved, do not place text)",
+          "rule": "Cols 1-2 = product identity. Col 3 = barcode zone only. Never mix."
+        },
+        "notes": "@2x \u2014 export @0.5x for print. Col 3 is reserved for barcode/QR code exclusively."
+      },
+      "hang_tag_price_tag": {
+        "name": "Hang Tag / Price Tag",
+        "cluster": "B",
+        "frame": {
+          "w": 284,
+          "h": 568,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 46,
+          "bottom": 46,
+          "left": 10,
+          "right": 10
+        },
+        "columns": 2,
+        "rows": 7,
+        "col_gutter": 10,
+        "row_gutter": 14,
+        "col_width": 127,
+        "field_height": 56,
+        "type_area": {
+          "w": 264,
+          "h": 476
+        },
+        "verify": {
+          "cols": "10+(2\u00d7127)+(1\u00d710)+10 = 284 \u2713",
+          "rows": "46+(7\u00d756)+(6\u00d714)+46 = 568 \u2713"
+        },
+        "verified": true,
+        "real_size": "50\u00d7100mm",
+        "type_rule": "Overline (category), H2 (product name), H3 (variant), Body (price), Caption (SKU/barcode).",
+        "layout_rules": {
+          "hole_zone": "top 46px margin (hole punch \u2014 4mm diameter guide at top-centre)",
+          "logo_zone": "cols 1-2, row 1 (top \u2014 small brand mark)",
+          "category_zone": "cols 1-2, row 2 (Overline: category name)",
+          "product_zone": "cols 1-2, rows 3-4 (H2: product name)",
+          "variant_zone": "cols 1-2, row 5 (H3: size/colour/variant)",
+          "price_zone": "cols 1-2, row 6 (Body: price \u2014 can use weight 700 here)",
+          "barcode_zone": "cols 1-2, row 7 (Caption: SKU / barcode)",
+          "rule": "Strict top-to-bottom hierarchy. Price is the one permitted use of weight 700."
+        },
+        "notes": "@2x \u2014 export @0.5x. Hole punch guide = 4mm diameter circle at top-centre of 46px margin."
+      },
+      "facebook_post": {
+        "name": "Facebook Post / LinkedIn Post / Open Graph",
+        "cluster": "D",
+        "frame": {
+          "w": 1200,
+          "h": 628,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 74,
+          "bottom": 74,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 3,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 268,
+        "field_height": 144,
+        "type_area": {
+          "w": 1120,
+          "h": 480
+        },
+        "verify": {
+          "cols": "40+(4\u00d7268)+(3\u00d716)+40 = 1200 \u2713",
+          "rows": "74+(3\u00d7144)+(2\u00d724)+74 = 628 \u2713"
+        },
+        "verified": true,
+        "type_rule": "H2 + Caption only. Never Body (16px) \u2014 too small at social scale.",
+        "layout_rules": {
+          "full_image": "cols 1-4, rows 1-2 (image) + cols 1-4, row 3 (text)",
+          "split_layout": "cols 1-2, rows 1-3 (image) + cols 3-4, rows 1-3 (text)",
+          "text_only": "cols 1-3, rows 1-3 (H2 + Caption) + col 4 empty",
+          "logo_zone": "Always col 4, row 3 (bottom-right) OR col 1, row 1 (top-left)",
+          "headline_zone": "cols 1-3, row 1 or rows 1-2",
+          "rule": "H2 must be readable as thumbnail (120\u00d763px). Single clear message."
+        },
+        "notes": "LinkedIn Post = identical 1200\u00d7628. Open Graph = 1200\u00d7630 (adjust margin_b to 76). Build one, inherit two."
+      },
+      "facebook_cover": {
+        "name": "Facebook Cover",
+        "cluster": "D",
+        "frame": {
+          "w": 820,
+          "h": 312,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 48,
+          "bottom": 48,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 2,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 173,
+        "field_height": 96,
+        "type_area": {
+          "w": 740,
+          "h": 216
+        },
+        "verify": {
+          "cols": "40+(4\u00d7173)+(3\u00d716)+40 = 820 \u2713",
+          "rows": "48+(2\u00d796)+(1\u00d724)+48 = 312 \u2713"
+        },
+        "verified": true,
+        "type_rule": "Display + Overline only. Pure brand presence. No body text.",
+        "layout_rules": {
+          "brand_zone": "cols 3-4, rows 1-2 (primary brand \u2014 away from profile photo)",
+          "image_zone": "cols 1-4, rows 1-2 (full bleed brand image or colour)",
+          "safe_zone": "cols 3-4 only \u2014 profile photo overlaps cols 1-2, row 2",
+          "logo_zone": "col 4, row 1 (top-right \u2014 always safe)",
+          "rule": "CRITICAL: Facebook overlays profile photo bottom-left. Cols 1-2 row 2 must be clear of critical content."
+        },
+        "notes": "Profile photo safe zone: avoid cols 1-2 rows 1-2 for critical content.",
+        "safe_zone": {
+          "x1": 418,
+          "x2": 780,
+          "y1": 0,
+          "y2": 312,
+          "note": "Cols 3-4 only are guaranteed safe. Keep logo and text here."
+        }
+      },
+      "facebook_event_banner": {
+        "name": "Facebook Event Banner / Zoom Background",
+        "cluster": "D",
+        "frame": {
+          "w": 1920,
+          "h": 1080,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 132,
+          "bottom": 132,
+          "left": 72,
+          "right": 72
+        },
+        "columns": 6,
+        "rows": 5,
+        "col_gutter": 24,
+        "row_gutter": 24,
+        "col_width": 276,
+        "field_height": 144,
+        "type_area": {
+          "w": 1776,
+          "h": 816
+        },
+        "verify": {
+          "cols": "72+(6\u00d7276)+(5\u00d724)+72 = 1920 \u2713",
+          "rows": "132+(5\u00d7144)+(4\u00d724)+132 = 1080 \u2713"
+        },
+        "verified": true,
+        "type_rule": "H1 + H2 + Caption. No body text.",
+        "layout_rules": {
+          "safe_zone": "cols 2-5 (avoid cols 1 and 6 \u2014 may be cropped on some displays)",
+          "headline_zone": "cols 2-4, rows 2-3",
+          "subhead_zone": "cols 2-4, rows 3-4",
+          "logo_zone": "col 2, row 1 OR col 5, row 1",
+          "image_zone": "cols 1-3 rows 1-5 OR cols 4-6 rows 1-5 (split layout)",
+          "rule": "For Zoom/Teams: safe zone = cols 2-5. Face typically occupies left third on video calls."
+        },
+        "notes": "For Zoom/Teams: avoid cols 1 and 6 for critical content (cropped or obscured by face on video)."
+      },
+      "linkedin_personal_banner": {
+        "name": "LinkedIn Personal Banner",
+        "cluster": "D",
+        "frame": {
+          "w": 1584,
+          "h": 396,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 90,
+          "bottom": 90,
+          "left": 64,
+          "right": 64
+        },
+        "columns": 6,
+        "rows": 2,
+        "col_gutter": 20,
+        "row_gutter": 24,
+        "col_width": 226,
+        "field_height": 96,
+        "type_area": {
+          "w": 1456,
+          "h": 216
+        },
+        "verify": {
+          "cols": "64+(6\u00d7226)+(5\u00d720)+64 = 1584 \u2713",
+          "rows": "90+(2\u00d796)+(1\u00d724)+90 = 396 \u2713"
+        },
+        "verified": true,
+        "type_rule": "Overline + H2. One line each. Nothing more.",
+        "layout_rules": {
+          "safe_zone": "cols 3-6 \u2014 profile photo obscures cols 1-2 bottom-left",
+          "headline_zone": "cols 3-5, row 1 (H2)",
+          "tag_zone": "cols 3-5, row 2 (Overline: role/speciality)",
+          "logo_zone": "col 6, rows 1-2 (top-right \u2014 always safe)",
+          "rule": "Start meaningful content from col 3. Cols 1-2 are partially obscured by profile photo."
+        },
+        "safe_zone": {
+          "note": "Profile photo overlaps bottom-left. Cols 1-2 partially obscured. Start content from col 3."
+        }
+      },
+      "linkedin_company_banner": {
+        "name": "LinkedIn Company Banner",
+        "cluster": "D",
+        "frame": {
+          "w": 1128,
+          "h": 191,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 47,
+          "bottom": 48,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 1,
+        "col_gutter": 16,
+        "row_gutter": 0,
+        "col_width": 250,
+        "field_height": 96,
+        "type_area": {
+          "w": 1048,
+          "h": 96
+        },
+        "verify": {
+          "cols": "40+(4\u00d7250)+(3\u00d716)+40 = 1128 \u2713",
+          "rows": "47+(1\u00d796)+(0\u00d70)+48 = 191 \u2713"
+        },
+        "verified": true,
+        "type_rule": "Overline + Caption. Extreme horizontal constraint \u2014 minimal type only.",
+        "layout_rules": {
+          "logo_zone": "col 1, row 1 (left)",
+          "tagline_zone": "cols 2-3, row 1 (Caption: tagline centred)",
+          "url_zone": "col 4, row 1 (right-aligned Caption)",
+          "rule": "One row only. Logo left. Tagline centre. URL right. Nothing else."
+        },
+        "notes": "Barely taller than a single field. Extreme constraint forces clarity."
+      },
+      "twitter_x_post": {
+        "name": "Twitter/X Post",
+        "cluster": "D",
+        "frame": {
+          "w": 1200,
+          "h": 675,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 61,
+          "bottom": 62,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 4,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 268,
+        "field_height": 120,
+        "type_area": {
+          "w": 1120,
+          "h": 552
+        },
+        "verify": {
+          "cols": "40+(4\u00d7268)+(3\u00d716)+40 = 1200 \u2713",
+          "rows": "61+(4\u00d7120)+(3\u00d724)+62 = 675 \u2713"
+        },
+        "verified": true,
+        "type_rule": "H2 + Caption. Twitter is fast media \u2014 type must read in under 2 seconds.",
+        "layout_rules": {
+          "headline_zone": "cols 1-3, rows 1-2 (H2 \u2014 short, max 8 words)",
+          "support_zone": "cols 1-3, rows 3-4 (Caption supporting text)",
+          "logo_zone": "col 4, row 4 (bottom-right)",
+          "image_layout": "cols 1-4, rows 1-3 (image) + cols 1-4, row 4 (text strip)",
+          "rule": "Single clear message. 8 words maximum for headline. Brand bottom-right."
+        }
+      },
+      "twitter_x_header": {
+        "name": "Twitter/X Header",
+        "cluster": "D",
+        "frame": {
+          "w": 1500,
+          "h": 500,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 82,
+          "bottom": 82,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 3,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 343,
+        "field_height": 96,
+        "type_area": {
+          "w": 1420,
+          "h": 336
+        },
+        "verify": {
+          "cols": "40+(4\u00d7343)+(3\u00d716)+40 = 1500 \u2713",
+          "rows": "82+(3\u00d796)+(2\u00d724)+82 = 500 \u2713"
+        },
+        "verified": true,
+        "type_rule": "Display + Overline. Brand only, no body copy.",
+        "layout_rules": {
+          "brand_zone": "cols 2-4, rows 1-3 (away from profile photo zone)",
+          "display_zone": "cols 2-4, row 2 (Display headline)",
+          "overline_zone": "cols 2-4, row 1 (Overline above Display)",
+          "logo_zone": "col 4, row 3 (bottom-right)",
+          "rule": "Keep col 1 clear below row 1 \u2014 Twitter overlaps profile photo bottom-left."
+        },
+        "notes": "Profile photo overlaps col 1 below row 1. Keep col 2+ for critical content."
+      },
+      "pinterest_pin": {
+        "name": "Pinterest Pin",
+        "cluster": "D",
+        "frame": {
+          "w": 1000,
+          "h": 1500,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 42,
+          "bottom": 42,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 10,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 218,
+        "field_height": 120,
+        "type_area": {
+          "w": 920,
+          "h": 1416
+        },
+        "verify": {
+          "cols": "40+(4\u00d7218)+(3\u00d716)+40 = 1000 \u2713",
+          "rows": "42+(10\u00d7120)+(9\u00d724)+42 = 1500 \u2713"
+        },
+        "verified": true,
+        "type_rule": "H1 + H2 + Body. Pinterest is long-scroll \u2014 full type scale applies.",
+        "layout_rules": {
+          "image_zone": "cols 1-4, rows 1-6 (large image \u2014 minimum 60% of frame)",
+          "headline_zone": "cols 1-4, rows 7-8 (H1 over white background)",
+          "body_zone": "cols 1-3, rows 8-9 (Body text)",
+          "cta_zone": "cols 1-4, row 10 (Caption URL + logo)",
+          "rule": "Image dominates top. Text zone bottom. CTA always last row."
+        },
+        "notes": "Most vertical format in the system. Image zone rows 1-6. Text zone rows 7-10."
+      },
+      "youtube_thumbnail": {
+        "name": "YouTube Thumbnail",
+        "cluster": "F",
+        "frame": {
+          "w": 1280,
+          "h": 720,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 56,
+          "bottom": 56,
+          "left": 60,
+          "right": 60
+        },
+        "columns": 4,
+        "rows": 4,
+        "col_gutter": 24,
+        "row_gutter": 32,
+        "col_width": 272,
+        "field_height": 128,
+        "type_area": {
+          "w": 1160,
+          "h": 608
+        },
+        "verify": {
+          "cols": "60+(4\u00d7272)+(3\u00d724)+60 = 1280 \u2713",
+          "rows": "56+(4\u00d7128)+(3\u00d732)+56 = 720 \u2713"
+        },
+        "verified": true,
+        "type_rule": "H1 only (max 3 words). Display at large scale if text-led.",
+        "layout_rules": {
+          "face_zone": "cols 1-2, rows 1-4 (face/subject \u2014 left side)",
+          "text_zone": "cols 3-4, rows 1-3 (H1 \u2014 max 3 words, large)",
+          "brand_zone": "cols 3-4, row 4 (logo + channel name)",
+          "number_zone": "cols 3-4, rows 1-2 (large numeral if list-style thumbnail)",
+          "rule": "Must read at 120\u00d768px (thumbnail size). Max 3 words. One weight-700 accent permitted."
+        },
+        "notes": "Cluster F (presentation scale). Use weight 700 for single key word \u2014 this is the one permitted use per composition. Text right, face left."
+      },
+      "youtube_channel_art": {
+        "name": "YouTube Channel Art",
+        "cluster": "F",
+        "frame": {
+          "w": 2560,
+          "h": 1440,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 256,
+          "bottom": 256,
+          "left": 80,
+          "right": 80
+        },
+        "columns": 6,
+        "rows": 5,
+        "col_gutter": 24,
+        "row_gutter": 32,
+        "col_width": 380,
+        "field_height": 160,
+        "type_area": {
+          "w": 2400,
+          "h": 928
+        },
+        "verify": {
+          "cols": "80+(6\u00d7380)+(5\u00d724)+80 = 2560 \u2713",
+          "rows": "256+(5\u00d7160)+(4\u00d732)+256 = 1440 \u2713"
+        },
+        "verified": true,
+        "type_rule": "Display + Overline in safe zone only.",
+        "layout_rules": {
+          "safe_zone": "cols 2-5, rows 2-3 (centre 1546\u00d7423px \u2014 visible on all devices)",
+          "tv_zone": "cols 1-6, rows 1-5 (full frame \u2014 visible on TV only)",
+          "mobile_zone": "cols 2-5, rows 2-3 (all devices)",
+          "brand_zone": "col 3, row 2 (Display \u2014 centred in safe zone)",
+          "tag_zone": "col 3, row 3 (Overline: channel description)",
+          "rule": "CRITICAL: Safe zone = centre 1546\u00d7423px. ALL text and logo must fit inside. Outside = TV only."
+        },
+        "notes": "YouTube displays at different sizes on different devices. SAFE ZONE IS NON-NEGOTIABLE.",
+        "safe_zone": {
+          "x1": 507,
+          "x2": 2053,
+          "y1": 509,
+          "y2": 932,
+          "width": 1546,
+          "height": 423,
+          "note": "Centre 1546\u00d7423px \u2014 visible on all devices (TV, desktop, mobile, tablet)"
+        }
+      },
+      "whatsapp_business_profile": {
+        "name": "WhatsApp Business Profile",
+        "cluster": "D",
+        "frame": {
+          "w": 640,
+          "h": 640,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 92,
+          "bottom": 92,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 4,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 128,
+        "field_height": 96,
+        "type_area": {
+          "w": 560,
+          "h": 456
+        },
+        "verify": {
+          "cols": "40+(4\u00d7128)+(3\u00d716)+40 = 640 \u2713",
+          "rows": "92+(4\u00d796)+(3\u00d724)+92 = 640 \u2713"
+        },
+        "verified": true,
+        "type_rule": "Logo/mark only for profile photo. No text \u2014 displays at 54px on screen.",
+        "layout_rules": {
+          "circle_safe": "inscribed circle diameter 640px \u2014 corners cropped",
+          "logo_zone": "cols 2-3, rows 2-3 (centre \u2014 within circle crop)",
+          "rule": "Profile photo displays as circle. All content within cols 2-3 rows 2-3 only."
+        },
+        "safe_zone": {
+          "shape": "circle",
+          "diameter": 640,
+          "note": "Corners of frame are cropped. Keep all content within cols 2-3, rows 2-3."
+        }
+      },
+      "google_business_banner": {
+        "name": "Google Business Banner",
+        "cluster": "D",
+        "frame": {
+          "w": 1332,
+          "h": 750,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 99,
+          "bottom": 99,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 4,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 301,
+        "field_height": 120,
+        "type_area": {
+          "w": 1252,
+          "h": 552
+        },
+        "verify": {
+          "cols": "40+(4\u00d7301)+(3\u00d716)+40 = 1332 \u2713",
+          "rows": "99+(4\u00d7120)+(3\u00d724)+99 = 750 \u2713"
+        },
+        "verified": true,
+        "type_rule": "H1 + Overline. Business name + category.",
+        "layout_rules": {
+          "safe_zone": "cols 2-3 (centre 60% \u2014 mobile may crop cols 1 and 4)",
+          "headline_zone": "cols 2-3, rows 2-3 (H1: business name)",
+          "category_zone": "cols 2-3, rows 1-2 (Overline: category)",
+          "logo_zone": "col 2, row 4 (bottom-left of safe zone)",
+          "rule": "Safe zone = centre 60%. Logo and primary text: cols 2-3. Cols 1 and 4 may be cropped on mobile."
+        }
+      },
+      "newsletter_template": {
+        "name": "Email Newsletter Template",
+        "cluster": "G",
+        "frame": {
+          "w": 600,
+          "h": 984,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 24,
+          "bottom": 24,
+          "left": 20,
+          "right": 20
+        },
+        "columns": 4,
+        "rows": 8,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 128,
+        "field_height": 96,
+        "type_area": {
+          "w": 560,
+          "h": 936
+        },
+        "verify": {
+          "cols": "20+(4\u00d7128)+(3\u00d716)+20 = 600 \u2713",
+          "rows": "24+(8\u00d796)+(7\u00d724)+24 = 984 \u2713"
+        },
+        "verified": true,
+        "type_rule": "H2 + Body + Caption. Standard email type scale.",
+        "layout_rules": {
+          "header_zone": "cols 1-4, rows 1-2 (hero image or primary colour band)",
+          "headline_zone": "cols 1-4, row 3 (H2 \u2014 article headline)",
+          "body_zone": "cols 1-3, rows 4-5 (Body text \u2014 max 2 cols for readability)",
+          "image_block": "cols 1-4, rows 4-5 (image block \u2014 full width)",
+          "divider": "24px row gutter = visual section break",
+          "footer_zone": "cols 1-4, rows 7-8 (Caption: unsubscribe, legal, address)",
+          "cta_button": "cols 2-3, row 6 (centred call-to-action)",
+          "rule": "Build as stacking section frames. Max 6 content sections + 1 hero + 1 footer."
+        },
+        "notes": "Variable height. Base frame = 984px (8 content modules). Build as stacking section frames: hero (216px) + content blocks (96px) + dividers (24px) + footer (96px). Total height varies per issue."
+      },
+      "app_icon": {
+        "name": "App Icon",
+        "cluster": "D",
+        "frame": {
+          "w": 1024,
+          "h": 1024,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 102,
+          "bottom": 102,
+          "left": 102,
+          "right": 102
+        },
+        "columns": 1,
+        "rows": 1,
+        "col_gutter": 0,
+        "row_gutter": 0,
+        "col_width": 820,
+        "field_height": 820,
+        "type_area": {
+          "w": 820,
+          "h": 820
+        },
+        "verify": {
+          "cols": "102+(1\u00d7820)+(0\u00d70)+102 = 1024 \u2713",
+          "rows": "102+(1\u00d7820)+(0\u00d70)+102 = 1024 \u2713"
+        },
+        "verified": true,
+        "type_rule": "No text. Symbol/mark only.",
+        "layout_rules": {
+          "ios_safe": "80% = 819\u00d7819px centred (corner radius 225px guides)",
+          "android_safe": "66% = 676\u00d7676px centred (circular crop)",
+          "mark_zone": "FI monogram at Inter 300 \u2014 sized to fit iOS safe zone",
+          "rule": "No text. No background that conflicts with system chrome. Mark must read at 29\u00d729px (smallest iOS display size)."
+        },
+        "notes": "Export: 1024\u00d71024px PNG (iOS). Adaptive icon with foreground layer for Android. Mark must be legible at 29\u00d729px minimum.",
+        "safe_zone": {
+          "ios": {
+            "pct": 80,
+            "size": 819,
+            "corner_radius": 225
+          },
+          "android": {
+            "pct": 66,
+            "size": 676,
+            "shape": "circle"
+          }
+        }
+      },
+      "open_graph": {
+        "name": "Open Graph / Link Preview",
+        "cluster": "D",
+        "frame": {
+          "w": 1200,
+          "h": 630,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 75,
+          "bottom": 75,
+          "left": 40,
+          "right": 40
+        },
+        "columns": 4,
+        "rows": 3,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 268,
+        "field_height": 144,
+        "type_area": {
+          "w": 1120,
+          "h": 480
+        },
+        "verify": {
+          "cols": "40+(4\u00d7268)+(3\u00d716)+40 = 1200 \u2713",
+          "rows": "75+(3\u00d7144)+(2\u00d724)+75 = 630 \u2713"
+        },
+        "verified": true,
+        "type_rule": "H2 + Caption (URL). Reads as thumbnail in link previews.",
+        "layout_rules": {
+          "background": "Primary colour full bleed (Midnight #1A2744)",
+          "headline_zone": "cols 1-3, rows 1-2 (H2 \u2014 page title in Warm White)",
+          "url_zone": "cols 1-3, row 3 (Caption: domain \u2014 Stone)",
+          "logo_zone": "col 4, rows 1-3 (right edge \u2014 logo in Warm White)",
+          "rule": "Build for every key page. Primary background. Warm White text. Single clear page title."
+        },
+        "notes": "Build variants for: Home, About, Services, Blog, Contact. Each has different H2 headline."
+      },
+      "website_hero": {
+        "name": "Website Hero",
+        "cluster": "D",
+        "frame": {
+          "w": 1440,
+          "h": 800,
+          "unit": "px",
+          "dpi": 72
+        },
+        "margins": {
+          "top": 52,
+          "bottom": 52,
+          "left": 80,
+          "right": 80
+        },
+        "columns": 4,
+        "rows": 5,
+        "col_gutter": 16,
+        "row_gutter": 24,
+        "col_width": 308,
+        "field_height": 120,
+        "type_area": {
+          "w": 1280,
+          "h": 696
+        },
+        "verify": {
+          "cols": "80+(4\u00d7308)+(3\u00d716)+80 = 1440 \u2713",
+          "rows": "52+(5\u00d7120)+(4\u00d724)+52 = 800 \u2713"
+        },
+        "verified": true,
+        "type_rule": "Overline + Display + H2 + Caption (CTA).",
+        "layout_rules": {
+          "nav_zone": "top 52px margin (navigation bar \u2014 outside grid)",
+          "overline_zone": "cols 1-3, row 1 (Overline: brand descriptor)",
+          "display_zone": "cols 1-3, rows 2-3 (Display headline \u2014 max 4 words)",
+          "subhead_zone": "cols 1-3, row 4 (H2: value proposition)",
+          "cta_zone": "cols 1-2, row 5 (Caption: CTA button text)",
+          "image_zone": "cols 3-4, rows 1-5 (right column \u2014 brand image or demo)",
+          "rule": "Wider margins (80px) = web breathing room. Content max-width 1280px. Navigation above grid."
+        },
+        "notes": "Navigation sits above the grid in the 52px top margin zone. Content max-width = 1280px (cols 1-4 between margins)."
+      }
+    },
+    "inherited_formats": {
+      "a4_second_page": {
+        "name": "A4 Second Page",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "notes": "No logo zone. Pure type area. Continuation of letterhead.",
+        "layout_rules": {
+          "content_zone": "cols 1-4, rows 1-5",
+          "rule": "No header or footer repeat. Content only."
+        }
+      },
+      "invoice_template": {
+        "name": "Invoice Template",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "notes": "Col 4 = price column (right-aligned figures). Rows 1 = header, rows 2-4 = line items, row 5 = totals.",
+        "layout_rules": {
+          "header_zone": "cols 1-4, row 1 (invoice details: number, date, due)",
+          "client_zone": "cols 1-2, row 2 (bill to address)",
+          "line_items": "cols 1-4, rows 2-4 (description col 1-3, price col 4)",
+          "totals_zone": "cols 3-4, row 4-5 (subtotal, VAT, total \u2014 right-aligned)",
+          "payment_zone": "cols 1-3, row 5 (payment terms, bank details)",
+          "rule": "Col 4 is exclusively the price/number column. Align all figures right."
+        }
+      },
+      "quote_proposal": {
+        "name": "Quote / Proposal Template",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "Same grid as invoice. Cols 1-3 = description/scope, col 4 = price. Row 1 = header, rows 2-4 = scope items, row 5 = total + validity."
+        }
+      },
+      "contract_cover": {
+        "name": "Contract Cover Page",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "Row 1 = logo + date, rows 2-3 = contract title (H1), row 4 = party names, row 5 = signature blocks."
+        }
+      },
+      "delivery_note": {
+        "name": "Delivery Note",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "Row 1 = header. Rows 2-4 = item list (col 4 = quantity). Row 5 = confirmation/signature."
+        }
+      },
+      "purchase_order": {
+        "name": "Purchase Order",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "Same as invoice. PO number prominent in header. Cols 1-3 = items, col 4 = unit price."
+        }
+      },
+      "folder_cover": {
+        "name": "Folder / Document Wallet Cover",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "brand_zone": "cols 1-4, rows 1-2 (large \u2014 primary brand presence)",
+          "title_zone": "cols 1-3, rows 3-4 (document/client name)",
+          "detail_zone": "cols 1-4, row 5 (date, version, reference)",
+          "rule": "More spacious than letterhead. Treat as a mini poster."
+        }
+      },
+      "notepad": {
+        "name": "Notepad / Writing Pad",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "header_zone": "cols 1-4, row 1 (logo + brand)",
+          "rule_lines": "19px intervals from row 2 to row 5",
+          "rule": "Header row 1 only. Rest = ruled writing lines at 19px (Cluster A line height)."
+        },
+        "special": "Add ruled lines at 19px intervals (1 line height) within the body zone."
+      },
+      "a4_flyer_single": {
+        "name": "A4 Flyer Single Sided",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "hero_zone": "cols 1-4, rows 1-2 (primary message)",
+          "body_zone": "cols 1-3, rows 3-4",
+          "cta_zone": "cols 1-4, row 5",
+          "rule": "Same grid. Different content priority \u2014 hero over utility."
+        }
+      },
+      "a4_flyer_double": {
+        "name": "A4 Flyer Double Sided",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "notes": "Two separate frames at 595\u00d7842px. Front and back. Same grid applied to both.",
+        "layout_rules": {
+          "rule": "Front = brand-forward. Back = detail/information. Same grid, different emphasis."
+        }
+      },
+      "a5_brochure_folded": {
+        "name": "A5 Brochure Folded",
+        "inherits_from": "A5 Flyer",
+        "frame": {
+          "w": 420,
+          "h": 595,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A5 Flyer'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "Two frames (front/back). Same grid. Front = headline + image. Back = details + contact."
+        }
+      },
+      "drinks_menu": {
+        "name": "Drinks Menu",
+        "inherits_from": "A5 Flyer",
+        "frame": {
+          "w": 420,
+          "h": 595,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A5 Flyer'. No recalculation needed.",
+        "notes": "Col 4 = price column (right-aligned). Two A5 frames = front (drinks list) + back (food/cocktails).",
+        "layout_rules": {
+          "rule": "Col 4 = price column. Cols 1-3 = item name + description. Row 1 = category header. Rows 2-4 = items. Row 5 = footer."
+        }
+      },
+      "loyalty_card": {
+        "name": "Loyalty Card",
+        "inherits_from": "Business Card @2x",
+        "frame": {
+          "w": 482,
+          "h": 312,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Business Card @2x'. No recalculation needed.",
+        "layout_rules": {
+          "brand_zone": "cols 1-2, row 1 (logo small)",
+          "stamp_zone": "cols 1-4, rows 2-3 (stamp boxes \u2014 equal size squares)",
+          "rule": "Stamp boxes = primary element. Logo small top-left. URL bottom-right Caption."
+        }
+      },
+      "staff_id_card": {
+        "name": "Staff ID Card",
+        "inherits_from": "Business Card @2x",
+        "frame": {
+          "w": 482,
+          "h": 312,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Business Card @2x'. No recalculation needed.",
+        "layout_rules": {
+          "photo_zone": "col 1, rows 1-3 (headshot \u2014 square crop)",
+          "name_zone": "cols 2-4, row 1 (H3: name)",
+          "role_zone": "cols 2-4, row 2 (Caption: role + department)",
+          "id_zone": "cols 2-4, row 3 (Caption: ID number + barcode)",
+          "rule": "Photo left. Identity right. Always photo on ID cards."
+        }
+      },
+      "qr_code_card": {
+        "name": "QR Code Card",
+        "inherits_from": "Business Card @2x",
+        "frame": {
+          "w": 482,
+          "h": 312,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Business Card @2x'. No recalculation needed.",
+        "layout_rules": {
+          "brand_zone": "cols 1-2, rows 1-3 (logo + name + caption)",
+          "qr_zone": "cols 3-4, rows 1-3 (QR code \u2014 square, fills cols 3-4)",
+          "rule": "QR code = cols 3-4 full height. Brand info = cols 1-2."
+        }
+      },
+      "digital_business_card": {
+        "name": "Digital Business Card",
+        "inherits_from": "Business Card @2x",
+        "frame": {
+          "w": 482,
+          "h": 312,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Business Card @2x'. No recalculation needed.",
+        "notes": "Digital version \u2014 may include NFC/tap-to-share info. Col 3-4 = QR code zone.",
+        "layout_rules": {
+          "rule": "Same as physical card. Add QR code in cols 3-4 rows 2-3 pointing to digital profile."
+        }
+      },
+      "gift_voucher_dl": {
+        "name": "Gift Voucher DL",
+        "inherits_from": "Compliments Slip DL",
+        "frame": {
+          "w": 595,
+          "h": 281,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Compliments Slip DL'. No recalculation needed.",
+        "layout_rules": {
+          "value_zone": "cols 1-2, row 1 (H1: voucher value \u2014 large)",
+          "brand_zone": "cols 3-4, row 1 (logo right)",
+          "code_zone": "cols 1-4, row 2 (Caption: voucher code + expiry \u2014 centred)",
+          "rule": "Value dominates. Code centred below. Treat as a mini ticket."
+        }
+      },
+      "email_header_banner": {
+        "name": "Email Header / Banner",
+        "inherits_from": "Email Signature",
+        "frame": {
+          "w": 600,
+          "h": 200,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Email Signature'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "Full-width brand header for email templates. Logo left. Tagline centred. URL right."
+        }
+      },
+      "email_footer": {
+        "name": "Email Footer",
+        "inherits_from": "Email Signature",
+        "frame": {
+          "w": 600,
+          "h": 80,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Email Signature'. No recalculation needed.",
+        "notes": "Crop to top 1 row only (80px). Caption text: unsubscribe, legal, address.",
+        "layout_rules": {
+          "rule": "Single row. Caption only: unsubscribe link | legal | address. No logo."
+        }
+      },
+      "instagram_carousel": {
+        "name": "Instagram Carousel",
+        "inherits_from": "Instagram Post",
+        "frame": {
+          "w": 1080,
+          "h": 1080,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Instagram Post'. No recalculation needed.",
+        "notes": "Multi-frame. First frame = cover. Frames 2-9 = content slides. Last frame = CTA.",
+        "layout_rules": {
+          "rule": "Consistent grid across all frames. Same visual anchor (logo position) on every slide. Content varies."
+        }
+      },
+      "instagram_highlight_cover": {
+        "name": "Instagram Highlight Cover",
+        "inherits_from": "Instagram Post",
+        "frame": {
+          "w": 1080,
+          "h": 1080,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Instagram Post'. No recalculation needed.",
+        "notes": "Displays as circle crop at 161\u00d7161px. Keep all content within centre 60% (648\u00d7648px).",
+        "layout_rules": {
+          "rule": "Content within cols 2-3, rows 2-3 only (circle-safe zone). Icon or single word maximum."
+        }
+      },
+      "linkedin_post": {
+        "name": "LinkedIn Post",
+        "inherits_from": "Facebook Post / LinkedIn Post / Open Graph",
+        "frame": {
+          "w": 1200,
+          "h": 628,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Facebook Post / LinkedIn Post / Open Graph'. No recalculation needed.",
+        "notes": "Identical to Facebook Post. Same grid style. Different content tone.",
+        "layout_rules": {
+          "rule": "Identical to Facebook Post. Cols 1-3 = content, col 4 = brand. H2 + Caption. Professional tone \u2014 remove urgency language used on Facebook."
+        }
+      },
+      "tiktok_thumbnail": {
+        "name": "TikTok Thumbnail",
+        "inherits_from": "Instagram Story",
+        "frame": {
+          "w": 1080,
+          "h": 1920,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Instagram Story'. No recalculation needed.",
+        "notes": "Same frame and grid as Instagram Story. TikTok thumbnail = 9:16 ratio, identical dimensions.",
+        "layout_rules": {
+          "rule": "Logo top. Large text centre. CTA bottom. High contrast \u2014 reads on small mobile screens."
+        }
+      },
+      "zoom_teams_background": {
+        "name": "Zoom / Teams Virtual Background",
+        "inherits_from": "Pitch Deck",
+        "frame": {
+          "w": 1920,
+          "h": 1080,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'Pitch Deck'. No recalculation needed.",
+        "notes": "Same grid as Pitch Deck. Critical difference: face appears in left third on video calls.",
+        "layout_rules": {
+          "rule": "Keep cols 3-6 for all meaningful content. Cols 1-2 will be partially obscured by participant's face."
+        }
+      },
+      "logo_lockup_sheet": {
+        "name": "Logo Lockup Sheet",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "A4 grid. Brand documentation format. Overline category label. Content fills rows 2-5."
+        }
+      },
+      "typography_specimen": {
+        "name": "Typography Specimen",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "A4 grid. Brand documentation format. Overline category label. Content fills rows 2-5."
+        }
+      },
+      "typeface_pairing_guide": {
+        "name": "Typeface Pairing Guide",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "A4 grid. Brand documentation format. Overline category label. Content fills rows 2-5."
+        }
+      },
+      "colour_usage_sheets": {
+        "name": "Colour Usage Sheets",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "A4 grid. Brand documentation format. Overline category label. Content fills rows 2-5."
+        }
+      },
+      "cmyk_rgb_hex_sheet": {
+        "name": "CMYK / RGB / HEX Values Sheet",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "A4 grid. Brand documentation format. Overline category label. Content fills rows 2-5."
+        }
+      },
+      "photography_style_guide": {
+        "name": "Photography Style Guide",
+        "inherits_from": "A4 Letterhead",
+        "frame": {
+          "w": 595,
+          "h": 842,
+          "unit": "px",
+          "dpi": 72
+        },
+        "grid_note": "Apply identical grid style to 'A4 Letterhead'. No recalculation needed.",
+        "layout_rules": {
+          "rule": "A4 grid. Brand documentation format. Overline category label. Content fills rows 2-5."
+        }
+      }
+    }
+  },
+  "rules": {
+    "immutable": [
+      "Never use pure black #000000 or pure white #FFFFFF",
+      "Never use a colour outside the brand specification",
+      "Never use a type size outside the 7-level scale",
+      "Never use weight 700 more than once per composition",
+      "Every spacing value must be a multiple of 8px",
+      "Every text element must use a named text style",
+      "Every colour must use a named colour style",
+      "All content stays within margin boundaries",
+      "Accent colour: one use per composition (Bezold Rule)",
+      "When in doubt \u2014 use less. Restraint is always correct."
+    ],
+    "typographic": {
+      "weight_700": "Permitted exactly once per composition as an inline accent. Never on headings.",
+      "overline": "Always uppercase with tracking +0.12em. Directs attention toward headline. Never competes.",
+      "serif_H3": "Uses italic, not weight 500. The italic is structurally distinct."
+    },
+    "colour": {
+      "primary": "One primary colour per brand. Derived from Brand Type scoring.",
+      "accent": "Derived algorithmically \u2014 120\u00b0 HSL rotation, Albers-corrected. One use per composition.",
+      "neutrals": "Fixed stack. Every Form Identity brand receives the same five neutrals."
+    },
+    "bezold": "A second accent colour transforms every other colour in the composition. Use sparingly.",
+    "muller_brockmann": {
+      "formula": "Column gutter = body type size. Row gutter = 1 \u00d7 line height. Field height = N \u00d7 line height (whole number). Margins = whatever remains after the arithmetic is exact.",
+      "principle": "Type precedes grid. Body size determines line height. Line height determines everything else."
+    }
+  },
+  "clusters": {
+    "A": {
+      "body": 12,
+      "line_height": 19,
+      "col_gutter": 19,
+      "row_gutter": 19,
+      "desc": "Standard print (A4, A3, envelopes)"
+    },
+    "B": {
+      "body": 10,
+      "line_height": 16,
+      "col_gutter": 10,
+      "row_gutter": 16,
+      "desc": "Medium print (A5, A6, menus)"
+    },
+    "C": {
+      "body": 7.5,
+      "line_height": 12,
+      "col_gutter": 6,
+      "row_gutter": 12,
+      "desc": "Small cards (@2x in Figma)"
+    },
+    "D": {
+      "body": 16,
+      "line_height": 24,
+      "col_gutter": 16,
+      "row_gutter": 24,
+      "desc": "Digital social (Facebook, LinkedIn, Twitter)"
+    },
+    "E": {
+      "body": 32,
+      "line_height": 38,
+      "col_gutter": 32,
+      "row_gutter": 38,
+      "desc": "Digital tall (Story, TikTok) \u2014 already built"
+    },
+    "F": {
+      "body": 24,
+      "line_height": 32,
+      "col_gutter": 24,
+      "row_gutter": 32,
+      "desc": "Presentation + large digital (YouTube, Pitch)"
+    },
+    "G": {
+      "body": 10,
+      "line_height": 16,
+      "col_gutter": 10,
+      "row_gutter": 16,
+      "desc": "Digital email (600px width)"
+    }
+  }
+}
