@@ -4,6 +4,26 @@ _Last updated: 2026-05-11_
 
 ---
 
+## 0. Design system (completed)
+
+- [x] Strengthen design-system data model — `lib/design-system/` folder added
+- [x] Concrete format specs — 21 formats in `lib/design-system/formats.ts` (A4, business card, Instagram, pitch deck, LinkedIn banner, menu, packaging, etc.)
+- [x] Layout archetypes — 12 archetypes in `lib/design-system/layout-archetypes.ts` (document, poster, social, presentation, card, banner, signature, packaging, website, merch, editorial, report)
+- [x] Brand type layout behaviors — all 16 type codes in `lib/design-system/type-layout-behaviors.ts` (density, hierarchy style, spacing, grid strictness, best archetypes, avoid patterns)
+- [x] Template mapping — `lib/design-system/template-mapping.ts` with `getFormatForAsset`, `getArchetypeForAsset`, `getTemplateRecommendation` helpers
+- [x] TemplatePreviewCard updated to show format name, archetype label, and density from new model
+
+## 0.1 Design system — still to do
+
+- [ ] Redesign result page as scroll-based reveal / report
+- [ ] Make Recommended Design System section full-width
+- [ ] Add interactive reveal for brand card
+- [ ] Build richer template cards using `getTemplateRecommendation` (layout notes, grid behavior, content block list)
+- [ ] Connect saved quiz results to Supabase `result_slug`
+- [ ] Improve analytics / admin dashboard
+
+---
+
 ## 1. Product
 
 - [x] Connect email capture to a real backend — now stores to Supabase `email_captures` table

@@ -1,5 +1,8 @@
 // Wireframe shape mapped from asset name keywords.
 // Purely visual — no real images.
+// Design-system metadata (format, archetype, density) is sourced from lib/design-system.
+
+import { getFormatForAsset, getArchetypeForAsset } from "@/lib/design-system";
 
 type WireframeShape =
   | "a4-portrait"
@@ -206,9 +209,13 @@ const CATEGORY_LABELS: Record<Category, string> = {
   optional:  "Consider",
 };
 
+const DENSITY_LABELS = { low: "Low density", medium: "Medium density", high: "High density" } as const;
+
 export default function TemplatePreviewCard({ assetName, category, index, typeColor = "#282830" }: Props) {
   const shape = detectShape(assetName);
-  const meta = SHAPE_META[shape];
+
+  const format = getFormatForAsset(assetName);
+  const archetype = getArchetypeForAsset(assetName);
 
   // Strip notes after em-dash for the display name
   const displayName = assetName.split(" — ")[0].split("(")[0].trim();
@@ -232,8 +239,12 @@ export default function TemplatePreviewCard({ assetName, category, index, typeCo
       </div>
 
       <div className="template-card-footer">
-        <span className="template-shape-label">{meta.label}</span>
+        <span className="template-shape-label">{format.name}</span>
         <span className="template-name">{displayName}</span>
+        <span className="template-meta-row">
+          <span className="template-archetype">{archetype.name}</span>
+          <span className="template-density">{DENSITY_LABELS[format.density]}</span>
+        </span>
       </div>
     </div>
   );

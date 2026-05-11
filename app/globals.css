@@ -1104,6 +1104,33 @@ h1, h2, h3, h4, p { margin: 0; }
   color: var(--charcoal);
 }
 
+.template-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.template-archetype {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--parchment);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.template-density {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--stone);
+  opacity: 0.7;
+}
+
 /* ===================================================
    RESPONSIVE — result page lower sections
    =================================================== */
