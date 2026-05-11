@@ -3,6 +3,7 @@
 // Design-system metadata (format, archetype, density) is sourced from lib/design-system.
 
 import { getFormatForAsset, getArchetypeForAsset } from "@/lib/design-system";
+import { getAssetPriorityNote } from "@/lib/industry-type-notes";
 
 type WireframeShape =
   | "a4-portrait"
@@ -25,6 +26,7 @@ interface Props {
   category: Category;
   index?: number;
   typeColor?: string;
+  brandTypeCode?: string;
 }
 
 function detectShape(name: string): WireframeShape {
@@ -211,11 +213,12 @@ const CATEGORY_LABELS: Record<Category, string> = {
 
 const DENSITY_LABELS = { low: "Low density", medium: "Medium density", high: "High density" } as const;
 
-export default function TemplatePreviewCard({ assetName, category, index, typeColor = "#282830" }: Props) {
+export default function TemplatePreviewCard({ assetName, category, index, typeColor = "#282830", brandTypeCode }: Props) {
   const shape = detectShape(assetName);
 
   const format = getFormatForAsset(assetName);
   const archetype = getArchetypeForAsset(assetName);
+  const priorityNote = brandTypeCode ? getAssetPriorityNote(assetName, brandTypeCode) : "";
 
   // Strip notes after em-dash for the display name
   const displayName = assetName.split(" — ")[0].split("(")[0].trim();
@@ -245,6 +248,9 @@ export default function TemplatePreviewCard({ assetName, category, index, typeCo
           <span className="template-archetype">{archetype.name}</span>
           <span className="template-density">{DENSITY_LABELS[format.density]}</span>
         </span>
+        {priorityNote && (
+          <span className="template-type-note">{priorityNote}</span>
+        )}
       </div>
     </div>
   );

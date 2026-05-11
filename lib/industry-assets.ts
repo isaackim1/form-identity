@@ -6,18 +6,24 @@ export interface IndustryAssets {
 }
 
 export const INDUSTRY_OPTIONS = [
-  { value: "cafe-restaurant",        label: "Café / Restaurant" },
-  { value: "fashion-apparel",        label: "Fashion / Apparel" },
-  { value: "consulting-coaching",    label: "Consulting / Coaching" },
-  { value: "design-creative-studio", label: "Design / Creative Studio" },
-  { value: "education-course",       label: "Education / Course" },
-  { value: "tech-saas",              label: "Tech / SaaS" },
-  { value: "wellness-fitness",       label: "Wellness / Fitness" },
-  { value: "church-nonprofit",       label: "Church / Nonprofit" },
-  { value: "personal-brand",         label: "Personal Brand" },
-  { value: "ecommerce",              label: "E-commerce" },
-  { value: "event-community",        label: "Event / Community" },
-  { value: "other",                  label: "Other" },
+  { value: "cafe-restaurant",          label: "Café / Restaurant" },
+  { value: "fashion-apparel",          label: "Fashion / Apparel" },
+  { value: "consulting-coaching",      label: "Consulting / Coaching" },
+  { value: "design-creative-studio",   label: "Design / Creative Studio" },
+  { value: "education-course",         label: "Education / Course" },
+  { value: "tech-saas",                label: "Tech / SaaS" },
+  { value: "wellness-fitness",         label: "Wellness / Fitness" },
+  { value: "church-nonprofit",         label: "Church / Nonprofit" },
+  { value: "personal-brand",           label: "Personal Brand" },
+  { value: "ecommerce",                label: "E-commerce" },
+  { value: "event-community",          label: "Event / Community" },
+  { value: "real-estate-property",     label: "Real Estate / Property" },
+  { value: "photography-videography",  label: "Photography / Videography" },
+  { value: "healthcare-therapy",       label: "Healthcare / Therapy" },
+  { value: "legal-finance",            label: "Legal / Finance" },
+  { value: "beauty-personal-care",     label: "Beauty / Personal Care" },
+  { value: "architecture-interior",    label: "Architecture / Interior" },
+  { value: "other",                    label: "Other" },
 ] as const;
 
 export type IndustryValue = typeof INDUSTRY_OPTIONS[number]["value"];
@@ -219,6 +225,114 @@ export const INDUSTRY_ASSETS: Record<IndustryValue, IndustryAssets> = {
       "Programme or schedule PDF",
       "Post-event recap graphics",
       "Sponsorship deck",
+    ],
+  },
+  "real-estate-property": {
+    label: "Real Estate / Property",
+    primaryAssets: [
+      "Listing brochure PDF",
+      "Property one-pager",
+      "Website hero section",
+    ],
+    secondaryAssets: [
+      "LinkedIn banner",
+      "Yard sign specification PDF",
+      "Email signature",
+    ],
+    optionalAssets: [
+      "Buyer guide PDF",
+      "Social carousel template",
+      "Open house flyer",
+    ],
+  },
+  "photography-videography": {
+    label: "Photography / Videography",
+    primaryAssets: [
+      "Portfolio case study PDF",
+      "Website homepage",
+      "Instagram feed template (square + portrait)",
+    ],
+    secondaryAssets: [
+      "Client welcome guide PDF",
+      "Pricing one-pager",
+      "Email signature",
+    ],
+    optionalAssets: [
+      "Media kit one-pager",
+      "LinkedIn banner",
+      "Instagram story template",
+    ],
+  },
+  "healthcare-therapy": {
+    label: "Healthcare / Therapy",
+    primaryAssets: [
+      "Service one-pager",
+      "Website homepage",
+      "Appointment card",
+    ],
+    secondaryAssets: [
+      "Intake form design",
+      "Clinic signage specification",
+      "Email newsletter template",
+    ],
+    optionalAssets: [
+      "Wellness guide PDF",
+      "Instagram post template",
+      "Referral card one-pager",
+    ],
+  },
+  "legal-finance": {
+    label: "Legal / Finance",
+    primaryAssets: [
+      "One-page service overview PDF",
+      "Website hero section",
+      "LinkedIn banner",
+    ],
+    secondaryAssets: [
+      "Pitch or proposal deck",
+      "Email signature",
+      "Business card",
+    ],
+    optionalAssets: [
+      "Lead magnet guide PDF",
+      "Email newsletter template",
+      "Letterhead and document template",
+    ],
+  },
+  "beauty-personal-care": {
+    label: "Beauty / Personal Care",
+    primaryAssets: [
+      "Instagram feed template (square + portrait)",
+      "Website homepage",
+      "Service menu PDF",
+    ],
+    secondaryAssets: [
+      "Client welcome guide PDF",
+      "Loyalty card design",
+      "Email newsletter template",
+    ],
+    optionalAssets: [
+      "Gift card",
+      "Packaging and label design",
+      "Instagram story template",
+    ],
+  },
+  "architecture-interior": {
+    label: "Architecture / Interior",
+    primaryAssets: [
+      "Portfolio case study PDF",
+      "Website homepage",
+      "Instagram grid template",
+    ],
+    secondaryAssets: [
+      "Capability deck",
+      "Email signature",
+      "Press kit one-pager",
+    ],
+    optionalAssets: [
+      "Studio manifesto one-pager",
+      "LinkedIn banner",
+      "Client proposal document",
     ],
   },
   "other": {

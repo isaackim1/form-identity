@@ -12,6 +12,7 @@ import { AXES, type StrengthLabel } from "@/lib/brand-type-engine";
 import { BRAND_DIRECTIONS } from "@/lib/brand-direction";
 import { BRAND_VISUAL_RECOMMENDATIONS } from "@/lib/brand-visual-recommendations";
 import { INDUSTRY_ASSETS, type IndustryValue } from "@/lib/industry-assets";
+import { getIndustryTypeNote } from "@/lib/industry-type-notes";
 import { notFound } from "next/navigation";
 
 // ─── Axis plain-language mapping ──────────────────────────────────────────────
@@ -148,6 +149,8 @@ export default async function ResultPage({ params, searchParams }: Props) {
     }
   }
 
+  const industryNote = industryKey ? getIndustryTypeNote(industryKey, code) : "";
+
   const index = [
     "OCLD","OCRD","OCLF","OCRF","OALD","OARD","OALF","OARF",
     "ICLD","ICRD","ICLF","ICRF","IALD","IARD","IALF","IARF",
@@ -270,6 +273,10 @@ export default async function ResultPage({ params, searchParams }: Props) {
             <div className="applications-templates">
               <p className="applications-context">For {industryAssets.label}</p>
 
+              {industryNote && (
+                <p className="industry-type-note">{industryNote}</p>
+              )}
+
               <div className="template-group">
                 <span className="template-group-label">Primary</span>
                 <div className="template-grid">
@@ -280,6 +287,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
                       category="primary"
                       index={i + 1}
                       typeColor={typeColor}
+                      brandTypeCode={code}
                     />
                   ))}
                 </div>
@@ -296,6 +304,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
                         category="secondary"
                         index={i + 4}
                         typeColor={typeColor}
+                        brandTypeCode={code}
                       />
                     ))}
                   </div>
@@ -312,6 +321,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
                         assetName={asset}
                         category="optional"
                         typeColor={typeColor}
+                        brandTypeCode={code}
                       />
                     ))}
                   </div>

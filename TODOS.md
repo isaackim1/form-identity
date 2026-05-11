@@ -16,6 +16,17 @@ _Last updated: 2026-05-11_
 - [x] `RecommendedDesignSystem` component updated — shows palette variants, free/premium font groups, expanded image direction fields
 - [x] `lib/__tests__/visual-recommendations.test.ts` added — covers all 16 codes, hex validity, palette variants, font arrays, image mood fields
 
+## 0.3 Industry recommendation system (completed)
+
+- [x] Industry list expanded — 6 new industries added: Real Estate / Property, Photography / Videography, Healthcare / Therapy, Legal / Finance, Beauty / Personal Care, Architecture / Interior
+- [x] Industry/type recommendation notes added — `lib/industry-type-notes.ts` created with axis-based note system (4 axes × 2 poles per industry, covering all 16 types without writing 192 combinations manually)
+- [x] `getIndustryTypeNote(industryId, typeCode)` — returns 2-sentence personalised strategy note (expression + substance axes)
+- [x] `getRecommendedAssetStrategy(industryId, typeCode)` — returns fuller 3-sentence strategy (adds orientation axis)
+- [x] `getAssetPriorityNote(assetName, typeCode)` — returns short per-asset priority label shown in TemplatePreviewCard footer
+- [x] Strategy note shown above template groups in result page ("What to design first" section)
+- [x] TemplatePreviewCard updated — accepts `brandTypeCode` prop; shows per-asset priority note in card footer
+- [x] `lib/__tests__/industry-type-notes.test.ts` added — 27 tests covering axis extraction, note generation for all 16 types, new industries, fallbacks, and per-asset notes
+
 ## 0.1 Design system (still to do)
 
 - [ ] Redesign result page as scroll-based reveal / report
