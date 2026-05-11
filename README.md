@@ -53,9 +53,9 @@ Your score on each axis — and the strength of that score — determines your B
 | OALF | The Catalyst | Provokes the change others have been waiting on |
 | OARF | The Advocate | Carries the cause into rooms it had not reached |
 | ICLD | The Expert | Speaks once. Doesn't repeat itself. Does the work |
-| ICRD | The Craftsperson | Care visible in every joinery and seam |
-| ICLF | The Artisan | Studio-led. Precise. Of the workshop |
-| ICRF | The Practitioner | Present. Personal. Made by a particular pair of hands |
+| ICRD | The Craftsperson | Made for a specific person. The care legible in every material decision |
+| ICLF | The Artisan | Experimental precision. Process visible. Every output the studio's own |
+| ICRF | The Companion | Present with one person. Adapts to them. Shaped by that relationship |
 | IALD | The Philosopher | Asks the question underneath the question being asked |
 | IARD | The Counsellor | Holds the space until the answer becomes obvious |
 | IALF | The Visionary | Arrives with the thing already fully formed |

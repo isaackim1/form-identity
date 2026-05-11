@@ -3,6 +3,7 @@
     "name": "Form Identity Design System",
     "version": "1.0",
     "description": "Constraint-driven branding system. 16 Brand Types \u00d7 4 colour options = 64 pre-validated identities.",
+    "source_note": "This file (lib/form-identity-system.json) is the runtime source, validated by lib/schema.ts. The root web/form-identity-system.json is a reference copy. TypeScript data in components/BrandCard.tsx and lib/brand-direction.ts is the primary source for card names, lines, and brand direction copy.",
     "axes": {
       "E": {
         "name": "Expression",
@@ -51,11 +52,11 @@
     },
     "scoring": {
       "range": [
-        4,
-        28
+        6,
+        42
       ],
-      "midpoint": 16,
-      "max_distance": 12,
+      "midpoint": 24,
+      "max_distance": 18,
       "strength_thresholds": {
         "Slight": 0.15,
         "Moderate": 0.35,
@@ -70,7 +71,7 @@
       "character": "Outward energy. Concrete deliverables. Logic-driven decisions. Defined structure.",
       "colour_direction": "Warm, active, trustworthy. Colours that open doors."
     },
-    "ORLD": {
+    "OCRD": {
       "name": "The Connector",
       "character": "Outward energy. Concrete deliverables. Relationship-led. Defined structure.",
       "colour_direction": "Warm, social, approachable. Colours that invite."
@@ -80,7 +81,7 @@
       "character": "Outward energy. Concrete deliverables. Logic-driven. Fluid structure.",
       "colour_direction": "Warm, energetic, hands-on. Colours that suggest momentum."
     },
-    "ORLF": {
+    "OCRF": {
       "name": "The Host",
       "character": "Outward energy. Concrete deliverables. Relationship-led. Fluid structure.",
       "colour_direction": "Warm, welcoming, celebratory. Colours that gather people."
@@ -90,7 +91,7 @@
       "character": "Outward energy. Conceptual value. Logic-driven. Defined structure.",
       "colour_direction": "Bold, intelligent, forward-facing. Colours that signal vision."
     },
-    "OARL": {
+    "OARD": {
       "name": "The Guide",
       "character": "Outward energy. Conceptual value. Relationship-led. Defined structure.",
       "colour_direction": "Warm, aspirational, guiding. Colours that inspire movement."
@@ -128,7 +129,7 @@
       "colour_direction": "Precise but organic. Colours of the studio and workshop."
     },
     "ICRF": {
-      "name": "The Practitioner",
+      "name": "The Companion",
       "character": "Inward energy. Concrete deliverables. Relationship-led. Fluid structure.",
       "colour_direction": "Natural, personal, careful. Colours that show presence."
     },

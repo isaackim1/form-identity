@@ -51,11 +51,11 @@
     },
     "scoring": {
       "range": [
-        4,
-        28
+        6,
+        42
       ],
-      "midpoint": 16,
-      "max_distance": 12,
+      "midpoint": 24,
+      "max_distance": 18,
       "strength_thresholds": {
         "Slight": 0.15,
         "Moderate": 0.35,
@@ -128,7 +128,7 @@
       "colour_direction": "Precise but organic. Colours of the studio and workshop."
     },
     "ICRF": {
-      "name": "The Practitioner",
+      "name": "The Companion",
       "character": "Inward energy. Concrete deliverables. Relationship-led. Fluid structure.",
       "colour_direction": "Natural, personal, careful. Colours that show presence."
     },

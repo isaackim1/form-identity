@@ -89,17 +89,17 @@ Suggested colour: a deep slate blue or cool charcoal — something that reads li
 | Code | Name | Character | Colour direction |
 |------|------|-----------|-----------------|
 | OCLD | The Ambassador | Outward energy. Concrete deliverables. Logic-driven. Defined structure. | Warm, active, trustworthy. Colours that open doors. |
-| ORLD | The Connector | Outward energy. Concrete deliverables. Relationship-led. Defined structure. | Warm, social, approachable. Colours that invite. |
+| OCRD | The Connector | Outward energy. Concrete deliverables. Relationship-led. Defined structure. | Warm, social, approachable. Colours that invite. |
 | OCLF | The Maker | Outward energy. Concrete deliverables. Logic-driven. Fluid structure. | Warm, energetic, hands-on. Colours that suggest momentum. |
-| ORLF | The Host | Outward energy. Concrete deliverables. Relationship-led. Fluid structure. | Warm, welcoming, celebratory. Colours that gather people. |
+| OCRF | The Host | Outward energy. Concrete deliverables. Relationship-led. Fluid structure. | Warm, welcoming, celebratory. Colours that gather people. |
 | OALD | The Strategist | Outward energy. Conceptual value. Logic-driven. Defined structure. | Bold, intelligent, forward-facing. Colours that signal vision. |
-| OARL | The Guide | Outward energy. Conceptual value. Relationship-led. Defined structure. | Warm, aspirational, guiding. Colours that inspire movement. |
+| OARD | The Guide | Outward energy. Conceptual value. Relationship-led. Defined structure. | Warm, aspirational, guiding. Colours that inspire movement. |
 | OALF | The Catalyst | Outward energy. Conceptual value. Logic-driven. Fluid structure. | Dynamic, provocative, energetic. Colours that disrupt. |
 | OARF | The Advocate | Outward energy. Conceptual value. Relationship-led. Fluid structure. | Passionate, human, expressive. Colours that move people. |
 | ICLD | The Expert | Inward energy. Concrete deliverables. Logic-driven. Defined structure. | Cool, dark, muted, minimal. Colours that signal mastery without announcement. |
 | ICRD | The Craftsperson | Inward energy. Concrete deliverables. Relationship-led. Defined structure. | Cool but warm-accented. Colours that show care in the making. |
 | ICLF | The Artisan | Inward energy. Concrete deliverables. Logic-driven. Fluid structure. | Precise but organic. Colours of the studio and workshop. |
-| ICRF | The Practitioner | Inward energy. Concrete deliverables. Relationship-led. Fluid structure. | Natural, personal, careful. Colours that show presence. |
+| ICRF | The Companion | Inward energy. Concrete deliverables. Relationship-led. Fluid structure. | Natural, personal, careful. Colours that show presence. |
 | IALD | The Philosopher | Inward energy. Conceptual value. Logic-driven. Defined structure. | Austere, precise, intellectual. Colours of the library and laboratory. |
 | IARD | The Counsellor | Inward energy. Conceptual value. Relationship-led. Defined structure. | Calm, considered, trustworthy. Colours that hold space. |
 | IALF | The Visionary | Inward energy. Conceptual value. Logic-driven. Fluid structure. | Spare, unexpected, singular. Colours that arrive fully formed. |
