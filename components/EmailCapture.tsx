@@ -5,9 +5,11 @@ import { useState, FormEvent } from "react";
 interface EmailCaptureProps {
   code: string;
   answers?: string;
+  industry?: string;
+  resultSlug?: string;
 }
 
-export default function EmailCapture({ code, answers }: EmailCaptureProps) {
+export default function EmailCapture({ code, answers, industry, resultSlug }: EmailCaptureProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -21,7 +23,14 @@ export default function EmailCapture({ code, answers }: EmailCaptureProps) {
       const res = await fetch("/api/capture", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, code, answers }),
+        body: JSON.stringify({
+          email,
+          brand_type_code: code,
+          answers,
+          industry,
+          result_slug: resultSlug,
+          source: "result_page",
+        }),
       });
       const data = await res.json() as { ok: boolean; error?: string };
       if (data.ok) {

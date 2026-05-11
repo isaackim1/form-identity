@@ -205,7 +205,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
 
           <ShareButton code={code} typeName={type.name} tagline={type.line} />
 
-          <EmailCapture code={code} answers={encodedAnswers} />
+          <EmailCapture code={code} answers={encodedAnswers} industry={industry} />
 
           <Link href="/types" className="result-all-types-link">
             See all 16 types →

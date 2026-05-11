@@ -1,13 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const VALID_CODES = new Set([
-  "OCLD","OCRD","OCLF","OCRF",
-  "OALD","OARD","OALF","OARF",
-  "ICLD","ICRD","ICLF","ICRF",
-  "IALD","IARD","IALF","IARF",
-]);
+import { emailCaptureSchema } from "@/lib/validation";
+import { getSupabaseServerClient } from "@/lib/supabase/server";
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -17,30 +10,34 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "Invalid request body." }, { status: 400 });
   }
 
-  const { email, code, answers } = body as { email?: unknown; code?: unknown; answers?: unknown };
-
-  if (typeof email !== "string" || !EMAIL_RE.test(email)) {
-    return NextResponse.json({ ok: false, error: "Please enter a valid email address." }, { status: 400 });
+  const parsed = emailCaptureSchema.safeParse(body);
+  if (!parsed.success) {
+    const msg = parsed.error.issues.map(i => i.message).join(", ");
+    return NextResponse.json({ ok: false, error: msg }, { status: 400 });
   }
 
-  if (typeof code !== "string" || !VALID_CODES.has(code)) {
-    return NextResponse.json({ ok: false, error: "Invalid brand type code." }, { status: 400 });
+  let supabase: ReturnType<typeof getSupabaseServerClient>;
+  try {
+    supabase = getSupabaseServerClient();
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "Supabase is not configured.";
+    return NextResponse.json({ ok: false, error: msg }, { status: 500 });
   }
 
-  const capturePayload = {
+  const { email, brand_type_code, industry, answers, result_slug, source } = parsed.data;
+
+  const { error } = await supabase.from("email_captures").insert({
     email,
-    code,
-    answers: typeof answers === "string" ? answers : undefined,
-    ts: new Date().toISOString(),
-  };
+    brand_type_code,
+    industry: industry ?? null,
+    answers: answers ?? null,
+    result_slug: result_slug ?? null,
+    source: source ?? "result_page",
+  });
 
-  // TODO: Connect to a real backend here. Options:
-  //   - Resend:      POST to Resend API to add subscriber + trigger welcome email
-  //   - Loops:       POST to loops.so/api/contacts/create with email + brandType property
-  //   - ConvertKit:  POST to api.convertkit.com/v3/forms/{id}/subscribe
-  //   - Airtable:    POST to api.airtable.com/v0/{baseId}/{tableId} to insert a row
-  //   Never log or store emails in plaintext in the repo or logs in production.
-  console.log("[capture]", JSON.stringify(capturePayload));
+  if (error) {
+    return NextResponse.json({ ok: false, error: "Failed to save. Please try again." }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }
