@@ -4,6 +4,30 @@ _Last updated: 2026-05-11_
 
 ---
 
+## 0.2 Visual recommendation system (completed)
+
+- [x] Visual recommendation schema refined — `lib/brand-visual-recommendations.ts` rewritten with `PaletteVariants`, `TypographyRecommendation`, `ImageDirection` structures
+- [x] Palette variants added — every type has a `default` and `alternate` palette; quietAccent or alternateAccent on every entry
+- [x] All 16 default accents are distinct — outward types no longer all red/orange; inward types no longer all grey/blue
+- [x] Free/premium font recommendations separated — `freeFonts` and `premiumFonts` arrays replace the flat `possibleFonts` list
+- [x] Typography weight and personality added — `typographyWeight` and `fontPersonality` fields per type
+- [x] Image mood system expanded — 8 moods (vivid, structured, quiet, intimate, night, tactile, editorial, communal) replace 3-value system
+- [x] `imageSubjects`, `imageTreatment`, `imageAvoid` added to every type
+- [x] `RecommendedDesignSystem` component updated — shows palette variants, free/premium font groups, expanded image direction fields
+- [x] `lib/__tests__/visual-recommendations.test.ts` added — covers all 16 codes, hex validity, palette variants, font arrays, image mood fields
+
+## 0.1 Design system (still to do)
+
+- [ ] Redesign result page as scroll-based reveal / report
+- [ ] Make Recommended Design System section full-width
+- [ ] Add interactive reveal for brand card
+- [ ] Interactive palette selection (default vs. alternate toggle)
+- [ ] Build richer template cards using `getTemplateRecommendation` (layout notes, grid behavior, content block list)
+- [ ] Connect saved quiz results to Supabase `result_slug`
+- [ ] Improve analytics / admin dashboard
+
+---
+
 ## 0. Design system (completed)
 
 - [x] Strengthen design-system data model — `lib/design-system/` folder added

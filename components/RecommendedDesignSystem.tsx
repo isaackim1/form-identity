@@ -1,5 +1,6 @@
 import type {
   BrandVisualRecommendation,
+  Palette,
   PaletteEntry,
   LayoutPattern,
   ImageMoodPanel,
@@ -20,6 +21,19 @@ function isLight(hex: string): boolean {
   return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.55;
 }
 
+function paletteToArray(palette: Palette): PaletteEntry[] {
+  const entries: PaletteEntry[] = [
+    palette.background,
+    palette.ink,
+    palette.accent,
+    palette.border,
+    palette.secondary,
+  ];
+  if (palette.alternateAccent) entries.push(palette.alternateAccent);
+  if (palette.quietAccent) entries.push(palette.quietAccent);
+  return entries;
+}
+
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 function Swatch({ entry }: { entry: PaletteEntry }) {
@@ -36,6 +50,20 @@ function Swatch({ entry }: { entry: PaletteEntry }) {
       <span className="swatch-role">{entry.role}</span>
       <span className="swatch-name">{entry.name}</span>
       <span className="swatch-hex">{entry.hex}</span>
+      <span className="swatch-usage">{entry.usage}</span>
+    </div>
+  );
+}
+
+function PaletteSection({ label, palette }: { label: string; palette: Palette }) {
+  return (
+    <div className="palette-variant">
+      <p className="palette-variant-label">{label} — {palette.mood}</p>
+      <div className="palette-swatches">
+        {paletteToArray(palette).map((entry, i) => (
+          <Swatch key={i} entry={entry} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -115,7 +143,6 @@ function LayoutWireframe({ pattern, accentHex }: { pattern: LayoutPattern; accen
     );
   }
 
-  // fallback: grid
   return (
     <div className="wf wf-grid">
       <div className="wf-row" style={{ background: accent, flex: "0 0 18%" }} />
@@ -128,12 +155,18 @@ function LayoutWireframe({ pattern, accentHex }: { pattern: LayoutPattern; accen
 }
 
 function ImageMoodBlocks({ accentHex, mood }: { accentHex: string; mood: ImageMoodPanel }) {
+  const a = accentHex;
+  const warm = "#F5F2EA";
+  const parch = "#E0DBD0";
+  const dark = "#1A1A18";
+  const charcoal = "#3D3D3A";
+
   if (mood === "night") {
     return (
       <div className="image-mood image-mood--night">
-        <div style={{ background: "#1A1A18", flex: 3 }} />
-        <div style={{ background: accentHex, flex: 1 }} />
-        <div style={{ background: "#3D3D3A", flex: 2 }} />
+        <div style={{ background: dark, flex: 3 }} />
+        <div style={{ background: a, flex: 1 }} />
+        <div style={{ background: charcoal, flex: 2 }} />
       </div>
     );
   }
@@ -141,19 +174,71 @@ function ImageMoodBlocks({ accentHex, mood }: { accentHex: string; mood: ImageMo
   if (mood === "vivid") {
     return (
       <div className="image-mood image-mood--vivid">
-        <div style={{ background: "#F5F2EA", flex: 1 }} />
-        <div style={{ background: accentHex, flex: 3 }} />
-        <div style={{ background: "#E0DBD0", flex: 1 }} />
+        <div style={{ background: warm, flex: 1 }} />
+        <div style={{ background: a, flex: 3 }} />
+        <div style={{ background: parch, flex: 1 }} />
       </div>
     );
   }
 
-  // quiet
+  if (mood === "structured") {
+    return (
+      <div className="image-mood image-mood--structured">
+        <div style={{ background: parch, flex: 1 }} />
+        <div style={{ background: a, flex: 1 }} />
+        <div style={{ background: parch, flex: 1 }} />
+        <div style={{ background: warm, flex: 1 }} />
+      </div>
+    );
+  }
+
+  if (mood === "intimate") {
+    return (
+      <div className="image-mood image-mood--intimate">
+        <div style={{ background: warm, flex: 3 }} />
+        <div style={{ background: a, flex: 1 }} />
+        <div style={{ background: parch, flex: 2 }} />
+      </div>
+    );
+  }
+
+  if (mood === "tactile") {
+    return (
+      <div className="image-mood image-mood--tactile">
+        <div style={{ background: parch, flex: 2 }} />
+        <div style={{ background: a, flex: 2 }} />
+        <div style={{ background: "#D4CFC4", flex: 1 }} />
+      </div>
+    );
+  }
+
+  if (mood === "editorial") {
+    return (
+      <div className="image-mood image-mood--editorial">
+        <div style={{ background: a, flex: 1 }} />
+        <div style={{ background: warm, flex: 5 }} />
+      </div>
+    );
+  }
+
+  if (mood === "communal") {
+    return (
+      <div className="image-mood image-mood--communal">
+        <div style={{ background: a, flex: 1 }} />
+        <div style={{ background: warm, flex: 1 }} />
+        <div style={{ background: a, opacity: 0.55, flex: 1 }} />
+        <div style={{ background: parch, flex: 1 }} />
+        <div style={{ background: a, opacity: 0.3, flex: 1 }} />
+      </div>
+    );
+  }
+
+  // quiet (default)
   return (
     <div className="image-mood image-mood--quiet">
-      <div style={{ background: "#E0DBD0", flex: 2 }} />
-      <div style={{ background: accentHex, flex: 1 }} />
-      <div style={{ background: "#F5F2EA", flex: 3 }} />
+      <div style={{ background: parch, flex: 2 }} />
+      <div style={{ background: a, flex: 1 }} />
+      <div style={{ background: warm, flex: 3 }} />
     </div>
   );
 }
@@ -161,8 +246,7 @@ function ImageMoodBlocks({ accentHex, mood }: { accentHex: string; mood: ImageMo
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function RecommendedDesignSystem({ visual, typeName, tagline }: Props) {
-  const accentEntry = visual.recommendedPalette.find(p => p.role === "accent");
-  const accentHex = accentEntry?.hex ?? "#282830";
+  const accentHex = visual.palette.default.accent.hex;
   const textOnAccent = isLight(accentHex) ? "#1A1A18" : "#F5F2EA";
 
   return (
@@ -173,14 +257,11 @@ export default function RecommendedDesignSystem({ visual, typeName, tagline }: P
       <div className="sp-block">
         <span className="sp-block-label">Colour</span>
         <p className="sp-block-desc">{visual.colorMood}</p>
-        <div className="palette-swatches">
-          {visual.recommendedPalette.map((entry, i) => (
-            <Swatch key={i} entry={entry} />
-          ))}
-        </div>
+        <PaletteSection label="Default" palette={visual.palette.default} />
+        <PaletteSection label="Alternate" palette={visual.palette.alternate} />
       </div>
 
-      {/* B — Typography specimen */}
+      {/* B — Typography */}
       <div className="sp-block">
         <span className="sp-block-label">Typography</span>
         <div
@@ -194,8 +275,27 @@ export default function RecommendedDesignSystem({ visual, typeName, tagline }: P
             Character first. Aesthetics second. The design system follows the brand type, not the trend.
           </p>
         </div>
-        <p className="sp-block-desc">{visual.typographyStyle}</p>
-        <p className="sp-fonts">{visual.possibleFonts.join(" · ")}</p>
+        <p className="sp-block-desc font-personality">{visual.typography.fontPersonality}</p>
+        <div className="font-groups">
+          <div className="font-group">
+            <p className="font-group-label">Free</p>
+            <div className="font-chips">
+              {visual.typography.freeFonts.map((f, i) => (
+                <span key={i} className="font-chip font-chip--free">{f}</span>
+              ))}
+            </div>
+          </div>
+          <div className="font-group">
+            <p className="font-group-label">Premium (licensed)</p>
+            <div className="font-chips">
+              {visual.typography.premiumFonts.map((f, i) => (
+                <span key={i} className="font-chip font-chip--premium">{f}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <p className="sp-block-desc" style={{ marginTop: 10 }}>{visual.typography.typographicUse}</p>
+        <p className="sp-font-weight">Weight direction: {visual.typography.typographyWeight}</p>
       </div>
 
       {/* C — Layout wireframe */}
@@ -210,13 +310,27 @@ export default function RecommendedDesignSystem({ visual, typeName, tagline }: P
       {/* D — Image direction */}
       <div className="sp-block">
         <span className="sp-block-label">Image direction</span>
-        <ImageMoodBlocks accentHex={accentHex} mood={visual.imageMoodPanel} />
-        <p className="sp-block-desc">{visual.imageDirection}</p>
+        <ImageMoodBlocks accentHex={accentHex} mood={visual.image.imageMood} />
+        <p className="sp-image-mood-label">{visual.image.imageMood}</p>
+        <p className="sp-block-desc">{visual.image.imageTreatment}</p>
+        <ul className="image-subjects">
+          {visual.image.imageSubjects.map((s, i) => (
+            <li key={i}>{s}</li>
+          ))}
+        </ul>
+        <div className="image-avoid-row">
+          <span className="sp-block-label" style={{ marginBottom: 0 }}>Avoid</span>
+          <div className="avoid-chips" style={{ marginTop: 6 }}>
+            {visual.image.imageAvoid.map((item, i) => (
+              <span key={i} className="avoid-chip">{item}</span>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* E — Avoid chips */}
+      {/* E — Avoid design choices */}
       <div className="sp-block">
-        <span className="sp-block-label">Avoid</span>
+        <span className="sp-block-label">Design choices to avoid</span>
         <div className="avoid-chips">
           {visual.avoidDesignChoices.map((item, i) => (
             <span key={i} className="avoid-chip">{item}</span>
