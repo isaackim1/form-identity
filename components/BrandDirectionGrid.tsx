@@ -17,7 +17,7 @@ const CARDS: { key: keyof BrandDirection; label: string; featured?: boolean }[] 
 export default function BrandDirectionGrid({ direction, typeColor }: Props) {
   return (
     <div className="direction-section">
-      <p className="result-section-head">Brand Direction</p>
+      <p className="result-section-head">Brand Blueprint</p>
       <div
         className="direction-grid"
         style={{ "--type-color": typeColor } as React.CSSProperties}
