@@ -44,20 +44,20 @@ Your score on each axis — and the strength of that score — determines your B
 
 | Code | Name | Core character |
 |------|------|----------------|
-| OCLD | The Ambassador | Opens doors with a steady hand and a clear deliverable |
-| OCRD | The Connector | Builds the room, then walks people across it |
+| OCLD | The Ambassador | Makes the case through delivery, not discussion |
+| OCRD | The Connector | Builds the room where the right connections happen |
 | OCLF | The Maker | Hands moving, shipping forward, learning by doing |
-| OCRF | The Host | Gathers people who didn't know they needed to meet |
+| OCRF | The Host | Sets the table so no one sits alone |
 | OALD | The Strategist | Sees the field two moves before the others arrive |
 | OARD | The Guide | Walks ahead of the people who chose to follow |
 | OALF | The Catalyst | Provokes the change others have been waiting on |
 | OARF | The Advocate | Carries the cause into rooms it had not reached |
 | ICLD | The Expert | Speaks once. Doesn't repeat itself. Does the work |
-| ICRD | The Craftsperson | Made for a specific person. The care legible in every material decision |
-| ICLF | The Artisan | Experimental precision. Process visible. Every output the studio's own |
-| ICRF | The Companion | Present with one person. Adapts to them. Shaped by that relationship |
-| IALD | The Philosopher | Asks the question underneath the question being asked |
-| IARD | The Counsellor | Holds the space until the answer becomes obvious |
+| ICRD | The Craftsperson | Bespoke at every decision. The care is the work |
+| ICLF | The Artisan | Every experiment precise. Every output signed by the studio |
+| ICRF | The Companion | One person at a time. No template. No broadcast |
+| IALD | The Philosopher | Finds the question that reframes everything else |
+| IARD | The Counsellor | Stays until the person understands what they already knew |
 | IALF | The Visionary | Arrives with the thing already fully formed |
 | IARF | The Poet | Names the thing you felt but had no word for |
 

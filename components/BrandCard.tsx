@@ -3,20 +3,20 @@ import { AXES } from "@/lib/brand-type-engine";
 
 // 16 brand types — canonical data from design bundle
 export const BRAND_TYPES = [
-  { code: "OCLD", name: "The Ambassador",   line: "Opens doors with a steady hand and a clear deliverable.",        color: "#C8633A" },
-  { code: "OCRD", name: "The Connector",    line: "Builds the room, then walks people across it.",                  color: "#D88A3F" },
+  { code: "OCLD", name: "The Ambassador",   line: "Makes the case through delivery, not discussion.",               color: "#C8633A" },
+  { code: "OCRD", name: "The Connector",    line: "Builds the room where the right connections happen.",             color: "#D88A3F" },
   { code: "OCLF", name: "The Maker",        line: "Hands moving, shipping forward, learning by doing.",             color: "#D9462A" },
-  { code: "OCRF", name: "The Host",         line: "Gathers people who didn't know they needed to meet.",            color: "#C9304B" },
+  { code: "OCRF", name: "The Host",         line: "Sets the table so no one sits alone.",                          color: "#C9304B" },
   { code: "OALD", name: "The Strategist",   line: "Sees the field two moves before the others arrive.",             color: "#B8351F" },
   { code: "OARD", name: "The Guide",        line: "Walks ahead of the people who chose to follow.",                 color: "#B85A2A" },
   { code: "OALF", name: "The Catalyst",     line: "Provokes the change others have been waiting on.",               color: "#E2452F" },
   { code: "OARF", name: "The Advocate",     line: "Carries the cause into rooms it had not reached.",               color: "#A82D3E" },
   { code: "ICLD", name: "The Expert",       line: "Speaks once. Doesn't repeat itself. Does the work.",             color: "#282830" },
-  { code: "ICRD", name: "The Craftsperson", line: "Made for a specific person. The care legible in every material decision.",  color: "#3E4A4F" },
-  { code: "ICLF", name: "The Artisan",      line: "Experimental precision. Process visible. Every output the studio's own.",   color: "#5C5648" },
-  { code: "ICRF", name: "The Companion",    line: "Present with one person. Adapts to them. Shaped by that relationship.",     color: "#6B5E4A" },
-  { code: "IALD", name: "The Philosopher",  line: "Asks the question underneath the question being asked.",         color: "#2A3445" },
-  { code: "IARD", name: "The Counsellor",   line: "Holds the space until the answer becomes obvious.",              color: "#4A5A52" },
+  { code: "ICRD", name: "The Craftsperson", line: "Bespoke at every decision. The care is the work.",                         color: "#3E4A4F" },
+  { code: "ICLF", name: "The Artisan",      line: "Every experiment precise. Every output signed by the studio.",              color: "#5C5648" },
+  { code: "ICRF", name: "The Companion",    line: "One person at a time. No template. No broadcast.",                         color: "#6B5E4A" },
+  { code: "IALD", name: "The Philosopher",  line: "Finds the question that reframes everything else.",              color: "#2A3445" },
+  { code: "IARD", name: "The Counsellor",   line: "Stays until the person understands what they already knew.",     color: "#4A5A52" },
   { code: "IALF", name: "The Visionary",    line: "Arrives with the thing already fully formed.",                   color: "#6E5A8C" },
   { code: "IARF", name: "The Poet",         line: "Names the thing you felt but had no word for.",                  color: "#8C5A6E" },
 ] as const;

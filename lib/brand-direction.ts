@@ -1,4 +1,5 @@
 export interface BrandDirection {
+  tagline: string;
   energy: string;
   visual: string;
   voice: string;
@@ -9,6 +10,7 @@ export interface BrandDirection {
 
 export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
   OCLD: {
+    tagline: "Credibility that opens the room.",
     energy: "Outward, concrete, logical, and structured.",
     visual: "Confident structure, clear hierarchy, clean lines. Authoritative without being cold. Color with presence.",
     voice: "Precise, credible, direct. Speak in deliverables and outcomes. Say what you do and what it produces.",
@@ -17,6 +19,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Define your signature deliverable — the one thing you help clients achieve, stated precisely.",
   },
   OCRD: {
+    tagline: "Builds the room. Fills the seats.",
     energy: "Outward, concrete, relational, and structured.",
     visual: "Warm but organized. Approachable clarity. Grounded color palette. Human without being casual.",
     voice: "Welcoming, action-oriented. Speak in outcomes for people. Show who belongs in the room you're building.",
@@ -25,6 +28,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Name the community you're building — who belongs in it, and what they get from being there.",
   },
   OCLF: {
+    tagline: "Ships it. Learns from it.",
     energy: "Outward, concrete, logical, and adaptable.",
     visual: "Process-visible, iterative, honest materials. Clean but not rigid. Show the work in progress.",
     voice: "Hands-on, direct, specific. Talk about what you're making and how it's going. Demonstrate, don't declare.",
@@ -33,6 +37,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Show the thing you're building right now — process content is your most credible signal.",
   },
   OCRF: {
+    tagline: "Designed so everyone belongs.",
     energy: "Outward, concrete, relational, and adaptive.",
     visual: "Inviting and warm. Textural palettes, people-centered imagery, spaces that feel designed for gathering.",
     voice: "Generous, conversational. Draw people in naturally. Make them feel expected, not evaluated.",
@@ -41,6 +46,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Identify your recurring gathering — what you put on that makes people feel welcome by design.",
   },
   OALD: {
+    tagline: "Frames the problem no one named.",
     energy: "Outward, conceptual, logical, and structured.",
     visual: "Minimal precision. Confident whitespace. Sharp editorial quality. The design communicates rigor.",
     voice: "Analytical, forward-looking, systematic. Speak in frameworks and second-order effects.",
@@ -49,6 +55,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Articulate your core framework — the one lens through which you see problems others miss.",
   },
   OARD: {
+    tagline: "Alongside, never above.",
     energy: "Outward, conceptual, relational, and structured.",
     visual: "Considered, human-centered. Warm without being informal. Design that signals experience and judgment.",
     voice: "Mentoring in tone. Draw on experience to illuminate. Speak to where people want to go.",
@@ -57,6 +64,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Define the transformation you lead people through — from where they start to where they land.",
   },
   OALF: {
+    tagline: "Declares what others only imply.",
     energy: "Outward, conceptual, logical, and energetic.",
     visual: "Bold, high contrast, challenges conventions. Design that signals a point of view, not a service.",
     voice: "Declarative, challenges assumptions, pushes forward. Say the thing that makes people uncomfortable enough to move.",
@@ -65,6 +73,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Identify the one thing you want to change — and say it in one sentence without hedging.",
   },
   OARF: {
+    tagline: "The cause, before the brand.",
     energy: "Outward, conceptual, relational, and passionate.",
     visual: "Cause-driven, human faces, warm urgency. Accessible design that invites participation.",
     voice: "Earnest, mission-driven. Create collective ownership of ideas. The cause is bigger than you.",
@@ -73,6 +82,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Name the cause and the people it changes — both with enough specificity that someone can join.",
   },
   ICLD: {
+    tagline: "Depth before display.",
     energy: "Inward, concrete, logical, and structured.",
     visual: "Quiet authority. Monochromatic restraint. Precise typography, no decoration. The work speaks.",
     voice: "Terse, confident. Speak once. Depth over breadth. Say the essential thing and stop.",
@@ -81,22 +91,25 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Publish one definitive piece of content — the thing you want to be found and known for.",
   },
   ICRD: {
+    tagline: "Trust built through the making.",
     energy: "Inward, concrete, relational, and careful.",
     visual: "Material honesty. Craft-visible photography. Muted earthy tones. Anti-polished is the point.",
-    voice: "Quiet care. Talk about process. Let the work speak. The making is the message.",
+    voice: "Speak about who you made it for. The care is in the relationship — let that come through. Unhurried, personal, addressed to the one client, not the category.",
     avoid: "Volume marketing, aggressive promotion, generic templates. Care cannot be manufactured at scale.",
-    bestFor: "Craft studios, bespoke makers, artisanal services, design practices, handmade goods.",
+    bestFor: "Craft studios, bespoke makers, furniture makers, artisanal food and beverage, handmade goods.",
     nextStep: "Document your process — the care that goes into making is what distinguishes you.",
   },
   ICLF: {
+    tagline: "Studio precision, personal authorship.",
     energy: "Inward, concrete, logical, and experimental.",
     visual: "Studio-led. Textural, process-visible, controlled experimentation. Precision without rigidity.",
     voice: "Precise yet searching. Interested in how things work. Show curiosity as a form of expertise.",
     avoid: "Consumer-friendly polish, trend following, excessive warmth. The work leads, not the personality.",
-    bestFor: "Design studios, creative research, experimental product makers, applied art practices.",
+    bestFor: "Creative research labs, experimental studios, applied art practices, design R&D, material exploration.",
     nextStep: "Define your medium — the specific material or method you've mastered above everything else.",
   },
   ICRF: {
+    tagline: "Shaped by the relationship.",
     energy: "Inward, concrete, relational, and personal.",
     visual: "Intimate, specific, warm neutrals. Quietly human. Design that feels made for one person.",
     voice: "Present, personal, specific. Speak to one person at a time. Generic is the enemy.",
@@ -105,22 +118,25 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Write to one specific person — describe exactly who you help and how it feels to work with you.",
   },
   IALD: {
+    tagline: "The question under the question.",
     energy: "Inward, conceptual, logical, and defined.",
     visual: "Quiet structure, restrained typography, strong hierarchy, and intentional spacing. Nothing extraneous.",
-    voice: "Clear, deep, and calm. Speak with authority that comes from rigor, not volume. No hurry.",
+    voice: "Analytical, precise, unhurried. Build the argument before arriving at the conclusion. Let the rigor do the work — not warmth, not volume.",
     avoid: "Bright colors, trend-based templates, vague inspirational language. Noise obscures the thinking.",
     bestFor: "Advisory brands, research-led projects, essays, educational products, strategic services.",
     nextStep: "Write the question you're trying to answer — your body of work is the pursuit of that question.",
   },
   IARD: {
+    tagline: "Space before solution.",
     energy: "Inward, conceptual, relational, and patient.",
     visual: "Warm restraint. Depth in simplicity. Quiet color, space to breathe. Design that doesn't rush.",
-    voice: "Holds space. Listens before speaking. Addresses what's underneath the surface question.",
+    voice: "Listens before speaking. Holds the question with the person, not above them. The insight is theirs to arrive at — you just stay in the room.",
     avoid: "Assertive positioning, high-energy aesthetics, volume-based content. Urgency is the wrong signal.",
     bestFor: "Therapeutic practices, deep advisory, executive coaching, mentorship, grief and transition work.",
     nextStep: "Articulate what you help people see in themselves that they couldn't see before working with you.",
   },
   IALF: {
+    tagline: "The idea arrived whole.",
     energy: "Inward, conceptual, logical, and generative.",
     visual: "Unexpected, future-oriented. Unconventional color. Ideas as images. Design that arrives fully formed.",
     voice: "Arrives with the thing. Speaks in futures. Original framing over borrowed language.",
@@ -129,6 +145,7 @@ export const BRAND_DIRECTIONS: Record<string, BrandDirection> = {
     nextStep: "Describe the world you're building toward — in concrete, specific terms, not abstract vision.",
   },
   IARF: {
+    tagline: "Resonance over instruction.",
     energy: "Inward, conceptual, relational, and lyrical.",
     visual: "Evocative, metaphorical. Quiet beauty. Emotion through image and word. Restraint with resonance.",
     voice: "Names what others feel but cannot say. Works in resonance, not instruction. Meaning over message.",
