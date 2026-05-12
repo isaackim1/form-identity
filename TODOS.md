@@ -13,6 +13,7 @@ _Last updated: 2026-05-12_
 - [x] Visual recommendation refinement — palette variants, typography guidance, and image direction are defined for all 16 types
 - [x] Industry recommendation enrichment — expanded industry list, type-aware strategy notes, and per-asset priority notes
 - [x] Canonical Brand Type system — `lib/brand-types.ts` defines all 16 types with helpers and test coverage
+- [x] Brand direction migration — result Brand Blueprint now reads canonical `lib/brand-types.ts` copy
 - [x] Type detail page styling cleanup — old result classes restored and aligned with the current visual language
 - [x] Result sharing cleanup — full share controls live in the final action section only
 - [x] Result-specific not-found page — invalid result codes route to quiz and type-library recovery paths
@@ -21,7 +22,7 @@ _Last updated: 2026-05-12_
 
 ## Current Priorities
 
-- [ ] Migrate duplicated Brand Type data into `lib/brand-types.ts` consumers without changing codes, names, scoring, or quiz behavior
+- [ ] Finish remaining Brand Type System migration tasks without changing codes, names, scoring, or quiz behavior
 - [ ] Connect quiz completion to `/api/results` and persist `result_slug`
 - [ ] Replace query-param result URLs with clean `result_slug` URLs
 - [ ] Add analytics events for quiz completion, result distribution, industry selection, sharing, and email capture
@@ -41,7 +42,6 @@ _Last updated: 2026-05-12_
 
 ## Brand Type System
 
-- [ ] Migrate `lib/brand-direction.ts` content into the canonical Brand Type source where fields overlap
 - [ ] Migrate `lib/brand-visual-recommendations.ts` duplicated logic into canonical fields where appropriate
 - [ ] Migrate `lib/design-system/type-layout-behaviors.ts` duplicated personality/layout notes into canonical fields where appropriate
 - [ ] Keep compatibility exports stable while pages and components move to `lib/brand-types.ts`

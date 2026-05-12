@@ -8,7 +8,7 @@
  *
  * Sources consolidated:
  *   - components/BrandCard.tsx          (name, cardLine, color)
- *   - lib/brand-direction.ts            (tagline, energy, voice, visual, bestFor, avoid)
+ *   - legacy direction copy             (tagline, energy, voice, visual, bestFor, avoid)
  *   - lib/brand-visual-recommendations.ts (colorMood, typographicUse, layoutStyle, imageTreatment, avoidDesignChoices)
  *   - lib/design-system/type-layout-behaviors.ts (personality, compositionNotes)
  */

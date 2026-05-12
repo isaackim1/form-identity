@@ -1,20 +1,11 @@
-import type { BrandDirection } from "@/lib/brand-direction";
+import type { BrandTypeDefinition } from "@/lib/brand-types";
 
 interface Props {
-  direction: BrandDirection;
+  brandType: BrandTypeDefinition;
   typeColor: string;
 }
 
-const CARDS: { key: keyof BrandDirection; label: string; featured?: boolean }[] = [
-  { key: "energy",   label: "Brand energy" },
-  { key: "visual",   label: "Visual direction" },
-  { key: "voice",    label: "Voice direction" },
-  { key: "bestFor",  label: "Best for" },
-  { key: "avoid",    label: "Avoid" },
-  { key: "nextStep", label: "Next step", featured: true },
-];
-
-export default function BrandDirectionGrid({ direction, typeColor }: Props) {
+export default function BrandDirectionGrid({ brandType, typeColor }: Props) {
   return (
     <div className="direction-section">
       <p className="result-section-head">Brand Blueprint</p>
@@ -22,15 +13,39 @@ export default function BrandDirectionGrid({ direction, typeColor }: Props) {
         className="direction-grid"
         style={{ "--type-color": typeColor } as React.CSSProperties}
       >
-        {CARDS.map(({ key, label, featured }) => (
-          <div
-            key={key}
-            className={`direction-card${featured ? " direction-card--featured" : ""}`}
-          >
-            <span className="direction-card-label">{label}</span>
-            <span className="direction-card-value">{direction[key]}</span>
-          </div>
-        ))}
+        <div className="direction-card">
+          <span className="direction-card-label">Brand energy</span>
+          <span className="direction-card-value">{brandType.energy}</span>
+        </div>
+
+        <div className="direction-card">
+          <span className="direction-card-label">Visual direction</span>
+          <span className="direction-card-value">{brandType.visualLogic}</span>
+        </div>
+
+        <div className="direction-card">
+          <span className="direction-card-label">Voice direction</span>
+          <span className="direction-card-value">{brandType.communicationStyle}</span>
+        </div>
+
+        <div className="direction-card">
+          <span className="direction-card-label">Best for</span>
+          <span className="direction-card-value">{brandType.bestFor}</span>
+        </div>
+
+        <div className="direction-card">
+          <span className="direction-card-label">Avoid</span>
+          <ul className="direction-card-value direction-card-list">
+            {brandType.avoid.map(item => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="direction-card direction-card--featured">
+          <span className="direction-card-label">Next step</span>
+          <span className="direction-card-value">{brandType.nextStep}</span>
+        </div>
       </div>
     </div>
   );

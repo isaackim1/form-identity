@@ -70,6 +70,19 @@ describe("every BrandTypeDefinition", () => {
     }
   });
 
+  it("has unique taglines", () => {
+    const taglines = VALID_CODES.map(code => BRAND_TYPES[code].tagline.toLowerCase().trim());
+    expect(new Set(taglines).size).toBe(taglines.length);
+  });
+
+  it("has taglines that are 8 words or fewer", () => {
+    for (const code of VALID_CODES) {
+      const tagline = BRAND_TYPES[code].tagline.trim();
+      const wordCount = tagline.split(/\s+/).length;
+      expect(wordCount, `${code}: tagline "${tagline}" exceeds 8 words`).toBeLessThanOrEqual(8);
+    }
+  });
+
   it("has a non-empty essence", () => {
     for (const code of VALID_CODES) {
       expect(BRAND_TYPES[code].essence.length, `${code}: essence empty`).toBeGreaterThan(0);
@@ -94,9 +107,21 @@ describe("every BrandTypeDefinition", () => {
     }
   });
 
+  it("has a non-empty visualLogic", () => {
+    for (const code of VALID_CODES) {
+      expect(BRAND_TYPES[code].visualLogic.length, `${code}: visualLogic empty`).toBeGreaterThan(0);
+    }
+  });
+
   it("has a non-empty bestFor", () => {
     for (const code of VALID_CODES) {
       expect(BRAND_TYPES[code].bestFor.length, `${code}: bestFor empty`).toBeGreaterThan(0);
+    }
+  });
+
+  it("has a non-empty nextStep", () => {
+    for (const code of VALID_CODES) {
+      expect(BRAND_TYPES[code].nextStep.length, `${code}: nextStep empty`).toBeGreaterThan(0);
     }
   });
 

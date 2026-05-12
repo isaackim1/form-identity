@@ -3,7 +3,7 @@
     "name": "Form Identity Design System",
     "version": "1.0",
     "description": "Constraint-driven branding system. 16 Brand Types \u00d7 4 colour options = 64 pre-validated identities.",
-    "source_note": "This file (lib/form-identity-system.json) is the runtime source, validated by lib/schema.ts. The root web/form-identity-system.json is a reference copy. TypeScript data in components/BrandCard.tsx and lib/brand-direction.ts is the primary source for card names, lines, and brand direction copy.",
+    "source_note": "This file (lib/form-identity-system.json) is the runtime source, validated by lib/schema.ts. The root web/form-identity-system.json is a reference copy. TypeScript data in lib/brand-types.ts is the primary source for card names, lines, and brand direction copy.",
     "axes": {
       "E": {
         "name": "Expression",

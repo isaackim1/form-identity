@@ -9,7 +9,7 @@ import EmailCapture from "@/components/EmailCapture";
 import IndustrySelector from "@/components/IndustrySelector";
 import { decodeAnswers, scoreQuiz } from "@/lib/quiz-state";
 import { AXES, type StrengthLabel } from "@/lib/brand-type-engine";
-import { BRAND_DIRECTIONS } from "@/lib/brand-direction";
+import { getBrandType } from "@/lib/brand-types";
 import { BRAND_VISUAL_RECOMMENDATIONS } from "@/lib/brand-visual-recommendations";
 import { INDUSTRY_ASSETS, type IndustryValue } from "@/lib/industry-assets";
 import { getIndustryTypeNote } from "@/lib/industry-type-notes";
@@ -120,9 +120,9 @@ export default async function ResultPage({ params, searchParams }: Props) {
   const { answers: encodedAnswers, industry } = await searchParams;
 
   const type = getBrandTypeData(code);
-  if (!type) notFound();
+  const brandType = getBrandType(code);
+  if (!type || !brandType) notFound();
 
-  const direction = BRAND_DIRECTIONS[code];
   const visual    = BRAND_VISUAL_RECOMMENDATIONS[code];
   const industryKey    = industry as IndustryValue | undefined;
   const industryAssets = industryKey ? INDUSTRY_ASSETS[industryKey] : null;
@@ -186,12 +186,12 @@ export default async function ResultPage({ params, searchParams }: Props) {
             </div>
             <h1 className="reveal-type-name">{type.name}</h1>
 
-            {direction?.tagline && (
-              <p className="reveal-tagline-text">&ldquo;{direction.tagline}&rdquo;</p>
+            {brandType.tagline && (
+              <p className="reveal-tagline-text">&ldquo;{brandType.tagline}&rdquo;</p>
             )}
 
-            {direction?.energy && (
-              <p className="reveal-bridge">{direction.energy}</p>
+            {brandType.energy && (
+              <p className="reveal-bridge">{brandType.energy}</p>
             )}
 
           </div>
@@ -239,11 +239,9 @@ export default async function ResultPage({ params, searchParams }: Props) {
         )}
 
         {/* ── ACT 3 — BRAND BLUEPRINT ───────────────────────────── */}
-        {direction && (
-          <section className="report-section blueprint-section">
-            <BrandDirectionGrid direction={direction} typeColor={typeColor} />
-          </section>
-        )}
+        <section className="report-section blueprint-section">
+          <BrandDirectionGrid brandType={brandType} typeColor={typeColor} />
+        </section>
 
         {/* ── ACT 4 — DESIGN SYSTEM ─────────────────────────────── */}
         {visual && (

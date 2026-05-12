@@ -115,8 +115,8 @@ web/
 │   ├── ShareButton.tsx                  # Share options (copy, X, LinkedIn, email)
 │   └── EmailCapture.tsx                 # Email opt-in → saves to Supabase
 └── lib/
+    ├── brand-types.ts                   # Canonical Brand Type definitions and blueprint copy
     ├── brand-type-engine.ts             # Scoring logic, axis math, palette generation
-    ├── brand-direction.ts               # Brand Direction guidance for all 16 types
     ├── brand-visual-recommendations.ts  # Palette variants, font lists, image mood system
     ├── industry-assets.ts               # 18 industries, asset priority lists per industry
     ├── industry-type-notes.ts           # Axis-based type+industry strategy notes
