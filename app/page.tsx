@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BrandCard from "@/components/BrandCard";
+import BrandTypeCarousel from "@/components/BrandTypeCarousel";
 
 export default function Home() {
   return (
@@ -28,15 +28,6 @@ export default function Home() {
               </Link>
             </div>
           </div>
-
-          <aside className="landing-preview" aria-label="Example Brand Type result">
-            <div className="landing-card-preview">
-              <BrandCard code="IALD" index={13} />
-            </div>
-            <p className="landing-preview-caption">
-              Your result becomes a Brand Type, visual direction, colour system, typography logic, layout behaviour, image logic, and recommended assets.
-            </p>
-          </aside>
         </section>
 
         <div className="landing-philosophy">
@@ -46,6 +37,8 @@ export default function Home() {
             Most branding starts with aesthetics — a colour you like, a font that feels right. Form Identity starts earlier. The four-axis assessment maps how you actually work: how you show up, what you lead with, how you decide, how you build. The output is a starter brand direction system: Brand Type, colour system, typography direction, layout behaviour, image logic, and the first templates or assets worth building.
           </p>
         </div>
+
+        <BrandTypeCarousel />
       </main>
     </div>
   );

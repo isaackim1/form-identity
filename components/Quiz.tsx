@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { QUESTIONS, type Question } from "@/lib/questions";
 import { encodeAnswers, scoreQuiz, type Answers } from "@/lib/quiz-state";
 import { AXES } from "@/lib/brand-type-engine";
@@ -135,7 +136,12 @@ export default function Quiz() {
   return (
     <div className="quiz-root">
       <header className="quiz-top">
-        <div className="quiz-wordmark">FORM&nbsp;IDENTITY</div>
+        <div className="quiz-top-left">
+          <Link href="/" className="quiz-home-link">
+            ← Back to home
+          </Link>
+          <div className="quiz-wordmark">FORM&nbsp;IDENTITY</div>
+        </div>
         <div className="quiz-count">
           <span className="num">{String(step + 1).padStart(2, "0")}</span>
           <span className="sep">/</span>
