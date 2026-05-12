@@ -16,6 +16,22 @@ _Last updated: 2026-05-12_
 - [x] `RecommendedDesignSystem` component updated — shows palette variants, free/premium font groups, expanded image direction fields
 - [x] `lib/__tests__/visual-recommendations.test.ts` added — covers all 16 codes, hex validity, palette variants, font arrays, image mood fields
 
+## 0.4 Canonical Brand Type system (completed)
+
+- [x] `lib/brand-types.ts` created — single source of truth for all 16 Brand Type definitions
+- [x] `BrandTypeDefinition` interface covers 18 fields: code, name, tagline, essence, cardLine, personality, energy, communicationStyle, visualLogic, colorLogic, typographyLogic, layoutLogic, imageLogic, strengths, risks, avoid, bestFor, nextStep, neighboringTypes, distinctionNotes, color
+- [x] All 16 types defined with consolidated content from BrandCard, brand-direction, brand-visual-recommendations, type-layout-behaviors
+- [x] Helper functions: `getBrandType`, `getAllBrandTypes`, `isBrandTypeCode`
+- [x] `components/BrandCard.tsx` wired to canonical source — re-exports compatible `BRAND_TYPES` and `getBrandTypeData` shape for existing consumers
+- [x] `lib/__tests__/brand-types.test.ts` — covers all 16 codes, uniqueness, neighbor adjacency, specific type names, helper functions
+
+Still to do:
+- [ ] Gradually migrate lib/brand-direction.ts → canonical source (tagline, energy, voice, avoid, bestFor, nextStep)
+- [ ] Gradually migrate lib/brand-visual-recommendations.ts → canonical source (colorLogic, visualLogic, typographyLogic, imageLogic)
+- [ ] Gradually migrate lib/design-system/type-layout-behaviors.ts → canonical source (layoutLogic, personality)
+
+---
+
 ## 0.3 Industry recommendation system (completed)
 
 - [x] Industry list expanded — 6 new industries added: Real Estate / Property, Photography / Videography, Healthcare / Therapy, Legal / Finance, Beauty / Personal Care, Architecture / Interior

@@ -1,36 +1,43 @@
+// BrandCard reads name, cardLine, and color from the canonical lib/brand-types.ts.
+// BRAND_TYPES and getBrandTypeData are re-exported here in their original shape
+// so existing page imports (app/result/[code]/page.tsx, app/types/[code]/page.tsx) continue to work.
+
 import type { StrengthLabel } from "@/lib/brand-type-engine";
 import { AXES } from "@/lib/brand-type-engine";
+import {
+  BRAND_TYPES as CANONICAL_BRAND_TYPES,
+  getAllBrandTypes,
+  type BrandTypeCode,
+} from "@/lib/brand-types";
 
-// 16 brand types — canonical data from design bundle
-export const BRAND_TYPES = [
-  { code: "OCLD", name: "The Ambassador",   line: "Makes the case through delivery, not discussion.",               color: "#C8633A" },
-  { code: "OCRD", name: "The Connector",    line: "Builds the room where the right connections happen.",             color: "#D88A3F" },
-  { code: "OCLF", name: "The Maker",        line: "Hands moving, shipping forward, learning by doing.",             color: "#D9462A" },
-  { code: "OCRF", name: "The Host",         line: "Sets the table so no one sits alone.",                          color: "#C9304B" },
-  { code: "OALD", name: "The Strategist",   line: "Sees the field two moves before the others arrive.",             color: "#B8351F" },
-  { code: "OARD", name: "The Guide",        line: "Walks ahead of the people who chose to follow.",                 color: "#B85A2A" },
-  { code: "OALF", name: "The Catalyst",     line: "Provokes the change others have been waiting on.",               color: "#E2452F" },
-  { code: "OARF", name: "The Advocate",     line: "Carries the cause into rooms it had not reached.",               color: "#A82D3E" },
-  { code: "ICLD", name: "The Expert",       line: "Speaks once. Doesn't repeat itself. Does the work.",             color: "#282830" },
-  { code: "ICRD", name: "The Craftsperson", line: "Bespoke at every decision. The care is the work.",                         color: "#3E4A4F" },
-  { code: "ICLF", name: "The Artisan",      line: "Every experiment precise. Every output signed by the studio.",              color: "#5C5648" },
-  { code: "ICRF", name: "The Companion",    line: "One person at a time. No template. No broadcast.",                         color: "#6B5E4A" },
-  { code: "IALD", name: "The Philosopher",  line: "Finds the question that reframes everything else.",              color: "#2A3445" },
-  { code: "IARD", name: "The Counsellor",   line: "Stays until the person understands what they already knew.",     color: "#4A5A52" },
-  { code: "IALF", name: "The Visionary",    line: "Arrives with the thing already fully formed.",                   color: "#6E5A8C" },
-  { code: "IARF", name: "The Poet",         line: "Names the thing you felt but had no word for.",                  color: "#8C5A6E" },
-] as const;
+// ─── Re-exported compat shape ─────────────────────────────────────────────────
+// Downstream consumers use { code, name, line, color } — derived from canonical.
 
-export type BrandTypeCode = typeof BRAND_TYPES[number]["code"];
+export const BRAND_TYPES = getAllBrandTypes().map(t => ({
+  code:  t.code,
+  name:  t.name,
+  line:  t.cardLine,
+  color: t.color,
+})) as { code: BrandTypeCode; name: string; line: string; color: string }[];
+
+export type { BrandTypeCode };
 
 export function getBrandTypeData(code: string) {
-  return BRAND_TYPES.find(t => t.code === code) ?? null;
+  const canonical = CANONICAL_BRAND_TYPES[code as BrandTypeCode];
+  if (!canonical) return null;
+  return {
+    code:  canonical.code,
+    name:  canonical.name,
+    line:  canonical.cardLine,
+    color: canonical.color,
+  };
 }
+
+// ─── Internal helpers ─────────────────────────────────────────────────────────
 
 function getDisplayHost() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   if (!siteUrl) return "formidentity.com";
-
   try {
     return new URL(siteUrl).host;
   } catch {
@@ -82,6 +89,8 @@ function StatBar({ side, strength }: { side: "A" | "B"; strength: StrengthLabel 
 
   return <div className="stat-bar">{segs}</div>;
 }
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 interface BrandCardProps {
   code: string;
