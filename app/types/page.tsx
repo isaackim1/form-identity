@@ -14,10 +14,20 @@ export default function TypesPage() {
         <Link href="/" className="t-overline" style={{ color: "var(--stone)", textDecoration: "none", letterSpacing: "0.10em" }}>
           Form Identity
         </Link>
-        <span className="t-overline">16 Brand Types</span>
+        <Link href="/quiz" className="types-assessment-link">
+          Take the assessment →
+        </Link>
       </header>
 
       <main>
+        <section className="types-intro">
+          <p className="t-overline">16 Brand Types</p>
+          <h1 className="types-headline">A practical map for brand direction.</h1>
+          <p className="types-intro-copy">
+            Each Brand Type is formed from four axes: how you show up, what you lead with, how you decide, and how you work. Outward or Inward, Concrete or Conceptual, Logical or Relational, Defined or Fluid — together they shape the colour, typography, layout, and image logic a brand can build from.
+          </p>
+        </section>
+
         <div className="types-grid">
           {BRAND_TYPES.map((type, i) => (
             <Link
