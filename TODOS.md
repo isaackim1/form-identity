@@ -1,131 +1,97 @@
-# Form Identity — TODOS
+# Form Identity — Roadmap
 
 _Last updated: 2026-05-12_
 
 ---
 
-## 0.2 Visual recommendation system (completed)
+## Completed
 
-- [x] Visual recommendation schema refined — `lib/brand-visual-recommendations.ts` rewritten with `PaletteVariants`, `TypographyRecommendation`, `ImageDirection` structures
-- [x] Palette variants added — every type has a `default` and `alternate` palette; quietAccent or alternateAccent on every entry
-- [x] All 16 default accents are distinct — outward types no longer all red/orange; inward types no longer all grey/blue
-- [x] Free/premium font recommendations separated — `freeFonts` and `premiumFonts` arrays replace the flat `possibleFonts` list
-- [x] Typography weight and personality added — `typographyWeight` and `fontPersonality` fields per type
-- [x] Image mood system expanded — 8 moods (vivid, structured, quiet, intimate, night, tactile, editorial, communal) replace 3-value system
-- [x] `imageSubjects`, `imageTreatment`, `imageAvoid` added to every type
-- [x] `RecommendedDesignSystem` component updated — shows palette variants, free/premium font groups, expanded image direction fields
-- [x] `lib/__tests__/visual-recommendations.test.ts` added — covers all 16 codes, hex validity, palette variants, font arrays, image mood fields
-
-## 0.4 Canonical Brand Type system (completed)
-
-- [x] `lib/brand-types.ts` created — single source of truth for all 16 Brand Type definitions
-- [x] `BrandTypeDefinition` interface covers 18 fields: code, name, tagline, essence, cardLine, personality, energy, communicationStyle, visualLogic, colorLogic, typographyLogic, layoutLogic, imageLogic, strengths, risks, avoid, bestFor, nextStep, neighboringTypes, distinctionNotes, color
-- [x] All 16 types defined with consolidated content from BrandCard, brand-direction, brand-visual-recommendations, type-layout-behaviors
-- [x] Helper functions: `getBrandType`, `getAllBrandTypes`, `isBrandTypeCode`
-- [x] `components/BrandCard.tsx` wired to canonical source — re-exports compatible `BRAND_TYPES` and `getBrandTypeData` shape for existing consumers
-- [x] `lib/__tests__/brand-types.test.ts` — covers all 16 codes, uniqueness, neighbor adjacency, specific type names, helper functions
-
-Still to do:
-- [ ] Gradually migrate lib/brand-direction.ts → canonical source (tagline, energy, voice, avoid, bestFor, nextStep)
-- [ ] Gradually migrate lib/brand-visual-recommendations.ts → canonical source (colorLogic, visualLogic, typographyLogic, imageLogic)
-- [ ] Gradually migrate lib/design-system/type-layout-behaviors.ts → canonical source (layoutLogic, personality)
+- [x] Supabase backend groundwork — `/api/results`, `/api/capture`, `quiz_results`, and `email_captures` schema are in place
+- [x] Email capture to Supabase — result-page capture stores to `email_captures`
+- [x] Guided result report redesign — result page now follows Reveal → Interpretation → Brand Blueprint → Design System → Applications → Final Action
+- [x] Design-system recommendation model — `lib/design-system/` contains formats, archetypes, type layout behaviors, and template mapping
+- [x] Visual recommendation refinement — palette variants, typography guidance, and image direction are defined for all 16 types
+- [x] Industry recommendation enrichment — expanded industry list, type-aware strategy notes, and per-asset priority notes
+- [x] Canonical Brand Type system — `lib/brand-types.ts` defines all 16 types with helpers and test coverage
+- [x] Type detail page styling cleanup — old result classes restored and aligned with the current visual language
+- [x] Result sharing cleanup — full share controls live in the final action section only
+- [x] Result-specific not-found page — invalid result codes route to quiz and type-library recovery paths
 
 ---
 
-## 0.3 Industry recommendation system (completed)
+## Current Priorities
 
-- [x] Industry list expanded — 6 new industries added: Real Estate / Property, Photography / Videography, Healthcare / Therapy, Legal / Finance, Beauty / Personal Care, Architecture / Interior
-- [x] Industry/type recommendation notes added — `lib/industry-type-notes.ts` created with axis-based note system (4 axes × 2 poles per industry, covering all 16 types without writing 192 combinations manually)
-- [x] `getIndustryTypeNote(industryId, typeCode)` — returns 2-sentence personalised strategy note (expression + substance axes)
-- [x] `getRecommendedAssetStrategy(industryId, typeCode)` — returns fuller 3-sentence strategy (adds orientation axis)
-- [x] `getAssetPriorityNote(assetName, typeCode)` — returns short per-asset priority label shown in TemplatePreviewCard footer
-- [x] Strategy note shown above template groups in result page ("What to design first" section)
-- [x] TemplatePreviewCard updated — accepts `brandTypeCode` prop; shows per-asset priority note in card footer
-- [x] `lib/__tests__/industry-type-notes.test.ts` added — 27 tests covering axis extraction, note generation for all 16 types, new industries, fallbacks, and per-asset notes
-
-## 0.1 Result report polish (completed / still to do)
-
-- [x] Redesign result page as scroll-based reveal / report
-- [ ] Make Recommended Design System section full-width
-- [ ] Add interactive reveal for brand card
-- [ ] Interactive palette selection (default vs. alternate toggle)
-- [ ] Build richer template cards using `getTemplateRecommendation` (layout notes, grid behavior, content block list)
-- [ ] Connect saved quiz results to Supabase `result_slug`
-- [ ] Improve analytics / admin dashboard
+- [ ] Migrate duplicated Brand Type data into `lib/brand-types.ts` consumers without changing codes, names, scoring, or quiz behavior
+- [ ] Connect quiz completion to `/api/results` and persist `result_slug`
+- [ ] Replace query-param result URLs with clean `result_slug` URLs
+- [ ] Add analytics events for quiz completion, result distribution, industry selection, sharing, and email capture
+- [ ] Polish homepage and `/types` directory now that the result report is stronger
 
 ---
 
-## 0. Design system (completed)
+## Product
 
-- [x] Strengthen design-system data model — `lib/design-system/` folder added
-- [x] Concrete format specs — 21 formats in `lib/design-system/formats.ts` (A4, business card, Instagram, pitch deck, LinkedIn banner, menu, packaging, etc.)
-- [x] Layout archetypes — 12 archetypes in `lib/design-system/layout-archetypes.ts` (document, poster, social, presentation, card, banner, signature, packaging, website, merch, editorial, report)
-- [x] Brand type layout behaviors — all 16 type codes in `lib/design-system/type-layout-behaviors.ts` (density, hierarchy style, spacing, grid strictness, best archetypes, avoid patterns)
-- [x] Template mapping — `lib/design-system/template-mapping.ts` with `getFormatForAsset`, `getArchetypeForAsset`, `getTemplateRecommendation` helpers
-- [x] TemplatePreviewCard updated to show format name, archetype label, and density from new model
-
-## 0.1 Design system — still to do
-
-- [x] Redesign result page as scroll-based reveal / report
-- [ ] Make Recommended Design System section full-width
-- [ ] Add interactive reveal for brand card
-- [ ] Build richer template cards using `getTemplateRecommendation` (layout notes, grid behavior, content block list)
-- [ ] Connect saved quiz results to Supabase `result_slug`
-- [ ] Improve analytics / admin dashboard
+- [ ] Tighten homepage positioning around the current product: quiz → guided report → design recommendations
+- [ ] Improve `/types` directory browsing, scanning, and entry points back into the quiz
+- [ ] Build richer template cards using `getTemplateRecommendation` content blocks, layout notes, and grid behavior
+- [ ] Add optional interactive palette selection between default and alternate recommendations
+- [ ] Expand test coverage for result-page data completeness and recommendation availability
 
 ---
 
-## 1. Product
+## Brand Type System
 
-- [x] Connect email capture to a real backend — now stores to Supabase `email_captures` table
-- [x] Backend API groundwork — `/api/results` route added for saving quiz results
-- [ ] Connect quiz completion to `/api/results` — POST result when quiz finishes, store `result_slug`
-- [ ] Clean result URLs using `result_slug` — e.g. `/result/r_k8d3qz2a` instead of `/result/IALD?answers=...`
-- [ ] Persistent result URLs — result_slug stored server-side; slug-based lookup page not yet built
-- [x] Add "Lean A / Lean B" labels to quiz answer options in `components/Quiz.tsx` OPTIONS array
-
----
-
-## 2. Supabase setup (manual steps required)
-
-- [ ] Create a Supabase project at supabase.com
-- [ ] Run `supabase/schema.sql` in the Supabase SQL editor to create `quiz_results` and `email_captures` tables
-- [ ] Copy env vars from project Settings > API:
-  - `NEXT_PUBLIC_SUPABASE_URL`
-  - `SUPABASE_SERVICE_ROLE_KEY`
-- [ ] Add both env vars locally (`.env.local`) and on Vercel
-- [ ] Enable RLS on both tables after confirming service-role inserts work (see commented SQL in schema.sql)
+- [ ] Migrate `lib/brand-direction.ts` content into the canonical Brand Type source where fields overlap
+- [ ] Migrate `lib/brand-visual-recommendations.ts` duplicated logic into canonical fields where appropriate
+- [ ] Migrate `lib/design-system/type-layout-behaviors.ts` duplicated personality/layout notes into canonical fields where appropriate
+- [ ] Keep compatibility exports stable while pages and components move to `lib/brand-types.ts`
+- [ ] Add guard tests that prevent reintroducing old/invalid brand type codes or duplicate names
 
 ---
 
-## 3. Design
+## Design System
 
-- [ ] Fix card footer layout — remove `margin-bottom: auto` from `.card-stats` and add `flex-shrink: 0` to `.card-footer` in `app/globals.css`
-- [ ] Review color contrast for warm saturated types (OCLD `#C8633A`, OARD `#B85A2A`) against warm white (`#F5F2EA`) — run `validateColour()` from `lib/brand-type-engine.ts`
-- [ ] Decide on Figma plugin — `figma-plugin/` directory exists but intent is undefined. Archive, maintain, or integrate.
-
----
-
-## 4. Engineering
-
-- [ ] Analytics events — track quiz completions, result distribution, email capture rate
-- [ ] Admin dashboard — query Supabase for result and capture counts
-- [ ] Consolidate axis constants — `AXES`, `AXIS_POLES`, `AXIS_LABELS` are defined independently in several components. The canonical source is `lib/brand-type-engine.ts`; import from there everywhere.
-- [ ] Update `form-identity-system.json` scoring metadata — `meta.scoring.range / midpoint / max_distance` reflect 4 questions/axis, but the engine uses 6. Docs-only issue but misleading.
-- [ ] Expand test coverage — add edge case tests for `scoreAxis` with all-same-answer inputs, and test that all 16 types produce valid direction output from `brand-direction.ts`.
+- [ ] Make the Recommended Design System section feel more complete and spacious on the result page
+- [ ] Add richer layout examples for each recommended asset without turning previews into finished templates
+- [ ] Decide whether the existing Figma plugin should be archived, maintained, or integrated with the web system
+- [ ] Review warm saturated type colors against Warm White and document any usage restrictions
+- [ ] Curate remaining per-type color palette suggestions where schema exists but content is still thin
 
 ---
 
-## 5. Content
+## Result URLs / Backend
 
-- [ ] Curated color palette suggestions — need 15 more palettes (only ICLD has a curated option). Schema is ready in `lib/schema.ts`.
-- [ ] Font pairing recommendations per type — blocked on content. No per-type pairings exist yet.
-- [ ] Full quiz copy rewrite — add `aDefinitely` / `aLean` / `bLean` / `bDefinitely` variants to all 24 questions. Content sprint, not a code task.
+- [ ] POST completed quiz results to `/api/results`
+- [ ] Store and return `result_slug` on quiz completion
+- [ ] Add slug-based result lookup so `/result/[slug]` can load saved answers and industry context
+- [ ] Preserve current `/result/[code]` behavior for direct type browsing and invalid-code handling
+- [ ] Confirm Supabase RLS policy once service-role inserts are verified in production
 
 ---
 
-## 6. Business / Monetization
+## Analytics / Admin
 
-- [ ] Define the paid tier — what does a user get beyond the free quiz result? (PDF brand kit, saved results, color/font guidance?)
-- [ ] PDF brand kit — full brand output per type; requires design work
-- [ ] Auth / saved results — persistent result history for returning users
+- [ ] Track quiz starts, completions, abandoned step, result type, adjacent types, selected industry, shares, and email captures
+- [ ] Build a minimal admin dashboard for result counts, type distribution, capture rate, and industry demand
+- [ ] Add basic error visibility for Supabase insert failures and result-save failures
+- [ ] Use analytics to identify weak quiz questions and confusing result pathways
+
+---
+
+## UI Polish
+
+- [ ] Polish homepage and type directory rhythm, hierarchy, and calls to action
+- [ ] Review mobile spacing on the guided result report after the latest content additions
+- [ ] Improve card/footer resilience for long copy and narrow viewports
+- [ ] Add a lightweight result reveal interaction if it improves clarity without adding gimmick
+- [ ] Review copy consistency around "Brand Type", "Brand Direction", and "visual identity system"
+
+---
+
+## Business / Monetization
+
+- [ ] Define the paid tier around access, not extraction: what genuinely helps small businesses after the free result
+- [ ] Explore optional PDF/export flow for a shareable brand direction report
+- [ ] Decide whether saved result history requires auth or can remain slug-based for the first paid step
+- [ ] Price the first manual-service or assisted-output offer before expanding automation
+- [ ] Keep the guardrail active: who are we here to serve, and does this decision serve them?
