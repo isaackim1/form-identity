@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { buildSharedResultUrl } from "@/lib/result-url";
 
 interface ShareButtonProps {
   code: string;
   typeName: string;
   tagline: string;
+  resultSlug?: string;
 }
 
 function getSiteUrl(): string {
@@ -14,12 +16,12 @@ function getSiteUrl(): string {
   return "";
 }
 
-export default function ShareButton({ code, typeName, tagline }: ShareButtonProps) {
+export default function ShareButton({ code, typeName, tagline, resultSlug }: ShareButtonProps) {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "fallback">("idle");
   const [fallbackUrl, setFallbackUrl] = useState("");
 
   function getResultUrl() {
-    return `${getSiteUrl()}/result/${code}`;
+    return buildSharedResultUrl({ siteUrl: getSiteUrl(), code, resultSlug });
   }
 
   function handleCopyLink() {

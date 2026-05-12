@@ -7,12 +7,14 @@ import TemplatePreviewCard from "@/components/TemplatePreviewCard";
 import ShareButton from "@/components/ShareButton";
 import EmailCapture from "@/components/EmailCapture";
 import IndustrySelector from "@/components/IndustrySelector";
-import { decodeAnswers, scoreQuiz } from "@/lib/quiz-state";
-import { AXES, type StrengthLabel } from "@/lib/brand-type-engine";
+import { decodeAnswers, encodeAnswers, scoreQuiz, type Answers } from "@/lib/quiz-state";
+import { AXES, type ScoringResult, type StrengthLabel } from "@/lib/brand-type-engine";
 import { getBrandType } from "@/lib/brand-types";
 import { BRAND_VISUAL_RECOMMENDATIONS } from "@/lib/brand-visual-recommendations";
 import { INDUSTRY_ASSETS, type IndustryValue } from "@/lib/industry-assets";
 import { getIndustryTypeNote } from "@/lib/industry-type-notes";
+import { isSavedResultSlug } from "@/lib/result-slug";
+import { getSavedResultBySlug, type SavedResult } from "@/lib/results";
 import { notFound } from "next/navigation";
 
 // ─── Axis plain-language mapping ──────────────────────────────────────────────
@@ -88,10 +90,18 @@ const AXIS_POLE_SENTENCES: Record<
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
+async function getBrandCodeFromRouteParam(routeParam: string): Promise<string | null> {
+  if (!isSavedResultSlug(routeParam)) return routeParam;
+  const savedResult = await getSavedResultBySlug(routeParam);
+  return savedResult?.brand_type_code ?? null;
+}
+
 export async function generateMetadata(
   { params }: { params: Promise<{ code: string }> }
 ): Promise<Metadata> {
-  const { code } = await params;
+  const { code: routeParam } = await params;
+  const code = await getBrandCodeFromRouteParam(routeParam);
+  if (!code) return { title: "Form Identity" };
   const type = getBrandTypeData(code);
   if (!type) return { title: "Form Identity" };
   return {
@@ -108,6 +118,33 @@ const AXIS_LABELS: Record<string, { name: string; poleA: string; poleB: string }
   AXES.map(ax => [ax.id, { name: ax.name, poleA: ax.poleA, poleB: ax.poleB }])
 );
 
+function isAnswer(value: unknown): value is Answers[string] {
+  if (!value || typeof value !== "object") return false;
+  const candidate = value as Partial<Answers[string]>;
+  return (candidate.answer === "A" || candidate.answer === "B")
+    && (candidate.strength === "definitely" || candidate.strength === "lean");
+}
+
+function isSavedAnswers(value: unknown): value is Answers {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  return Object.values(value).every(isAnswer);
+}
+
+function isSavedAxisScores(value: unknown): value is ScoringResult["axes"] {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const candidate = value as Partial<Record<"E" | "S" | "O" | "T", unknown>>;
+  return (["E", "S", "O", "T"] as const).every(axis => {
+    const axisScore = candidate[axis] as Partial<ScoringResult["axes"][typeof axis]> | undefined;
+    return !!axisScore
+      && typeof axisScore.score === "number"
+      && typeof axisScore.direction === "string"
+      && typeof axisScore.code === "string"
+      && typeof axisScore.distance === "number"
+      && typeof axisScore.pct === "number"
+      && ["Slight", "Moderate", "Clear", "Strong"].includes(axisScore.strength ?? "");
+  });
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 interface Props {
@@ -116,8 +153,21 @@ interface Props {
 }
 
 export default async function ResultPage({ params, searchParams }: Props) {
-  const { code } = await params;
-  const { answers: encodedAnswers, industry, result_slug: resultSlug } = await searchParams;
+  const { code: routeParam } = await params;
+  const { answers: queryEncodedAnswers, industry: queryIndustry, result_slug: queryResultSlug } = await searchParams;
+
+  let savedResult: SavedResult | null = null;
+  if (isSavedResultSlug(routeParam)) {
+    savedResult = await getSavedResultBySlug(routeParam);
+    if (!savedResult) notFound();
+  }
+
+  const code = savedResult?.brand_type_code ?? routeParam;
+  const savedAnswers = savedResult && isSavedAnswers(savedResult.answers) ? savedResult.answers : null;
+  const savedAxisScores = savedResult && isSavedAxisScores(savedResult.axis_scores) ? savedResult.axis_scores : null;
+  const encodedAnswers = savedAnswers ? encodeAnswers(savedAnswers) : queryEncodedAnswers;
+  const industry = savedResult?.industry ?? queryIndustry;
+  const resultSlug = savedResult?.result_slug ?? queryResultSlug;
 
   const type = getBrandTypeData(code);
   const brandType = getBrandType(code);
@@ -131,7 +181,15 @@ export default async function ResultPage({ params, searchParams }: Props) {
   let strengths: StrengthLabel[] | undefined;
   let scoringResult: ReturnType<typeof scoreQuiz> | undefined;
 
-  if (encodedAnswers) {
+  if (savedAxisScores) {
+    scoringResult = { code, axes: savedAxisScores, adjacent: [] };
+    strengths = [
+      savedAxisScores.E.strength,
+      savedAxisScores.S.strength,
+      savedAxisScores.O.strength,
+      savedAxisScores.T.strength,
+    ];
+  } else if (encodedAnswers) {
     try {
       const answers = decodeAnswers(encodedAnswers);
       const result = scoreQuiz(answers);
@@ -333,7 +391,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
 
           <div className="final-actions">
             <EmailCapture code={code} answers={encodedAnswers} industry={industry} resultSlug={resultSlug} />
-            <ShareButton code={code} typeName={type.name} tagline={type.line} />
+            <ShareButton code={code} typeName={type.name} tagline={type.line} resultSlug={resultSlug} />
             <Link href="/types" className="final-explore-link">
               Explore all 16 brand types →
             </Link>

@@ -15,6 +15,7 @@ _Last updated: 2026-05-12_
 - [x] Canonical Brand Type system — `lib/brand-types.ts` defines all 16 types with helpers and test coverage
 - [x] Brand direction migration — result Brand Blueprint now reads canonical `lib/brand-types.ts` copy
 - [x] Quiz result persistence — completed quizzes POST to `/api/results` and append returned `result_slug`
+- [x] Saved result lookup — `/result/[slug]` loads saved answers and industry context
 - [x] Type detail page styling cleanup — old result classes restored and aligned with the current visual language
 - [x] Result sharing cleanup — full share controls live in the final action section only
 - [x] Result-specific not-found page — invalid result codes route to quiz and type-library recovery paths
@@ -63,7 +64,7 @@ _Last updated: 2026-05-12_
 
 - [x] POST completed quiz results to `/api/results`
 - [x] Store and return `result_slug` on quiz completion
-- [ ] Add slug-based result lookup so `/result/[slug]` can load saved answers and industry context
+- [x] Add slug-based result lookup so `/result/[slug]` can load saved answers and industry context
 - [ ] Preserve current `/result/[code]` behavior for direct type browsing and invalid-code handling
 - [ ] Confirm Supabase RLS policy once service-role inserts are verified in production
 

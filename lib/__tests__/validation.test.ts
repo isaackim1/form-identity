@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { resultCreationSchema, emailCaptureSchema } from "../validation";
-import { generateResultSlug } from "../result-slug";
+import { generateResultSlug, isSavedResultSlug } from "../result-slug";
 
 // ─── result slug ──────────────────────────────────────────────────────────────
 
@@ -16,6 +16,22 @@ describe("generateResultSlug", () => {
   it("produces unique slugs on successive calls", () => {
     const slugs = new Set(Array.from({ length: 100 }, generateResultSlug));
     expect(slugs.size).toBe(100);
+  });
+});
+
+describe("isSavedResultSlug", () => {
+  it("detects saved result slugs", () => {
+    expect(isSavedResultSlug("r_abc12345")).toBe(true);
+  });
+
+  it("does not treat brand type codes as saved result slugs", () => {
+    expect(isSavedResultSlug("IALD")).toBe(false);
+  });
+
+  it("rejects malformed slug-like values", () => {
+    expect(isSavedResultSlug("r_abc")).toBe(false);
+    expect(isSavedResultSlug("r_ABC12345")).toBe(false);
+    expect(isSavedResultSlug("x_abc12345")).toBe(false);
   });
 });
 
