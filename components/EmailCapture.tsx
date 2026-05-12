@@ -48,9 +48,9 @@ export default function EmailCapture({ code, answers, industry, resultSlug }: Em
   if (status === "success") {
     return (
       <div style={{ marginBottom: "32px" }}>
-        <p className="result-section-head" style={{ marginBottom: "12px" }}>Email me my result</p>
+        <p className="report-section-label" style={{ marginBottom: "12px" }}>Email me my result</p>
         <p className="email-capture-message">
-          Your Brand Direction has been saved. The next version will help you turn this type into a visual identity system.
+          Saved. Use this result as the starting point for your visual identity system.
         </p>
       </div>
     );
@@ -58,7 +58,7 @@ export default function EmailCapture({ code, answers, industry, resultSlug }: Em
 
   return (
     <div style={{ marginBottom: "32px" }}>
-      <p className="result-section-head" style={{ marginBottom: "12px" }}>Email me my result</p>
+      <p className="report-section-label" style={{ marginBottom: "12px" }}>Email me my result</p>
       <form className="email-capture-form" onSubmit={handleSubmit}>
         <input
           className="email-capture-input"

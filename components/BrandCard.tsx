@@ -27,6 +27,17 @@ export function getBrandTypeData(code: string) {
   return BRAND_TYPES.find(t => t.code === code) ?? null;
 }
 
+function getDisplayHost() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  if (!siteUrl) return "formidentity.com";
+
+  try {
+    return new URL(siteUrl).host;
+  } catch {
+    return siteUrl.replace(/^https?:\/\//, "").replace(/\/+$/, "") || "formidentity.com";
+  }
+}
+
 // Which letter maps to side A per axis position
 const AXIS_SIDES = [
   { A: "O", B: "I" },
@@ -130,7 +141,7 @@ export default function BrandCard({ code, strengths, index = 1, total = 16 }: Br
         </div>
 
         <div className="card-footer">
-          <span className="t-overline">formidentity.com</span>
+          <span className="t-overline">{getDisplayHost()}</span>
           <span className="t-overline mono-code">{type.code}</span>
         </div>
       </div>

@@ -1,6 +1,6 @@
 # Form Identity — TODOS
 
-_Last updated: 2026-05-11_
+_Last updated: 2026-05-12_
 
 ---
 
@@ -27,9 +27,9 @@ _Last updated: 2026-05-11_
 - [x] TemplatePreviewCard updated — accepts `brandTypeCode` prop; shows per-asset priority note in card footer
 - [x] `lib/__tests__/industry-type-notes.test.ts` added — 27 tests covering axis extraction, note generation for all 16 types, new industries, fallbacks, and per-asset notes
 
-## 0.1 Design system (still to do)
+## 0.1 Result report polish (completed / still to do)
 
-- [ ] Redesign result page as scroll-based reveal / report
+- [x] Redesign result page as scroll-based reveal / report
 - [ ] Make Recommended Design System section full-width
 - [ ] Add interactive reveal for brand card
 - [ ] Interactive palette selection (default vs. alternate toggle)
@@ -50,7 +50,7 @@ _Last updated: 2026-05-11_
 
 ## 0.1 Design system — still to do
 
-- [ ] Redesign result page as scroll-based reveal / report
+- [x] Redesign result page as scroll-based reveal / report
 - [ ] Make Recommended Design System section full-width
 - [ ] Add interactive reveal for brand card
 - [ ] Build richer template cards using `getTemplateRecommendation` (layout notes, grid behavior, content block list)
@@ -66,7 +66,7 @@ _Last updated: 2026-05-11_
 - [ ] Connect quiz completion to `/api/results` — POST result when quiz finishes, store `result_slug`
 - [ ] Clean result URLs using `result_slug` — e.g. `/result/r_k8d3qz2a` instead of `/result/IALD?answers=...`
 - [ ] Persistent result URLs — result_slug stored server-side; slug-based lookup page not yet built
-- [ ] Add "Lean A / Lean B" labels to quiz answer options in `components/Quiz.tsx` OPTIONS array (currently reads "Lean" for both)
+- [x] Add "Lean A / Lean B" labels to quiz answer options in `components/Quiz.tsx` OPTIONS array
 
 ---
 

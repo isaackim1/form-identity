@@ -46,7 +46,7 @@ export default function ShareButton({ code, typeName, tagline }: ShareButtonProp
 
   return (
     <div className="result-share">
-      <p className="result-section-head result-share-head">Share</p>
+      <p className="report-section-label result-share-head">Share</p>
       <div className="share-options">
         <button className="share-option" onClick={handleCopyLink} type="button">
           <span>Copy link</span>

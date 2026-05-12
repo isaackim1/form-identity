@@ -86,6 +86,8 @@ cp .env.example .env.local
 | Variable | Purpose |
 |----------|---------|
 | `NEXT_PUBLIC_SITE_URL` | Public base URL used for share links (e.g. `https://formidentity.com`) |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL (from Settings > API) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service-role key — server-side only, never expose to client |
 
 ---
 
@@ -94,22 +96,37 @@ cp .env.example .env.local
 ```
 web/
 ├── app/
-│   ├── page.tsx                  # Landing page
-│   ├── quiz/page.tsx             # Quiz (24 questions, 4-option answers)
-│   ├── result/[code]/page.tsx    # Result page — type card, axis breakdown, brand direction
-│   ├── types/page.tsx            # Gallery — all 16 types
-│   ├── types/[code]/page.tsx     # Individual type detail pages
-│   └── api/capture/route.ts     # Email capture endpoint
+│   ├── page.tsx                         # Landing page
+│   ├── quiz/page.tsx                    # Quiz (24 questions, 4-option answers)
+│   ├── result/[code]/page.tsx           # Result page — 6-act guided brand report
+│   ├── result/[code]/not-found.tsx      # Not-found handler for invalid type codes
+│   ├── types/page.tsx                   # Gallery — all 16 types
+│   ├── types/[code]/page.tsx            # Individual type detail pages
+│   └── api/
+│       ├── capture/route.ts             # Email capture → Supabase email_captures
+│       └── results/route.ts             # Save quiz results → Supabase quiz_results
 ├── components/
-│   ├── BrandCard.tsx             # Visual brand type card
-│   ├── Quiz.tsx                  # Interactive quiz component
-│   ├── ShareButton.tsx           # Share options (copy, X, LinkedIn, email)
-│   └── EmailCapture.tsx          # Email opt-in form
+│   ├── BrandCard.tsx                    # Visual brand type card with axis stat bars
+│   ├── BrandDirectionGrid.tsx           # Brand blueprint grid (voice, visual, positioning)
+│   ├── RecommendedDesignSystem.tsx      # Palette variants, fonts, image direction
+│   ├── TemplatePreviewCard.tsx          # Wireframe asset preview with format metadata
+│   ├── IndustrySelector.tsx             # Industry picker for applications section
+│   ├── Quiz.tsx                         # Interactive quiz component
+│   ├── ShareButton.tsx                  # Share options (copy, X, LinkedIn, email)
+│   └── EmailCapture.tsx                 # Email opt-in → saves to Supabase
 └── lib/
-    ├── brand-type-engine.ts      # Scoring logic, axis math, palette generation
-    ├── brand-direction.ts        # Brand Direction guidance for all 16 types
-    ├── quiz-state.ts             # Answer encoding/decoding, quiz progress
-    └── questions.ts              # 24 quiz questions (6 per axis)
+    ├── brand-type-engine.ts             # Scoring logic, axis math, palette generation
+    ├── brand-direction.ts               # Brand Direction guidance for all 16 types
+    ├── brand-visual-recommendations.ts  # Palette variants, font lists, image mood system
+    ├── industry-assets.ts               # 18 industries, asset priority lists per industry
+    ├── industry-type-notes.ts           # Axis-based type+industry strategy notes
+    ├── quiz-state.ts                    # Answer encoding/decoding, quiz progress
+    ├── questions.ts                     # 24 quiz questions (6 per axis)
+    └── design-system/
+        ├── formats.ts                   # 21 format specs (A4, pitch deck, Instagram, etc.)
+        ├── layout-archetypes.ts         # 12 layout archetypes
+        ├── type-layout-behaviors.ts     # Layout behavior per brand type
+        └── template-mapping.ts          # Asset → format/archetype helpers
 ```
 
 ---
@@ -118,30 +135,41 @@ web/
 
 The core product is built and working:
 
-- 24-question quiz with 4-option answers (Definitely A → Definitely B)
+- 24-question quiz with 4-option answers (Definitely A / Lean A / Lean B / Definitely B)
 - Scoring engine with strength thresholds (Slight / Moderate / Clear / Strong)
-- 16 brand type result cards with axis breakdowns
-- Brand Direction guidance per type (energy, visual, voice, what to avoid)
+- 16 brand type result cards with axis stat bars
+- 6-act scroll-based result report: Reveal → Interpretation → Brand Blueprint → Design System → Applications → Final Action
+- Plain-language axis readings per result (strength-aware sentences)
 - Adjacent type detection for borderline scores
+- Brand Direction guidance per type (energy, visual, voice, positioning, what to avoid)
+- Visual recommendations per type (palette variants, free/premium fonts, image mood system)
+- Industry recommendation system — 18 industries, asset priority lists, axis-aware strategy notes
+- Wireframe template preview cards with format metadata (density, archetype, layout)
 - Share links (copy, X/Twitter, LinkedIn, email)
-- Email capture (logs to console — backend integration pending)
+- Email capture stored to Supabase `email_captures` table
 - OG image generation per type
-- Static type gallery and individual type pages
+- Static type gallery and individual type detail pages
+
+---
+
+## Supabase setup
+
+Run `supabase/schema.sql` in the Supabase SQL editor to create the `quiz_results` and `email_captures` tables. Then add your env vars (see above).
 
 ---
 
 ## Roadmap
 
-**Next (v2.1):**
-- Connect email capture to a real backend (Resend, Loops, or ConvertKit)
-- Fix card footer layout bug (`.card-stats` margin)
-- Add "Lean A / Lean B" labels to quiz answer options
+**Next:**
+- Connect quiz completion to `/api/results` — POST result when quiz finishes, store `result_slug`
+- Clean result URLs using `result_slug` — e.g. `/result/r_k8d3qz2a` instead of query params
+- Persistent result URLs — slug-based lookup page
 
-**Later (v3):**
+**Later:**
 - Curated color palette suggestions per type
 - Font pairing recommendations
 - PDF brand kit download
-- Persistent result URLs with auth
+- Auth / saved results for returning users
 
 ---
 

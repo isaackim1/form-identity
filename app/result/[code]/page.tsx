@@ -194,9 +194,6 @@ export default async function ResultPage({ params, searchParams }: Props) {
               <p className="reveal-bridge">{direction.energy}</p>
             )}
 
-            <div className="reveal-share-row">
-              <ShareButton code={code} typeName={type.name} tagline={type.line} />
-            </div>
           </div>
         </section>
 
