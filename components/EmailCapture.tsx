@@ -50,7 +50,7 @@ export default function EmailCapture({ code, answers, industry, resultSlug }: Em
       <div style={{ marginBottom: "32px" }}>
         <p className="report-section-label" style={{ marginBottom: "12px" }}>Email me my result</p>
         <p className="email-capture-message">
-          Saved. Use this result as the starting point for your visual identity system.
+          Your Brand Direction has been saved. Use this result as the starting point for your visual identity system.
         </p>
       </div>
     );
