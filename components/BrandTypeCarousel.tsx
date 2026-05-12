@@ -19,12 +19,12 @@ export default function BrandTypeCarousel() {
   return (
     <section className="brand-carousel-section" aria-labelledby="brand-carousel-title">
       <div className="brand-carousel-intro">
-        <p className="t-overline">Brand Type preview</p>
+        <p className="t-overline">Product proof</p>
         <h2 id="brand-carousel-title" className="brand-carousel-title">
-          One result becomes a design system.
+          Your result becomes a system.
         </h2>
         <p className="brand-carousel-copy">
-          Browse the sixteen Brand Types. Each one carries its own visual direction, colour logic, typography behaviour, and first assets to build.
+          Each Brand Type becomes a visual direction: colour, typography, layout behaviour, image logic, and the first assets worth building.
         </p>
       </div>
 

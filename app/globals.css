@@ -559,16 +559,28 @@ h1, h2, h3, h4, p { margin: 0; }
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 72px 64px 0;
+  padding: 0 64px;
   max-width: 1180px;
   margin: 0 auto;
   width: 100%;
 }
 
-.landing-rule { border: 0; border-top: 1px solid var(--ink); margin: 0 0 64px; }
+.landing-rule {
+  border: 0;
+  border-top: 1px solid var(--ink);
+  width: min(100%, 720px);
+  margin: 0 auto 56px;
+}
 
-.landing-hero { max-width: 760px; }
+.landing-hero {
+  min-height: calc(100vh - 73px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 72px 0 64px;
+}
 
 .landing-kicker {
   color: var(--stone);
@@ -583,7 +595,7 @@ h1, h2, h3, h4, p { margin: 0; }
   letter-spacing: 0;
   color: var(--ink);
   max-width: 18ch;
-  margin: 0 0 32px;
+  margin: 0 auto 32px;
   text-wrap: balance;
 }
 
@@ -594,12 +606,13 @@ h1, h2, h3, h4, p { margin: 0; }
   line-height: 1.45;
   color: var(--charcoal);
   max-width: 560px;
-  margin: 0 0 40px;
+  margin: 0 auto 40px;
 }
 
 .landing-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 24px;
   flex-wrap: wrap;
 }
@@ -1804,7 +1817,7 @@ h1, h2, h3, h4, p { margin: 0; }
    =================================================== */
 
 .landing-philosophy {
-  padding: 64px 0;
+  padding: 72px 0 96px;
   max-width: 1180px;
   width: 100%;
 }
@@ -1830,7 +1843,7 @@ h1, h2, h3, h4, p { margin: 0; }
 
 .brand-carousel-section {
   width: 100%;
-  padding: 72px 0 96px;
+  padding: 72px 0 88px;
   border-top: 1px solid var(--parchment);
 }
 
@@ -2084,10 +2097,19 @@ h1, h2, h3, h4, p { margin: 0; }
   }
 
   .landing-top { padding: 20px 24px; }
-  .landing-main { padding: 40px 24px 0; }
+  .landing-main { padding: 0 24px; }
+  .landing-hero {
+    min-height: calc(100svh - 65px);
+    padding: 48px 0;
+  }
+  .landing-rule { margin-bottom: 40px; }
   .landing-headline { font-size: 40px; }
   .landing-intro { font-size: 18px; }
-  .landing-philosophy { padding: 48px 0; }
+  .landing-actions {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .landing-philosophy { padding: 48px 0 64px; }
   .brand-carousel-section { padding: 48px 0 64px; }
   .brand-carousel-intro {
     text-align: left;
