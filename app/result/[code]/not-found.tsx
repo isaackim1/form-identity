@@ -17,8 +17,8 @@ export default function ResultNotFound() {
       <main className="notfound-main">
         <hr className="landing-rule" />
         <p className="t-overline" style={{ color: "var(--stone)", marginBottom: "24px" }}>Brand type not found</p>
-        <h1 className="notfound-headline">{"That type code doesn't exist."}</h1>
-        <p className="notfound-sub">{"The link may be outdated, or the code may have been typed incorrectly. Take the quiz to find your real type."}</p>
+        <h1 className="notfound-headline">That brand type code does not exist.</h1>
+        <p className="notfound-sub">Start again from the quiz or browse the complete type library.</p>
         <div className="notfound-actions">
           <Link href="/quiz" className="landing-cta">
             Take the quiz →
