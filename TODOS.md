@@ -14,6 +14,7 @@ _Last updated: 2026-05-12_
 - [x] Industry recommendation enrichment — expanded industry list, type-aware strategy notes, and per-asset priority notes
 - [x] Canonical Brand Type system — `lib/brand-types.ts` defines all 16 types with helpers and test coverage
 - [x] Brand direction migration — result Brand Blueprint now reads canonical `lib/brand-types.ts` copy
+- [x] Quiz result persistence — completed quizzes POST to `/api/results` and append returned `result_slug`
 - [x] Type detail page styling cleanup — old result classes restored and aligned with the current visual language
 - [x] Result sharing cleanup — full share controls live in the final action section only
 - [x] Result-specific not-found page — invalid result codes route to quiz and type-library recovery paths
@@ -23,7 +24,6 @@ _Last updated: 2026-05-12_
 ## Current Priorities
 
 - [ ] Finish remaining Brand Type System migration tasks without changing codes, names, scoring, or quiz behavior
-- [ ] Connect quiz completion to `/api/results` and persist `result_slug`
 - [ ] Replace query-param result URLs with clean `result_slug` URLs
 - [ ] Add analytics events for quiz completion, result distribution, industry selection, sharing, and email capture
 - [ ] Polish homepage and `/types` directory now that the result report is stronger
@@ -61,8 +61,8 @@ _Last updated: 2026-05-12_
 
 ## Result URLs / Backend
 
-- [ ] POST completed quiz results to `/api/results`
-- [ ] Store and return `result_slug` on quiz completion
+- [x] POST completed quiz results to `/api/results`
+- [x] Store and return `result_slug` on quiz completion
 - [ ] Add slug-based result lookup so `/result/[slug]` can load saved answers and industry context
 - [ ] Preserve current `/result/[code]` behavior for direct type browsing and invalid-code handling
 - [ ] Confirm Supabase RLS policy once service-role inserts are verified in production

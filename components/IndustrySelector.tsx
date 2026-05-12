@@ -7,15 +7,17 @@ interface Props {
   code: string;
   answers?: string;
   current: string;
+  resultSlug?: string;
 }
 
-export default function IndustrySelector({ code, answers, current }: Props) {
+export default function IndustrySelector({ code, answers, current, resultSlug }: Props) {
   const router = useRouter();
 
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const params = new URLSearchParams();
     if (answers) params.set("answers", answers);
     if (e.target.value) params.set("industry", e.target.value);
+    if (resultSlug) params.set("result_slug", resultSlug);
     const qs = params.toString();
     router.push(`/result/${code}${qs ? `?${qs}` : ""}`, { scroll: false });
   }

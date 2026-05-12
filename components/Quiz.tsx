@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { QUESTIONS, type Question } from "@/lib/questions";
 import { encodeAnswers, scoreQuiz, type Answers } from "@/lib/quiz-state";
 import { AXES } from "@/lib/brand-type-engine";
+import { buildQuizResultSavePayload, buildResultUrl, saveQuizResult } from "@/lib/quiz-result-save";
 
 const AXIS_POLES: Record<string, { poleA: string; poleB: string }> = Object.fromEntries(
   AXES.map(ax => [ax.id, { poleA: ax.poleA, poleB: ax.poleB }])
@@ -37,6 +38,7 @@ export default function Quiz() {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
+  const [isCompleting, setIsCompleting] = useState(false);
 
   const total = QUESTIONS.length;
   const q: Question = QUESTIONS[step];
@@ -48,16 +50,28 @@ export default function Quiz() {
     setAnswers(prev => ({ ...prev, [q.id]: optionToAnswer(id) }));
   }, [q.id]);
 
-  const next = useCallback(() => {
+  const next = useCallback(async () => {
+    if (isCompleting) return;
+
     if (step < total - 1) {
       setStep(s => s + 1);
     } else {
       // complete — score and navigate to result
       const result = scoreQuiz(answers);
       const encoded = encodeAnswers(answers);
-      router.push(`/result/${result.code}?answers=${encoded}`);
+      setIsCompleting(true);
+
+      const savedResult = await saveQuizResult(
+        buildQuizResultSavePayload({ result, answers }),
+      );
+
+      router.push(buildResultUrl({
+        code: result.code,
+        encodedAnswers: encoded,
+        resultSlug: savedResult?.result_slug,
+      }));
     }
-  }, [step, total, answers, router]);
+  }, [step, total, answers, router, isCompleting]);
 
   const back = useCallback(() => {
     setStep(s => Math.max(0, s - 1));
@@ -120,8 +134,8 @@ export default function Quiz() {
         <button className="quiz-back" onClick={back} disabled={step === 0}>
           ← Back
         </button>
-        <button className="quiz-next" onClick={next} disabled={!canAdvance}>
-          {isLast ? "See result" : "Next"} →
+        <button className="quiz-next" onClick={next} disabled={!canAdvance || isCompleting}>
+          {isCompleting ? "Saving…" : isLast ? "See result" : "Next"} →
         </button>
       </footer>
     </div>

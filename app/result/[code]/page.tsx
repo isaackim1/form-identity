@@ -112,12 +112,12 @@ const AXIS_LABELS: Record<string, { name: string; poleA: string; poleB: string }
 
 interface Props {
   params: Promise<{ code: string }>;
-  searchParams: Promise<{ answers?: string; industry?: string }>;
+  searchParams: Promise<{ answers?: string; industry?: string; result_slug?: string }>;
 }
 
 export default async function ResultPage({ params, searchParams }: Props) {
   const { code } = await params;
-  const { answers: encodedAnswers, industry } = await searchParams;
+  const { answers: encodedAnswers, industry, result_slug: resultSlug } = await searchParams;
 
   const type = getBrandTypeData(code);
   const brandType = getBrandType(code);
@@ -262,6 +262,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
             code={code}
             answers={encodedAnswers}
             current={industry ?? ""}
+            resultSlug={resultSlug}
           />
 
           {industryAssets && (
@@ -331,7 +332,7 @@ export default async function ResultPage({ params, searchParams }: Props) {
           <span className="report-section-label">What next</span>
 
           <div className="final-actions">
-            <EmailCapture code={code} answers={encodedAnswers} industry={industry} />
+            <EmailCapture code={code} answers={encodedAnswers} industry={industry} resultSlug={resultSlug} />
             <ShareButton code={code} typeName={type.name} tagline={type.line} />
             <Link href="/types" className="final-explore-link">
               Explore all 16 brand types →
