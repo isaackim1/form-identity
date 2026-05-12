@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { QUESTIONS, type Question } from "@/lib/questions";
 import { encodeAnswers, scoreQuiz, type Answers } from "@/lib/quiz-state";
@@ -34,17 +34,33 @@ function answerToOptionId(a: { answer: "A" | "B"; strength: "definitely" | "lean
   return a.strength === "definitely" ? "BB" : "B";
 }
 
+function isTypingTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false;
+  const tag = target.tagName.toLowerCase();
+  return tag === "input" || tag === "textarea" || tag === "select" || target.isContentEditable;
+}
+
 export default function Quiz() {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [isCompleting, setIsCompleting] = useState(false);
+  const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const total = QUESTIONS.length;
   const q: Question = QUESTIONS[step];
   const poles = AXIS_POLES[q.axis];
   const currentAnswer = answers[q.id];
   const selectedId: OptionId | null = currentAnswer ? answerToOptionId(currentAnswer) : null;
+  const selectedIndex = selectedId ? OPTIONS.findIndex(opt => opt.id === selectedId) : -1;
+  const pct = ((step + 1) / total) * 100;
+  const isLast = step === total - 1;
+  const canAdvance = !!currentAnswer;
+  const questionLengthClass = q.scenario.length > 140
+    ? " quiz-scenario--very-long"
+    : q.scenario.length > 110
+      ? " quiz-scenario--long"
+      : "";
 
   const pick = useCallback((id: OptionId) => {
     setAnswers(prev => ({ ...prev, [q.id]: optionToAnswer(id) }));
@@ -77,9 +93,44 @@ export default function Quiz() {
     setStep(s => Math.max(0, s - 1));
   }, []);
 
-  const pct = ((step + 1) / total) * 100;
-  const isLast = step === total - 1;
-  const canAdvance = !!currentAnswer;
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (isTypingTarget(event.target) || isCompleting) return;
+
+      const numericIndex = ["1", "2", "3", "4"].indexOf(event.key);
+      if (numericIndex >= 0) {
+        event.preventDefault();
+        const option = OPTIONS[numericIndex];
+        pick(option.id);
+        optionRefs.current[numericIndex]?.focus();
+        return;
+      }
+
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        const focusedIndex = event.target instanceof HTMLElement
+          ? Number(event.target.dataset.optionIndex)
+          : NaN;
+        const baseIndex = Number.isInteger(focusedIndex) ? focusedIndex : selectedIndex;
+        if (baseIndex < 0) return;
+
+        event.preventDefault();
+        const delta = event.key === "ArrowLeft" ? -1 : 1;
+        const nextIndex = Math.min(OPTIONS.length - 1, Math.max(0, baseIndex + delta));
+        const option = OPTIONS[nextIndex];
+        pick(option.id);
+        optionRefs.current[nextIndex]?.focus();
+        return;
+      }
+
+      if (event.key === "Enter" && canAdvance) {
+        event.preventDefault();
+        void next();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [canAdvance, isCompleting, next, pick, selectedIndex]);
 
   return (
     <div className="quiz-root">
@@ -99,12 +150,13 @@ export default function Quiz() {
       <main className="quiz-main">
         <div className="quiz-axis-label">
           <span className="t-overline">Axis · {q.axis}</span>
+          <span className="t-overline quiz-keyboard-hint">Press 1–4 to choose</span>
           <span className="t-overline poles">
             {poles.poleA} <span className="dim">↔</span> {poles.poleB}
           </span>
         </div>
 
-        <h1 className="quiz-scenario">{q.scenario}</h1>
+        <h1 className={`quiz-scenario${questionLengthClass}`}>{q.scenario}</h1>
 
         <div className="quiz-options-head">
           <span className="t-overline">A · {poles.poleA}</span>
@@ -112,15 +164,21 @@ export default function Quiz() {
         </div>
 
         <div className="quiz-options">
-          {OPTIONS.map(opt => (
+          {OPTIONS.map((opt, index) => (
             <button
               key={opt.id}
+              ref={node => {
+                optionRefs.current[index] = node;
+              }}
               className={"quiz-opt" + (selectedId === opt.id ? " on" : "")}
               onClick={() => pick(opt.id)}
+              aria-pressed={selectedId === opt.id}
+              data-option-index={index}
             >
               <div className="opt-marker">
                 <span className="opt-side">{opt.side}</span>
                 <span className="opt-strength">{opt.label}</span>
+                <span className="opt-shortcut" aria-hidden="true">{index + 1}</span>
               </div>
               <div className="opt-body">
                 {opt.id === "AA" ? q.a : opt.id === "A" ? q.aLean : opt.id === "B" ? q.bLean : q.b}
