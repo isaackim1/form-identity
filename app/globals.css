@@ -1201,11 +1201,8 @@ h1, h2, h3, h4, p { margin: 0; }
   background: var(--warm-white);
 }
 
-.direction-card--featured {
+.direction-card--wide {
   grid-column: 1 / -1;
-  border-left: 3px solid var(--type-color, var(--charcoal));
-  padding-left: 17px;
-  background: var(--warm-white);
 }
 
 .direction-card-label {
@@ -1233,10 +1230,30 @@ h1, h2, h3, h4, p { margin: 0; }
   margin-top: 4px;
 }
 
-.direction-card--featured .direction-card-value {
+.next-step-callout {
+  border-left: 3px solid var(--type-color, var(--charcoal));
+  padding: 32px 0 32px 24px;
+  margin-top: 32px;
+}
+
+.next-step-callout .next-step-label {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.next-step-callout .next-step-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.4;
   color: var(--ink);
-  font-weight: 500;
-  font-size: 14px;
+  margin: 0;
 }
 
 /* ===================================================
@@ -1825,8 +1842,9 @@ h1, h2, h3, h4, p { margin: 0; }
     grid-template-columns: 1fr;
   }
 
-  .direction-card--featured {
-    grid-column: 1;
+  .next-step-callout {
+    padding: 24px 0 24px 18px;
+    margin-top: 24px;
   }
 
   .palette-swatches {

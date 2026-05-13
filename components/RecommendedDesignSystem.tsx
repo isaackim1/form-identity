@@ -327,16 +327,6 @@ export default function RecommendedDesignSystem({ visual, typeName, tagline }: P
           </div>
         </div>
       </div>
-
-      {/* E — Avoid design choices */}
-      <div className="sp-block">
-        <span className="sp-block-label">Design choices to avoid</span>
-        <div className="avoid-chips">
-          {visual.avoidDesignChoices.map((item, i) => (
-            <span key={i} className="avoid-chip">{item}</span>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

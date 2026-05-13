@@ -7,12 +7,12 @@ interface Props {
 
 export default function BrandDirectionGrid({ brandType, typeColor }: Props) {
   return (
-    <div className="direction-section">
+    <div
+      className="direction-section"
+      style={{ "--type-color": typeColor } as React.CSSProperties}
+    >
       <p className="result-section-head">Brand Blueprint</p>
-      <div
-        className="direction-grid"
-        style={{ "--type-color": typeColor } as React.CSSProperties}
-      >
+      <div className="direction-grid">
         <div className="direction-card">
           <span className="direction-card-label">Brand energy</span>
           <span className="direction-card-value">{brandType.energy}</span>
@@ -33,7 +33,7 @@ export default function BrandDirectionGrid({ brandType, typeColor }: Props) {
           <span className="direction-card-value">{brandType.bestFor}</span>
         </div>
 
-        <div className="direction-card">
+        <div className="direction-card direction-card--wide">
           <span className="direction-card-label">Avoid</span>
           <ul className="direction-card-value direction-card-list">
             {brandType.avoid.map(item => (
@@ -41,11 +41,11 @@ export default function BrandDirectionGrid({ brandType, typeColor }: Props) {
             ))}
           </ul>
         </div>
+      </div>
 
-        <div className="direction-card direction-card--featured">
-          <span className="direction-card-label">Next step</span>
-          <span className="direction-card-value">{brandType.nextStep}</span>
-        </div>
+      <div className="next-step-callout">
+        <span className="next-step-label">Next step</span>
+        <p className="next-step-text">{brandType.nextStep}</p>
       </div>
     </div>
   );
