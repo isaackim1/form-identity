@@ -26,6 +26,9 @@ export default function Home() {
               Browse all 16 types →
             </Link>
           </div>
+          <p className="landing-trust-line">
+            Free · No account required · Results in about 8 minutes
+          </p>
         </section>
 
         <BrandTypeCarousel />

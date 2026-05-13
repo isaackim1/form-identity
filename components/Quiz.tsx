@@ -43,6 +43,7 @@ function isTypingTarget(target: EventTarget | null): boolean {
 
 export default function Quiz() {
   const router = useRouter();
+  const [hasStarted, setHasStarted] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [isCompleting, setIsCompleting] = useState(false);
@@ -96,6 +97,7 @@ export default function Quiz() {
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
+      if (!hasStarted) return;
       if (isTypingTarget(event.target) || isCompleting) return;
 
       const numericIndex = ["1", "2", "3", "4"].indexOf(event.key);
@@ -131,7 +133,49 @@ export default function Quiz() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [canAdvance, isCompleting, next, pick, selectedIndex]);
+  }, [canAdvance, hasStarted, isCompleting, next, pick, selectedIndex]);
+
+  if (!hasStarted) {
+    return (
+      <div className="quiz-root quiz-root--intro">
+        <header className="quiz-top">
+          <div className="quiz-top-left">
+            <Link href="/" className="quiz-home-link">
+              ← Back to home
+            </Link>
+            <div className="quiz-wordmark">FORM&nbsp;IDENTITY</div>
+          </div>
+        </header>
+
+        <main className="quiz-intro-main">
+          <section className="quiz-intro-panel" aria-labelledby="quiz-intro-title">
+            <p className="t-overline quiz-intro-kicker">Brand assessment</p>
+            <h1 id="quiz-intro-title" className="quiz-intro-title">
+              Find the brand system your business is trying to become.
+            </h1>
+            <p className="quiz-intro-copy">
+              Answer 24 questions across four dimensions of how your business communicates. Your result becomes a Brand Type, visual direction, and a practical starting point for what to design first.
+            </p>
+            <p className="quiz-trust-line">
+              Free · No account required · Results in about 8 minutes
+            </p>
+            <div className="quiz-intro-actions">
+              <button
+                className="quiz-intro-start"
+                type="button"
+                onClick={() => setHasStarted(true)}
+              >
+                Start assessment
+              </button>
+              <Link href="/" className="quiz-intro-secondary">
+                Back to home
+              </Link>
+            </div>
+          </section>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="quiz-root">
