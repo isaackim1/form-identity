@@ -1100,6 +1100,23 @@ h1, h2, h3, h4, p { margin: 0; }
   border-bottom: 1px solid var(--parchment);
 }
 
+/* ─── Closing copy ─── */
+
+.closing-section {
+  border-top: 1px solid var(--parchment);
+}
+
+.closing-copy {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--charcoal);
+  max-width: 44ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+
 /* ─── Final action ─── */
 
 .final-actions {
@@ -1108,22 +1125,26 @@ h1, h2, h3, h4, p { margin: 0; }
   gap: 0;
 }
 
+.final-footer-link {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--parchment);
+  text-align: center;
+}
+
 .final-explore-link {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--stone);
+  color: var(--graphite-40);
   text-decoration: none;
-  border-bottom: 1px solid var(--parchment);
-  padding-bottom: 2px;
-  margin-top: 8px;
   transition: color var(--dur-1) var(--ease);
 }
 
-.final-explore-link:hover { color: var(--ink); }
+.final-explore-link:hover { color: var(--stone); }
 
 .result-section-head {
   font-family: var(--font-sans);

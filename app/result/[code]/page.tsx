@@ -404,15 +404,22 @@ export default async function ResultPage({ params, searchParams }: Props) {
           )}
         </section>
 
+        {/* ── CLOSING ───────────────────────────────────────────── */}
+        <section className="report-section closing-section">
+          <p className="closing-copy">
+            You have your type, your visual direction, and your first build list. The system is there. The only thing left is to start.
+          </p>
+        </section>
+
         {/* ── ACT 6 — FINAL ACTION ──────────────────────────────── */}
         <section className="report-section final-action-section">
-          <span className="report-section-label">What next</span>
-
           <div className="final-actions">
             <EmailCapture code={code} answers={encodedAnswers} industry={industry} resultSlug={resultSlug} />
             <ShareButton code={code} typeName={type.name} tagline={type.line} resultSlug={resultSlug} />
+          </div>
+          <div className="final-footer-link">
             <Link href="/types" className="final-explore-link">
-              Explore all 16 brand types →
+              Explore all 16 brand types
             </Link>
           </div>
         </section>
