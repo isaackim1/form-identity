@@ -411,6 +411,13 @@ export default async function ResultPage({ params, searchParams }: Props) {
               ? "You have your type, your visual direction, and your first build list. The system is there. The only thing left is to start."
               : "You have your type and your visual direction. The system is there. The only thing left is to start."}
           </p>
+          <a
+            href={`/api/brand-kit/${code}${industry ? `?industry=${encodeURIComponent(industry)}` : ""}`}
+            className="download-kit-btn"
+            download
+          >
+            Download Brand Kit
+          </a>
         </section>
 
         {/* ── ACT 6 — FINAL ACTION ──────────────────────────────── */}
