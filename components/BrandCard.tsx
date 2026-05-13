@@ -97,9 +97,10 @@ interface BrandCardProps {
   strengths?: StrengthLabel[];
   index?: number;
   total?: number;
+  showStats?: boolean;
 }
 
-export default function BrandCard({ code, strengths, index = 1, total = 16 }: BrandCardProps) {
+export default function BrandCard({ code, strengths, index = 1, total = 16, showStats = true }: BrandCardProps) {
   const type = getBrandTypeData(code);
   if (!type) return null;
 
@@ -127,27 +128,29 @@ export default function BrandCard({ code, strengths, index = 1, total = 16 }: Br
           <span className="quote">&ldquo;</span>{type.line}
         </p>
 
-        <div className="card-stats">
-          <div className="stats-head">
-            <span className="t-overline">Axis</span>
-            <span className="t-overline">Pole</span>
-            <span className="t-overline last">Reading</span>
-          </div>
-
-          {stats.map((s) => (
-            <div key={s.axis.id} className="stat-row">
-              <div className="stat-axis">
-                <span className="axis-letter">{s.axis.id}</span>
-                <span className="axis-name">{s.axis.name}</span>
-              </div>
-              <div className="stat-pole">
-                <span className="pole-name">{s.pole}</span>
-                <span className="pole-strength">{s.strength}</span>
-              </div>
-              <StatBar side={s.side as "A" | "B"} strength={s.strength} />
+        {showStats && (
+          <div className="card-stats">
+            <div className="stats-head">
+              <span className="t-overline">Axis</span>
+              <span className="t-overline">Pole</span>
+              <span className="t-overline last">Reading</span>
             </div>
-          ))}
-        </div>
+
+            {stats.map((s) => (
+              <div key={s.axis.id} className="stat-row">
+                <div className="stat-axis">
+                  <span className="axis-letter">{s.axis.id}</span>
+                  <span className="axis-name">{s.axis.name}</span>
+                </div>
+                <div className="stat-pole">
+                  <span className="pole-name">{s.pole}</span>
+                  <span className="pole-strength">{s.strength}</span>
+                </div>
+                <StatBar side={s.side as "A" | "B"} strength={s.strength} />
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="card-footer">
           <span className="t-overline">{getDisplayHost()}</span>

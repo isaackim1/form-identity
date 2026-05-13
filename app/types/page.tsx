@@ -39,6 +39,7 @@ export default function TypesPage() {
                 code={type.code}
                 index={i + 1}
                 total={BRAND_TYPES.length}
+                showStats={false}
               />
             </Link>
           ))}
