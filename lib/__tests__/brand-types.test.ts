@@ -181,6 +181,55 @@ describe("every BrandTypeDefinition", () => {
     }
   });
 
+  it("has a palette with four valid hex values", () => {
+    const hexRe = /^#[0-9A-Fa-f]{6}$/;
+    for (const code of VALID_CODES) {
+      const { palette } = BRAND_TYPES[code];
+      expect(palette, `${code}: palette missing`).toBeDefined();
+      expect(palette.primary, `${code}: palette.primary invalid`).toMatch(hexRe);
+      expect(palette.secondary, `${code}: palette.secondary invalid`).toMatch(hexRe);
+      expect(palette.light, `${code}: palette.light invalid`).toMatch(hexRe);
+      expect(palette.dark, `${code}: palette.dark invalid`).toMatch(hexRe);
+    }
+  });
+
+  it("has palette.primary matching the canonical color field", () => {
+    for (const code of VALID_CODES) {
+      expect(
+        BRAND_TYPES[code].palette.primary.toLowerCase(),
+        `${code}: palette.primary should match color`,
+      ).toBe(BRAND_TYPES[code].color.toLowerCase());
+    }
+  });
+
+  it("has a fontPairing with non-empty display and body fonts", () => {
+    for (const code of VALID_CODES) {
+      const { fontPairing } = BRAND_TYPES[code];
+      expect(fontPairing, `${code}: fontPairing missing`).toBeDefined();
+      expect(fontPairing.display.length, `${code}: fontPairing.display empty`).toBeGreaterThan(0);
+      expect(fontPairing.body.length, `${code}: fontPairing.body empty`).toBeGreaterThan(0);
+      expect(fontPairing.displayWeight, `${code}: fontPairing.displayWeight not a number`).toBeTypeOf("number");
+      expect(fontPairing.bodyWeight, `${code}: fontPairing.bodyWeight not a number`).toBeTypeOf("number");
+    }
+  });
+
+  it("has exactly 5 visualRules", () => {
+    for (const code of VALID_CODES) {
+      expect(
+        BRAND_TYPES[code].visualRules.length,
+        `${code}: visualRules must have exactly 5 entries`,
+      ).toBe(5);
+    }
+  });
+
+  it("has non-empty visualRules strings", () => {
+    for (const code of VALID_CODES) {
+      for (const [i, rule] of BRAND_TYPES[code].visualRules.entries()) {
+        expect(rule.length, `${code}: visualRules[${i}] is empty`).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it("has a non-empty distinctionNotes", () => {
     for (const code of VALID_CODES) {
       expect(BRAND_TYPES[code].distinctionNotes.length, `${code}: distinctionNotes empty`).toBeGreaterThan(0);

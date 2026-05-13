@@ -76,6 +76,25 @@ export interface BrandTypeDefinition {
   /** What to do next — a concrete action prompt */
   nextStep: string;
 
+  /** Four-colour palette: primary (brand accent), secondary, light (background), dark (text) */
+  palette: {
+    primary: string;
+    secondary: string;
+    light: string;
+    dark: string;
+  };
+
+  /** Canonical Google Fonts pairing for display and body use */
+  fontPairing: {
+    display: string;
+    displayWeight: number;
+    body: string;
+    bodyWeight: number;
+  };
+
+  /** Five concrete imperative visual rules for non-designers */
+  visualRules: string[];
+
   /** Four adjacent type codes (one axis flip each) */
   neighboringTypes: BrandTypeCode[];
 
@@ -126,6 +145,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Consulting, B2B services, professional advisory, policy work, high-stakes professional contexts.",
     nextStep: "Define your signature deliverable — the one thing you help clients achieve, stated precisely.",
+    palette: {
+      primary: "#C8633A",
+      secondary: "#2A3E52",
+      light: "#F6F3EE",
+      dark: "#1C1916",
+    },
+    fontPairing: {
+      display: "DM Serif Display",
+      displayWeight: 700,
+      body: "DM Sans",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Left-align all body copy; use centered alignment only for standalone pull quotes acting as page anchors.",
+      "Use your primary color for a single accent element per layout — a band, a rule, or a highlighted metric — never as decoration.",
+      "Maintain consistent column width across all documents; never vary the content column between sections.",
+      "Reserve bold weight exclusively for outcomes, deliverables, and key results — not for visual interest.",
+      "Limit your layout to three distinct type sizes per page; hierarchy must be legible at a glance without decoding.",
+    ],
     neighboringTypes: ["ICLD", "OALD", "OCRD", "OCLF"],
     distinctionNotes: "Differs from OALD (The Strategist) by being output-focused rather than framework-focused — delivers rather than sees. Differs from ICLD (The Expert) by being outward and presence-forward rather than quiet and internal. Differs from OCRD (The Connector) by leading with logic and structure rather than relationship.",
     color: "#C8633A",
@@ -165,6 +203,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Community building, professional networks, facilitation, events, platforms that connect people.",
     nextStep: "Name the community you are building — who belongs in it, and what they get from being there.",
+    palette: {
+      primary: "#D88A3F",
+      secondary: "#8B6E4A",
+      light: "#FBF6EE",
+      dark: "#1E1810",
+    },
+    fontPairing: {
+      display: "Fraunces",
+      displayWeight: 600,
+      body: "Nunito Sans",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Organise information in cards or contained units with consistent padding — not in tables or raw lists.",
+      "Address the reader directly in every headline; avoid brand-centric or third-person framing.",
+      "Apply your primary color as a warm fill in section headers or image containers, not only as a thin outline.",
+      "Maintain a minimum line height of 1.65 in all body copy; rushed text communicates the wrong warmth.",
+      "Use only two neutral tones alongside your accent — warmth is created by restraint, not variety.",
+    ],
     neighboringTypes: ["ICRD", "OARD", "OCLD", "OCRF"],
     distinctionNotes: "Differs from OCLD (The Ambassador) by leading with relationship rather than deliverable — The Connector brings people together, The Ambassador delivers outcomes. Differs from OARF (The Advocate) by organising around concrete professional connection rather than cause-driven mission.",
     color: "#D88A3F",
@@ -204,6 +261,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Product builders, creative studios, hands-on technical work, indie software, maker communities.",
     nextStep: "Show the thing you are building right now — process content is your most credible signal.",
+    palette: {
+      primary: "#D9462A",
+      secondary: "#4A3A30",
+      light: "#F4F2EE",
+      dark: "#151210",
+    },
+    fontPairing: {
+      display: "Space Grotesk",
+      displayWeight: 700,
+      body: "IBM Plex Sans",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Use a monospace font (IBM Plex Mono or equivalent) for process steps, version numbers, and technical labels — never for body copy.",
+      "Write headlines that name the action or stage, not the brand — 'What we shipped' not 'Our capabilities.'",
+      "Present work in sequence — numbered stages, timelines, and build comparisons are your primary layout structures.",
+      "Asymmetry is permitted when it carries momentum; always anchor it to an underlying grid.",
+      "Limit your accent color to one element per layout section; its energy should arrive once, not repeatedly.",
+    ],
     neighboringTypes: ["ICLF", "OALF", "OCRF", "OCLD"],
     distinctionNotes: "Differs from OALF (The Catalyst) by making concrete things rather than challenging ideas — the Maker ships, the Catalyst disrupts. Differs from ICLF (The Artisan) by being outward and publicly process-visible rather than studio-internal and authored.",
     color: "#D9462A",
@@ -243,6 +319,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Events, hospitality brands, community platforms, social enterprises, recurring gathering formats.",
     nextStep: "Identify your recurring gathering — the thing you put on that makes people feel welcome by design.",
+    palette: {
+      primary: "#C9304B",
+      secondary: "#F0A04B",
+      light: "#FEF6EE",
+      dark: "#1A1210",
+    },
+    fontPairing: {
+      display: "Playfair Display",
+      displayWeight: 700,
+      body: "Mulish",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Use imagery of people in genuine unposed moments — gatherings mid-conversation, tables set for arrival, not posed groups.",
+      "Frame every headline as an invitation to participate, not a description of what the event contains.",
+      "Apply rounded corners to cards and containers (4–8px); hard edges communicate the wrong environment.",
+      "Use your primary color as a large background fill in headers or hero sections, not only as a small accent element.",
+      "Never let any layout section feel administrative or gating — if it reads like a form, reconsider its structure.",
+    ],
     neighboringTypes: ["ICRF", "OARF", "OCLF", "OCRD"],
     distinctionNotes: "Differs from OCRD (The Connector) by designing for belonging and gathering rather than professional connection and networks. Differs from ICRF (The Companion) by working at gathering scale rather than one-to-one depth.",
     color: "#C9304B",
@@ -284,6 +379,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Strategy consulting, research firms, policy advisory, high-end B2B, complex problem-solving services.",
     nextStep: "Articulate your core framework — the one lens through which you see problems others miss.",
+    palette: {
+      primary: "#B8351F",
+      secondary: "#1E2D3E",
+      light: "#F4F2F0",
+      dark: "#131212",
+    },
+    fontPairing: {
+      display: "Barlow Condensed",
+      displayWeight: 700,
+      body: "Inter",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Diagrams, annotated models, and frameworks are first-class layout elements — give them the same hierarchy as headlines.",
+      "All vertical spacing must follow a consistent base unit (8px recommended); never space by eye.",
+      "Photography must carry informational weight — architectural, data-adjacent, or environmental only; no stock imagery.",
+      "Typography does all hierarchy work; never use color variation to signal importance levels.",
+      "Remove every element that does not carry information; decoration has no place in this system.",
+    ],
     neighboringTypes: ["IALD", "OCLD", "OARD", "OALF"],
     distinctionNotes: "Differs from OCLD (The Ambassador) by working in frameworks and second-order effects rather than deliverables — The Strategist sees, The Ambassador delivers. Differs from IALD (The Philosopher) by bringing the thinking outward and making it actionable, not dwelling in the question.",
     color: "#B8351F",
@@ -323,6 +437,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Coaching, mentorship programmes, advisory services, educational products, leadership development.",
     nextStep: "Define the transformation you lead people through — from where they start to where they land.",
+    palette: {
+      primary: "#B85A2A",
+      secondary: "#5C8A6A",
+      light: "#F5F1EA",
+      dark: "#1A1612",
+    },
+    fontPairing: {
+      display: "Libre Baskerville",
+      displayWeight: 700,
+      body: "Source Sans 3",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Use single-column layouts for main reading passages; introduce a second column only for structured asides or reference content.",
+      "Show sequence visibly — numbered steps, journey stages, and before/after sections are your primary structural elements.",
+      "Use imagery that captures transformation in progress, not only the polished end state.",
+      "Maintain a minimum line height of 1.65 and generous section spacing; breathing room signals patience.",
+      "Write headlines that guide, not instruct — avoid positioning that places you above or apart from the reader.",
+    ],
     neighboringTypes: ["IARD", "OCRD", "OALD", "OARF"],
     distinctionNotes: "Differs from OALD (The Strategist) by leading with relationship rather than framework — accompanies rather than analyses. Differs from IARD (The Counsellor) by being forward-moving and journey-led rather than still and held in patient space.",
     color: "#B85A2A",
@@ -362,6 +495,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Thought leadership, change management, activist brands, future-of-X positioning, systems-level work.",
     nextStep: "Identify the one thing you want to change — and say it in one sentence without hedging.",
+    palette: {
+      primary: "#E2452F",
+      secondary: "#0F0F0F",
+      light: "#F5F4F0",
+      dark: "#0D0D0D",
+    },
+    fontPairing: {
+      display: "Big Shoulders Display",
+      displayWeight: 800,
+      body: "Inter",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Type is your primary visual element — bold headlines carry the layout; do not subordinate them to imagery.",
+      "Maintain maximum contrast between all text and background; never place body copy on a colored field.",
+      "Use your secondary color for emphasis only — one element per section, never as a decorative fill or repeated signal.",
+      "Introduce asymmetry deliberately as a statement; every departure from expected alignment must be purposeful.",
+      "Each layout section must make one single, arguable point — remove hedging, qualification, and softening language.",
+    ],
     neighboringTypes: ["IALF", "OCLF", "OARF", "OALD"],
     distinctionNotes: "Differs from OALD (The Strategist) by being fluid and energetic rather than structured — provokes rather than frames. Differs from OARF (The Advocate) by being logic-driven rather than relationship-and-cause-driven. Differs from OCLF (The Maker) by challenging ideas rather than making concrete things.",
     color: "#E2452F",
@@ -401,6 +553,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Mission-led brands, nonprofits, advocacy organisations, community movements, social impact work.",
     nextStep: "Name the cause and the people it changes — both with enough specificity that someone can join.",
+    palette: {
+      primary: "#A82D3E",
+      secondary: "#3A5E42",
+      light: "#F4F2F0",
+      dark: "#14120F",
+    },
+    fontPairing: {
+      display: "Outfit",
+      displayWeight: 700,
+      body: "Work Sans",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Real faces at ground level are your primary visual element — never use abstract imagery where a human face could carry the message.",
+      "The cause occupies more visual space than your brand mark on every layout.",
+      "Use a minimum body text size of 16px and maintain high contrast on all backgrounds — accessible type is not optional.",
+      "Headlines name the community and the change, not the organization or its programs.",
+      "Never use exclusionary design signals — premium material treatments, aspirational photography, or gatekeeping visual language.",
+    ],
     neighboringTypes: ["IARF", "OCRF", "OALF", "OARD"],
     distinctionNotes: "Differs from OALF (The Catalyst) by centering community relationship over logical disruption — the Advocate builds collective, the Catalyst provokes. Differs from OCRF (The Host) by organising around cause and mission rather than gathering and belonging.",
     color: "#A82D3E",
@@ -442,6 +613,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Research-led work, technical consulting, academic brands, solo expert practices, niche deep expertise.",
     nextStep: "Publish one definitive piece of content — the thing you want to be found and known for.",
+    palette: {
+      primary: "#282830",
+      secondary: "#6E7A8A",
+      light: "#F2F4F6",
+      dark: "#111318",
+    },
+    fontPairing: {
+      display: "IBM Plex Serif",
+      displayWeight: 600,
+      body: "IBM Plex Sans",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Every element on the layout must justify its presence — if removing it does not reduce comprehension, remove it.",
+      "Whitespace is structure, not padding; wide margins communicate that the content does not need to fill the page.",
+      "Typography does all hierarchy work; never use color variation, icons, or decorative dividers to signal importance.",
+      "Left-align exclusively; centered text performs, and performance is not the mode of this system.",
+      "Your brand mark should appear at the smallest legible size — large logos signal insecurity, not authority.",
+    ],
     neighboringTypes: ["OCLD", "IALD", "ICRD", "ICLF"],
     distinctionNotes: "Differs from OCLD (The Ambassador) by being inward and restrained — the work speaks, not the person. Differs from IALD (The Philosopher) by being concrete and output-focused rather than conceptual and question-driven. Differs from ICRD (The Craftsperson) by being logical and structured rather than relational and craft-centred.",
     color: "#282830",
@@ -481,6 +671,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Craft studios, bespoke makers, furniture makers, artisanal food and beverage, handmade goods.",
     nextStep: "Document your process — the care that goes into making is what distinguishes you.",
+    palette: {
+      primary: "#3E4A4F",
+      secondary: "#C4A882",
+      light: "#F5F0E8",
+      dark: "#1A1814",
+    },
+    fontPairing: {
+      display: "Cormorant Garamond",
+      displayWeight: 600,
+      body: "Lato",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Photograph the process, not only the finished product — close-up materials, tools in use, hands working, seams and surfaces.",
+      "Use textured off-white backgrounds over stark white; material quality should extend to every surface.",
+      "Never use stock photography, gradient backgrounds, or digitally generated imagery — material honesty is non-negotiable.",
+      "Keep layouts simple enough that the craft work itself is the most visually complex element on the page.",
+      "Typography should feel deliberately chosen, not automatically applied — consistent spacing, never mechanically uniform.",
+    ],
     neighboringTypes: ["OCRD", "IARD", "ICLD", "ICRF"],
     distinctionNotes: "Differs from ICLF (The Artisan) by being relational and structured rather than logical and fluid — The Craftsperson makes for a specific person, The Artisan runs the studio experiment. Differs from ICRF (The Companion) by centring the craft object and process rather than the personal relationship as the primary output.",
     color: "#3E4A4F",
@@ -520,6 +729,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Creative research labs, experimental studios, applied art practices, design R&D, material exploration.",
     nextStep: "Define your medium — the specific material or method you have mastered above everything else.",
+    palette: {
+      primary: "#5C5648",
+      secondary: "#A8A090",
+      light: "#F3F1EC",
+      dark: "#1A1814",
+    },
+    fontPairing: {
+      display: "Epilogue",
+      displayWeight: 700,
+      body: "DM Sans",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Show your method as clearly as your result — process documentation, test states, and iteration artifacts are primary content.",
+      "Close material details and technical documentation take precedence over atmospheric or lifestyle imagery.",
+      "Asymmetry is permitted when it reflects the specific logic of the content — it must never be decorative randomness.",
+      "Each layout must have one clear entry point; experimental structure cannot sacrifice legibility.",
+      "Your type system should be precise and consistent; variation within the system is permitted, outside it is not.",
+    ],
     neighboringTypes: ["OCLF", "IALF", "ICRF", "ICLD"],
     distinctionNotes: "Differs from ICRD (The Craftsperson) by being logical and experimental rather than relational and defined — The Artisan runs the studio, The Craftsperson serves the client. Differs from OCLF (The Maker) by being studio-internal and authored rather than outward and publicly process-visible.",
     color: "#5C5648",
@@ -559,6 +787,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Therapists, coaches, personal service providers, bespoke consultants, one-to-one practices.",
     nextStep: "Write to one specific person — describe exactly who you help and how it feels to work with you.",
+    palette: {
+      primary: "#6B5E4A",
+      secondary: "#C8B8A0",
+      light: "#F6F3EE",
+      dark: "#1A1612",
+    },
+    fontPairing: {
+      display: "Lora",
+      displayWeight: 600,
+      body: "Mulish",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Address one person in every headline — write as if speaking to a specific individual, not a category or audience.",
+      "Constrain your line length to 55–65 characters maximum; wide text blocks break the intimacy of the system.",
+      "Never use crowd or group photography — one-on-one moments and quiet personal scenes only.",
+      "Apply your accent color once per layout as a quiet signal — never as a dominant fill or repeated element.",
+      "Resist filling space; empty areas on a layout communicate patience, not incompleteness.",
+    ],
     neighboringTypes: ["OCRF", "IARF", "ICLF", "ICRD"],
     distinctionNotes: "Differs from ICRD (The Craftsperson) by being fluid and relationship-first rather than defined and craft-first — the Companion adapts, the Craftsperson perfects. Differs from IARD (The Counsellor) by working in concrete personal service rather than conceptual held space. Differs from OCRF (The Host) by working at one-to-one depth rather than gathering scale.",
     color: "#6B5E4A",
@@ -600,6 +847,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Advisory brands, research-led projects, essays, educational products, strategic services.",
     nextStep: "Write the question you are trying to answer — your body of work is the pursuit of that question.",
+    palette: {
+      primary: "#2A3445",
+      secondary: "#7A6B5A",
+      light: "#F3F0EB",
+      dark: "#141010",
+    },
+    fontPairing: {
+      display: "EB Garamond",
+      displayWeight: 700,
+      body: "Source Serif 4",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Establish your typographic hierarchy before placing any other element — every layout decision follows from it.",
+      "Treat negative space as depth, not gap; generous whitespace signals intellectual confidence, not emptiness.",
+      "Photography should ask a question rather than answer one — libraries, symbolic objects, architectural geometry, directional light.",
+      "Use a maximum of two typeface weights across any single layout.",
+      "Never introduce a design element for visual variety; every element must carry meaning or be removed.",
+    ],
     neighboringTypes: ["OALD", "ICLD", "IARD", "IALF"],
     distinctionNotes: "Differs from IARD (The Counsellor) by being logical and structured rather than relational and patient — The Philosopher builds the argument, The Counsellor holds the space. Differs from OALD (The Strategist) by being inward and contemplative rather than outward and directive. Differs from ICLD (The Expert) by working in conceptual frameworks rather than concrete technical expertise.",
     color: "#2A3445",
@@ -639,6 +905,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Therapeutic practices, deep advisory, executive coaching, mentorship, grief and transition work.",
     nextStep: "Articulate what you help people see in themselves that they could not see before working with you.",
+    palette: {
+      primary: "#4A5A52",
+      secondary: "#C2B8A8",
+      light: "#F2F4F2",
+      dark: "#161A17",
+    },
+    fontPairing: {
+      display: "Spectral",
+      displayWeight: 600,
+      body: "Source Sans 3",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Single-column layouts with constrained line width (60 characters max) are the default — never sacrifice reading comfort for visual complexity.",
+      "Imagery must feel still and unhurried — quiet natural light, soft interiors, contemplative portraits, moments of pause.",
+      "Headlines name a quality of presence or a state of being, not a service or a deliverable.",
+      "Never use urgency signals — bold CTAs, countdown elements, or dense layouts that imply pressure are out of system.",
+      "Apply your accent color once per layout, gently — as a thin rule, a small filled element, or a quiet tint only.",
+    ],
     neighboringTypes: ["OARD", "ICRD", "IALD", "IARF"],
     distinctionNotes: "Differs from IALD (The Philosopher) by being relational and patient rather than logical and structured — The Counsellor holds, The Philosopher argues. Differs from OARD (The Guide) by being still and held rather than forward-moving and journey-led. Differs from ICRF (The Companion) by working in conceptual depth and held space rather than concrete personal service.",
     color: "#4A5A52",
@@ -678,6 +963,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Founders, conceptual designers, researchers with a POV, new category creation, idea-led practices.",
     nextStep: "Describe the world you are building toward — in concrete, specific terms, not abstract vision.",
+    palette: {
+      primary: "#6E5A8C",
+      secondary: "#9ABCCA",
+      light: "#F2F0F6",
+      dark: "#0E0C18",
+    },
+    fontPairing: {
+      display: "Syne",
+      displayWeight: 700,
+      body: "Jost",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Typography is your primary visual element — let bold display type occupy the space that photography or illustration would fill in another system.",
+      "Your grid must be internally present even when visually invisible; all asymmetry is controlled, never accidental.",
+      "Photography should document a possible future as if it already exists — abstract, forward-facing, non-literal imagery.",
+      "Remove any element that a generic brand could also use — every decision should be irreplaceable, not adaptable.",
+      "Each departure from expected alignment carries a specific meaning — never break convention for variety.",
+    ],
     neighboringTypes: ["OALF", "ICLF", "IARF", "IALD"],
     distinctionNotes: "Differs from IALD (The Philosopher) by being fluid and generative rather than structured and defined — The Visionary arrives, The Philosopher builds. Differs from OALF (The Catalyst) by being inward and concept-first rather than outward and declaration-first. Differs from IARF (The Poet) by being logical and singular rather than relational and lyrical.",
     color: "#6E5A8C",
@@ -717,6 +1021,25 @@ export const BRAND_TYPES: Record<BrandTypeCode, BrandTypeDefinition> = {
     ],
     bestFor: "Writers, brand voices, cultural commentators, identity-driven creative work, meaning-making practices.",
     nextStep: "Find the metaphor that defines your work — and build every piece of content from it.",
+    palette: {
+      primary: "#8C5A6E",
+      secondary: "#C4B0BC",
+      light: "#F6F2F4",
+      dark: "#1A1218",
+    },
+    fontPairing: {
+      display: "Cormorant Garamond",
+      displayWeight: 400,
+      body: "Lora",
+      bodyWeight: 400,
+    },
+    visualRules: [
+      "Italic type is a primary voice in this system, not emphasis — use it for expressions of feeling, story, and inner experience.",
+      "Whitespace is meaning — never fill a layout to its edges; content should breathe the way a poem breathes between stanzas.",
+      "Imagery should evoke a feeling before it describes a scene — soft focus, texture, natural light, and emotional weight over documentation.",
+      "Never use direct sales language, urgency-based signals, or call-to-action patterns that perform selling.",
+      "Leave space for the reader's own interpretation — a resonant layout is never fully closed.",
+    ],
     neighboringTypes: ["OARF", "ICRF", "IALF", "IARD"],
     distinctionNotes: "Differs from IALF (The Visionary) by being relational and lyrical rather than logical and singular — The Poet resonates, The Visionary arrives. Differs from IARD (The Counsellor) by working in resonance and expression rather than held space and patient insight. Differs from OARF (The Advocate) by being inward and personal rather than outward and cause-mobilising.",
     color: "#8C5A6E",
