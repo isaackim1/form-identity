@@ -151,11 +151,25 @@ export default function Quiz() {
           <section className="quiz-intro-panel" aria-labelledby="quiz-intro-title">
             <p className="t-overline quiz-intro-kicker">Brand assessment</p>
             <h1 id="quiz-intro-title" className="quiz-intro-title">
-              Find the brand system your business is trying to become.
+              Before the system, a short diagnosis.
             </h1>
             <p className="quiz-intro-copy">
-              Answer 24 questions across four dimensions of how your business communicates. Your result becomes a Brand Type, visual direction, and a practical starting point for what to design first.
+              Answer 24 questions about how your business communicates, makes decisions, and shows up visually.
             </p>
+            <ol className="quiz-intro-steps" aria-label="Assessment output">
+              <li>
+                <span className="quiz-intro-step-num">01</span>
+                <span>Four brand dimensions</span>
+              </li>
+              <li>
+                <span className="quiz-intro-step-num">02</span>
+                <span>One Brand Type</span>
+              </li>
+              <li>
+                <span className="quiz-intro-step-num">03</span>
+                <span>A visual direction and first asset roadmap</span>
+              </li>
+            </ol>
             <p className="quiz-trust-line">
               Free · No account required · Results in about 8 minutes
             </p>
