@@ -248,8 +248,8 @@ export default async function ResultPage({ params, searchParams }: Props) {
               <p className="reveal-tagline-text">&ldquo;{brandType.tagline}&rdquo;</p>
             )}
 
-            {brandType.energy && (
-              <p className="reveal-bridge">{brandType.energy}</p>
+            {brandType.essence && (
+              <p className="reveal-bridge">{brandType.essence}</p>
             )}
 
           </div>
