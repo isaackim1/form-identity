@@ -315,6 +315,9 @@ export default async function ResultPage({ params, searchParams }: Props) {
         {/* ── ACT 5 — APPLICATIONS ──────────────────────────────── */}
         <section className="report-section applications-section">
           <span className="report-section-label">What to design first</span>
+          <p className="applications-selector-prompt">
+            Select your industry to see which assets to build first.
+          </p>
 
           <IndustrySelector
             code={code}
@@ -322,6 +325,22 @@ export default async function ResultPage({ params, searchParams }: Props) {
             current={industry ?? ""}
             resultSlug={resultSlug}
           />
+
+          {!industryAssets && (
+            <div className="applications-empty-state" aria-live="polite">
+              <div className="applications-empty-copy">
+                <p className="applications-empty-title">Your asset roadmap will appear here.</p>
+                <p className="applications-empty-text">
+                  After you choose an industry, Form Identity will recommend the first templates and brand assets worth building for your business.
+                </p>
+              </div>
+              <div className="applications-empty-preview" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+          )}
 
           {industryAssets && (
             <div className="applications-templates">

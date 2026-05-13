@@ -1002,6 +1002,15 @@ h1, h2, h3, h4, p { margin: 0; }
 
 /* ─── Applications ─── */
 
+.applications-selector-prompt {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--charcoal);
+  margin: 16px 0 20px;
+  max-width: 520px;
+}
+
 .applications-templates {
   margin-top: 32px;
 }
@@ -1020,6 +1029,56 @@ h1, h2, h3, h4, p { margin: 0; }
   line-height: 1.65;
   color: var(--charcoal);
   margin: -12px 0 28px;
+}
+
+.applications-empty-state {
+  margin-top: 32px;
+  border: 1px solid var(--parchment);
+  border-radius: 2px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
+  gap: 32px;
+  align-items: center;
+  background: rgba(224, 219, 208, 0.18);
+}
+
+.applications-empty-title {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.applications-empty-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--stone);
+  margin: 0;
+  max-width: 46ch;
+}
+
+.applications-empty-preview {
+  display: grid;
+  gap: 8px;
+}
+
+.applications-empty-preview span {
+  display: block;
+  height: 44px;
+  border: 1px solid var(--parchment);
+  background: var(--warm-white);
+}
+
+.applications-empty-preview span:nth-child(2) {
+  opacity: 0.74;
+}
+
+.applications-empty-preview span:nth-child(3) {
+  opacity: 0.5;
 }
 
 .template-group {
@@ -1541,6 +1600,7 @@ h1, h2, h3, h4, p { margin: 0; }
   position: relative;
   display: inline-flex;
   align-items: center;
+  width: min(100%, 320px);
 }
 
 .industry-select {
@@ -1555,7 +1615,8 @@ h1, h2, h3, h4, p { margin: 0; }
   padding: 10px 40px 10px 14px;
   cursor: pointer;
   outline: none;
-  min-width: 240px;
+  width: 100%;
+  min-width: 0;
   transition: border-color var(--dur-1) var(--ease);
 }
 
@@ -1779,6 +1840,16 @@ h1, h2, h3, h4, p { margin: 0; }
 
   .template-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .applications-empty-state {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .applications-empty-preview span {
+    height: 36px;
   }
 }
 
