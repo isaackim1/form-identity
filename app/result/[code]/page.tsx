@@ -407,7 +407,9 @@ export default async function ResultPage({ params, searchParams }: Props) {
         {/* ── CLOSING ───────────────────────────────────────────── */}
         <section className="report-section closing-section">
           <p className="closing-copy">
-            You have your type, your visual direction, and your first build list. The system is there. The only thing left is to start.
+            {industryKey
+              ? "You have your type, your visual direction, and your first build list. The system is there. The only thing left is to start."
+              : "You have your type and your visual direction. The system is there. The only thing left is to start."}
           </p>
         </section>
 
