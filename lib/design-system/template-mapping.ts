@@ -1,6 +1,8 @@
 import { FORMAT_SPECS, type FormatSpec } from "./formats";
 import { LAYOUT_ARCHETYPES, type LayoutArchetype, type ArchetypeId } from "./layout-archetypes";
 import { TYPE_LAYOUT_BEHAVIORS, type TypeLayoutBehavior } from "./type-layout-behaviors";
+import { getStructuralProfile, type StructuralProfile } from "@/lib/structural-system/structural-profile";
+import { isBrandTypeCode } from "@/lib/brand-types";
 
 // ─── Asset → Format + Archetype mapping ──────────────────────────────────────
 
@@ -124,6 +126,25 @@ export interface CategorisedAsset {
   category: AssetCategory;
   recommendation: TemplateRecommendation;
 }
+
+// ─── Full template context (recommendation + structural profile) ──────────────
+
+export interface FullTemplateContext extends TemplateRecommendation {
+  structuralProfile: StructuralProfile | null;
+}
+
+export function getFullTemplateContext(
+  assetName: string,
+  brandTypeCode: string,
+): FullTemplateContext {
+  const recommendation = getTemplateRecommendation(assetName, brandTypeCode);
+  const structuralProfile = isBrandTypeCode(brandTypeCode)
+    ? getStructuralProfile(brandTypeCode)
+    : null;
+  return { ...recommendation, structuralProfile };
+}
+
+// ─── Batch helper for all assets in an industry ──────────────────────────────
 
 export function getRecommendationsForIndustry(
   assets: { primary: string[]; secondary: string[]; optional: string[] },
