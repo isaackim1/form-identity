@@ -418,6 +418,12 @@ export default async function ResultPage({ params, searchParams }: Props) {
           >
             Download Brand Kit
           </a>
+          <Link
+            href={`/brief/${code}`}
+            className="brief-kit-link"
+          >
+            Build an asset brief →
+          </Link>
         </section>
 
         {/* ── ACT 6 — FINAL ACTION ──────────────────────────────── */}
