@@ -15,5 +15,13 @@ export default async function BriefPage({ params }: { params: Promise<{ code: st
   if (!isBrandTypeCode(code)) notFound();
   const type = getBrandType(code);
   if (!type) notFound();
-  return <BriefClient code={code} typeName={type.name} typeColor={type.color} />;
+  return (
+    <BriefClient
+      code={code}
+      typeName={type.name}
+      typeColor={type.color}
+      palette={type.palette}
+      visualRules={type.visualRules}
+    />
+  );
 }

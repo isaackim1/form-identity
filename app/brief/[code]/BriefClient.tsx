@@ -4,11 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { ASSET_SPECS, assembleBuildBriefData, type AssetType } from "@/lib/brief/brief-data";
 import { buildAIPrompt, buildFreelancerBrief } from "@/lib/brief/brief-templates";
+import { LayoutBlueprint } from "@/components/blueprint/LayoutBlueprint";
+import type { BrandTypeCode } from "@/lib/brand-types";
 
 interface Props {
   code: string;
   typeName: string;
   typeColor: string;
+  palette: { primary: string; secondary: string; light: string; dark: string };
+  visualRules: string[];
 }
 
 async function copyText(text: string, setter: (v: boolean) => void) {
@@ -19,7 +23,7 @@ async function copyText(text: string, setter: (v: boolean) => void) {
   } catch {}
 }
 
-export default function BriefClient({ code, typeName }: Props) {
+export default function BriefClient({ code, typeName, palette, visualRules }: Props) {
   const [asset, setAsset] = useState<AssetType>("linkedin-banner");
   const [businessName, setBusinessName] = useState("");
   const [headline, setHeadline] = useState("");
@@ -215,6 +219,25 @@ export default function BriefClient({ code, typeName }: Props) {
             </button>
           </div>
         </section>
+
+        {/* Layout Reference — LinkedIn Banner only */}
+        {asset === "linkedin-banner" && (
+          <>
+            <div className="brief-divider" />
+            <section className="brief-section">
+              <span className="brief-section-label">04 — Layout Reference</span>
+              <p className="bp-intro">
+                This blueprint shows how your brand type structures space, hierarchy, and emphasis for this asset.
+              </p>
+              <LayoutBlueprint
+                code={code as BrandTypeCode}
+                asset={asset}
+                palette={palette}
+                visualRules={visualRules}
+              />
+            </section>
+          </>
+        )}
       </main>
     </div>
   );
