@@ -32,8 +32,8 @@ const CONFIGS: Record<BlueprintArchetype, ArchetypeLayoutConfig> = {
     familyName: "Structured Authority",
     accentBarPx: 3,
     zones: [
-      { id: "type",      label: "Primary Type Zone",  treatment: "type",      flex: 60 },
-      { id: "support",   label: "Supporting Zone",     treatment: "support",   flex: 40 },
+      { id: "type",      label: "Primary Type Zone",  treatment: "type",      flex: 65 },
+      { id: "support",   label: "Supporting Zone",     treatment: "support",   flex: 35 },
     ],
     gutterPct: 0,
     marginPct: 6,
@@ -46,8 +46,8 @@ const CONFIGS: Record<BlueprintArchetype, ArchetypeLayoutConfig> = {
     familyName: "Warm Module",
     accentBarPx: 2,
     zones: [
-      { id: "type",   label: "Weighted Type Zone",        treatment: "type",  flex: 58 },
-      { id: "image",  label: "Image Partner",             treatment: "image", flex: 42 },
+      { id: "type",   label: "Weighted Type Zone",        treatment: "type",  flex: 55 },
+      { id: "image",  label: "Image Partner",             treatment: "image", flex: 45 },
     ],
     gutterPct: 0,
     marginPct: 5,

@@ -2958,6 +2958,7 @@ h1, h2, h3, h4, p { margin: 0; }
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 1;
+  min-height: 140px;
   border: 1px solid var(--parchment);
   border-radius: 2px;
   overflow: hidden;

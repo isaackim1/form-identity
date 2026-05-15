@@ -1,3 +1,4 @@
+import React from "react";
 import type { ZoneDefinition, PaletteRole } from "@/lib/brief/layout-archetypes";
 
 type Palette = { primary: string; secondary: string; light: string; dark: string };
@@ -35,7 +36,34 @@ function isDark(role: PaletteRole): boolean {
   return role === "dark" || role === "primary";
 }
 
-export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact }: Props) {
+interface GridProps {
+  columns: number;
+  onDark: boolean;
+}
+
+function zoneGridStyle({ columns, onDark }: GridProps): React.CSSProperties {
+  const colPct = (100 / columns).toFixed(4);
+  const lineColor = onDark ? "rgba(255,255,255,0.10)" : "rgba(0,0,0,0.07)";
+  return {
+    backgroundImage: `repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent calc(${colPct}% - 1px),
+      ${lineColor} calc(${colPct}% - 1px),
+      ${lineColor} ${colPct}%
+    )`,
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    zIndex: 2,
+  };
+}
+
+interface ExtendedProps extends Props {
+  columns: number;
+}
+
+export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, columns }: ExtendedProps) {
   const bg = resolveBg(colorRole, palette);
   const onDark = isDark(colorRole);
   const barColor = onDark ? palette.light : palette.dark;
@@ -49,6 +77,7 @@ export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact }
       className={`bp-zone bp-zone--${zone.treatment}`}
       style={{ flex: zone.flex, backgroundColor: bg }}
     >
+      <div style={zoneGridStyle({ columns, onDark })} />
       <span className="bp-zone-label" style={{ color: labelColor }}>
         {zone.label}
       </span>
