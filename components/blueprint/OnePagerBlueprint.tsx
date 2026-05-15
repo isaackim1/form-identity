@@ -58,10 +58,15 @@ export function OnePagerBlueprint({ code, palette, visualRules }: Props) {
         )}
 
         <div className="bp-zones bp-zones--column">
-          {config.sections.map((section) => {
+          {config.sections.map((section, idx) => {
             const colorRole = config.sectionColors[section.id] ?? "light";
             const isMicro   = section.flex < 10;
             const isCompact = !isMicro && section.flex < 20;
+            // Show a hairline only where adjacent sections share the same color
+            // role — color contrast handles all other transitions
+            const next = config.sections[idx + 1];
+            const nextRole = next ? (config.sectionColors[next.id] ?? "light") : null;
+            const showDivider = nextRole !== null && colorRole === nextRole;
             return (
               <BlueprintZone
                 key={section.id}
@@ -71,6 +76,7 @@ export function OnePagerBlueprint({ code, palette, visualRules }: Props) {
                 marginPct={config.marginPct}
                 isCompact={isCompact}
                 isMicro={isMicro}
+                showDivider={showDivider}
                 columns={profile.columns}
               />
             );

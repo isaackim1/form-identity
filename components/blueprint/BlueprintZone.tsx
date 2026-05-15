@@ -67,9 +67,10 @@ function zoneGridStyle({ columns, onDark }: GridProps): React.CSSProperties {
 interface ExtendedProps extends Props {
   columns: number;
   isMicro?: boolean;
+  showDivider?: boolean;
 }
 
-export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, columns, isMicro }: ExtendedProps) {
+export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, columns, isMicro, showDivider }: ExtendedProps) {
   const bg = resolveBg(colorRole, palette);
   const onDark = isDark(colorRole);
   const barColor = onDark ? palette.light : palette.dark;
@@ -77,11 +78,16 @@ export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, 
 
   const innerPad = marginPct > 0 ? `${Math.max(marginPct, 4)}%` : "8%";
   const labelColor = onDark ? palette.light : palette.dark;
+  const dividerColor = onDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
 
   return (
     <div
       className={`bp-zone bp-zone--${zone.treatment}`}
-      style={{ flex: zone.flex, backgroundColor: bg }}
+      style={{
+        flex: zone.flex,
+        backgroundColor: bg,
+        borderBottom: showDivider ? `1px solid ${dividerColor}` : undefined,
+      }}
     >
       <div style={zoneGridStyle({ columns, onDark })} />
       <span className="bp-zone-label" style={{ color: labelColor }}>

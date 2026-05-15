@@ -2976,17 +2976,17 @@ h1, h2, h3, h4, p { margin: 0; }
   flex-direction: column;
 }
 
-/* Section dividers between portrait zones */
-.bp-zones.bp-zones--column .bp-zone {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-.bp-zones.bp-zones--column .bp-zone:last-child {
-  border-bottom: none;
-}
-
 /* Suppress landscape whitespace right-border inside portrait stack */
 .bp-zones.bp-zones--column .bp-zone--whitespace {
   border-right: none;
+}
+
+/* Top-anchor type bars in portrait zones so content feels page-like, not centered */
+.bp-zones.bp-zones--column .bp-zone {
+  justify-content: flex-start;
+}
+.bp-zones.bp-zones--column .bp-zone .bp-type-bars {
+  margin-top: 14px;
 }
 
 .bp-accent {
