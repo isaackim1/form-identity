@@ -45,6 +45,16 @@ export function LinkedInBannerBlueprint({ code, palette, visualRules }: Props) {
     { key: "dark",      label: "Dark"      },
   ] as const;
 
+  // Column grid: 1px hairlines at equal column intervals, derived from structural profile
+  const colPct = (100 / profile.columns).toFixed(4);
+  const gridGradient = `repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent calc(${colPct}% - 1px),
+    rgba(0,0,0,0.07) calc(${colPct}% - 1px),
+    rgba(0,0,0,0.07) ${colPct}%
+  )`;
+
   return (
     <div className="bp-root">
 
@@ -75,6 +85,18 @@ export function LinkedInBannerBlueprint({ code, palette, visualRules }: Props) {
             );
           })}
         </div>
+
+        {/* Column grid overlay — derived from structural profile, sits above zones */}
+        <div className="bp-grid-overlay" style={{ backgroundImage: gridGradient }} />
+      </div>
+
+      {/* ── Canvas caption ──────────────────────────────────────── */}
+      <div className="bp-canvas-caption">
+        <span>LinkedIn Banner</span>
+        <span className="bp-caption-sep">·</span>
+        <span>1584 × 396</span>
+        <span className="bp-caption-sep">·</span>
+        <span>Proportional structural diagram</span>
       </div>
 
       {/* ── Structural stats ────────────────────────────────────── */}

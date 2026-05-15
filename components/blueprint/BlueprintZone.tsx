@@ -42,12 +42,17 @@ export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact }
   const bars = isCompact ? COMPACT_BARS : FULL_BARS;
 
   const innerPad = marginPct > 0 ? `${Math.max(marginPct, 4)}%` : "8%";
+  const labelColor = onDark ? palette.light : palette.dark;
 
   return (
     <div
       className={`bp-zone bp-zone--${zone.treatment}`}
       style={{ flex: zone.flex, backgroundColor: bg }}
     >
+      <span className="bp-zone-label" style={{ color: labelColor }}>
+        {zone.label}
+      </span>
+
       {zone.treatment === "type" && (
         <div className="bp-type-bars" style={{ padding: `0 ${innerPad}` }}>
           {bars.map((bar, i) => (
@@ -65,13 +70,6 @@ export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact }
           ))}
         </div>
       )}
-
-      <span
-        className="bp-zone-label"
-        style={{ color: onDark ? palette.light : palette.dark }}
-      >
-        {zone.label}
-      </span>
     </div>
   );
 }

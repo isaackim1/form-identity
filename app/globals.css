@@ -2978,6 +2978,14 @@ h1, h2, h3, h4, p { margin: 0; }
   flex-direction: row;
 }
 
+/* Column grid overlay — positioned above zones via DOM order */
+.bp-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* Zone base */
 .bp-zone {
   position: relative;
@@ -3006,6 +3014,21 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 .bp-zone--whitespace:last-child { border-right: none; }
 
+/* Support zone — vertical stripe rhythm signals "structural column area, not image" */
+.bp-zone--support::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 11px,
+    rgba(0, 0, 0, 0.042) 11px,
+    rgba(0, 0, 0, 0.042) 12px
+  );
+  pointer-events: none;
+}
+
 /* Type bars */
 .bp-type-bars {
   display: flex;
@@ -3020,16 +3043,38 @@ h1, h2, h3, h4, p { margin: 0; }
 /* Zone label */
 .bp-zone-label {
   position: absolute;
-  bottom: 7px;
+  top: 8px;
   left: 10px;
   font-family: var(--font-sans);
-  font-size: 6.5px;
+  font-size: 8px;
   font-weight: 600;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.45;
+  opacity: 0.65;
   white-space: nowrap;
   pointer-events: none;
+  z-index: 3;
+}
+
+/* Canvas caption */
+.bp-canvas-caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.bp-canvas-caption span {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--stone);
+  opacity: 0.7;
+}
+
+.bp-caption-sep {
+  opacity: 0.35 !important;
 }
 
 /* Stats */

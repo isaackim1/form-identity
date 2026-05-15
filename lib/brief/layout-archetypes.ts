@@ -4,7 +4,7 @@ import type { StructuralFamilyId } from "@/lib/structural-system/structural-fami
 
 export type BlueprintArchetype = StructuralFamilyId;
 
-export type ZoneTreatment = "type" | "fill" | "image" | "whitespace";
+export type ZoneTreatment = "type" | "fill" | "image" | "whitespace" | "support";
 
 export type PaletteRole = "primary" | "secondary" | "light" | "dark" | "white";
 
@@ -33,7 +33,7 @@ const CONFIGS: Record<BlueprintArchetype, ArchetypeLayoutConfig> = {
     accentBarPx: 3,
     zones: [
       { id: "type",      label: "Primary Type Zone",  treatment: "type",      flex: 60 },
-      { id: "support",   label: "Supporting Zone",     treatment: "fill",      flex: 40 },
+      { id: "support",   label: "Supporting Zone",     treatment: "support",   flex: 40 },
     ],
     gutterPct: 0,
     marginPct: 6,
