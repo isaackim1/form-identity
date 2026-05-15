@@ -27,6 +27,11 @@ const COMPACT_BARS = [
   { h: 3, w: 74, mb: 0, op: 0.35 },
 ] as const;
 
+const MICRO_BARS = [
+  { h: 5, w: 50, mb: 3, op: 0.70 },
+  { h: 3, w: 35, mb: 0, op: 0.45 },
+] as const;
+
 function resolveBg(role: PaletteRole, palette: Palette): string {
   if (role === "white") return "#FFFFFF";
   return palette[role];
@@ -61,13 +66,14 @@ function zoneGridStyle({ columns, onDark }: GridProps): React.CSSProperties {
 
 interface ExtendedProps extends Props {
   columns: number;
+  isMicro?: boolean;
 }
 
-export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, columns }: ExtendedProps) {
+export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, columns, isMicro }: ExtendedProps) {
   const bg = resolveBg(colorRole, palette);
   const onDark = isDark(colorRole);
   const barColor = onDark ? palette.light : palette.dark;
-  const bars = isCompact ? COMPACT_BARS : FULL_BARS;
+  const bars = isMicro ? MICRO_BARS : isCompact ? COMPACT_BARS : FULL_BARS;
 
   const innerPad = marginPct > 0 ? `${Math.max(marginPct, 4)}%` : "8%";
   const labelColor = onDark ? palette.light : palette.dark;

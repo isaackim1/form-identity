@@ -2964,6 +2964,31 @@ h1, h2, h3, h4, p { margin: 0; }
   overflow: hidden;
 }
 
+/* Portrait (One-Pager) canvas modifier */
+.bp-canvas-wrap--portrait {
+  aspect-ratio: 210 / 297;
+  min-height: 300px;
+  max-width: 420px;
+}
+
+/* Portrait zone stack — double-class for specificity over .bp-zones */
+.bp-zones.bp-zones--column {
+  flex-direction: column;
+}
+
+/* Section dividers between portrait zones */
+.bp-zones.bp-zones--column .bp-zone {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.bp-zones.bp-zones--column .bp-zone:last-child {
+  border-bottom: none;
+}
+
+/* Suppress landscape whitespace right-border inside portrait stack */
+.bp-zones.bp-zones--column .bp-zone--whitespace {
+  border-right: none;
+}
+
 .bp-accent {
   position: absolute;
   top: 0;

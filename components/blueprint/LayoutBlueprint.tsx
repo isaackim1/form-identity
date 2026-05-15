@@ -1,6 +1,7 @@
 import type { BrandTypeCode } from "@/lib/brand-types";
 import type { AssetType } from "@/lib/brief/brief-data";
 import { LinkedInBannerBlueprint } from "./LinkedInBannerBlueprint";
+import { OnePagerBlueprint } from "./OnePagerBlueprint";
 
 type Palette = { primary: string; secondary: string; light: string; dark: string };
 
@@ -15,6 +16,15 @@ export function LayoutBlueprint({ code, asset, palette, visualRules }: Props) {
   if (asset === "linkedin-banner") {
     return (
       <LinkedInBannerBlueprint
+        code={code}
+        palette={palette}
+        visualRules={visualRules}
+      />
+    );
+  }
+  if (asset === "one-pager") {
+    return (
+      <OnePagerBlueprint
         code={code}
         palette={palette}
         visualRules={visualRules}
