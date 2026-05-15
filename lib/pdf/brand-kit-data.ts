@@ -1,11 +1,6 @@
 import { getBrandType, isBrandTypeCode } from "@/lib/brand-types";
 import { INDUSTRY_ASSETS, type IndustryValue } from "@/lib/industry-assets";
 
-const FALLBACK_ASSETS = [
-  "LinkedIn banner",
-  "A4 one-pager",
-  "Instagram post",
-];
 
 export interface BrandKitData {
   code: string;
@@ -25,9 +20,8 @@ export interface BrandKitData {
     bodyWeight: number;
   };
   visualRules: string[];
-  topAssets: string[];
+  topAssets: string[] | null;
   industryLabel: string | null;
-  nextStep: string;
 }
 
 export function assembleBrandKitData(
@@ -46,7 +40,7 @@ export function assembleBrandKitData(
 
   const topAssets = industryAssets
     ? industryAssets.primaryAssets.slice(0, 3)
-    : FALLBACK_ASSETS;
+    : null;
 
   return {
     code: type.code,
@@ -58,6 +52,5 @@ export function assembleBrandKitData(
     visualRules: type.visualRules,
     topAssets,
     industryLabel: industryAssets?.label ?? null,
-    nextStep: type.nextStep,
   };
 }

@@ -1,7 +1,7 @@
 import { Document, Page, View, Text, StyleSheet } from "@react-pdf/renderer";
 import type { BrandKitData } from "@/lib/pdf/brand-kit-data";
 
-// ─── Design tokens (mirrors web globals.css) ──────────────────────────────────
+// ─── Design tokens ────────────────────────────────────────────────────────────
 
 const C = {
   ink:       "#1A1A18",
@@ -12,8 +12,20 @@ const C = {
   white:     "#FFFFFF",
 };
 
-// A4 width in pts — used for full-bleed accent bar
 const A4_W = 595.28;
+
+// ─── Colour role usage notes ──────────────────────────────────────────────────
+
+const PALETTE_ROLES: Array<{
+  key: keyof BrandKitData["palette"];
+  label: string;
+  usage: string;
+}> = [
+  { key: "primary",   label: "Primary",   usage: "Buttons, CTAs, key accents" },
+  { key: "secondary", label: "Secondary", usage: "Supporting elements, subheadings" },
+  { key: "light",     label: "Light",     usage: "Backgrounds, cards, whitespace" },
+  { key: "dark",      label: "Dark",      usage: "Body text, headlines" },
+];
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
@@ -26,7 +38,6 @@ const s = StyleSheet.create({
     fontFamily: "Helvetica",
   },
 
-  // Full-bleed top accent bar (absolute, primary color set inline)
   accentBar: {
     position: "absolute",
     top: 0,
@@ -42,20 +53,20 @@ const s = StyleSheet.create({
     letterSpacing: 1.1,
     color: C.stone,
     textTransform: "uppercase",
-    marginBottom: 7,
+    marginBottom: 8,
   },
 
   divider: {
     borderBottomWidth: 0.75,
     borderBottomColor: C.parchment,
-    marginBottom: 16,
+    marginBottom: 18,
   },
 
   // ── Header ──────────────────────────────────────────────────────
   headerRow: {
     flexDirection: "row",
     alignItems: "flex-end",
-    marginBottom: 4,
+    marginBottom: 5,
   },
   typeName: {
     fontFamily: "Times-Roman",
@@ -73,6 +84,12 @@ const s = StyleSheet.create({
     fontFamily: "Times-Roman",
     fontSize: 10.5,
     color: C.charcoal,
+    marginBottom: 8,
+  },
+  howToUse: {
+    fontFamily: "Helvetica",
+    fontSize: 7.5,
+    color: C.stone,
     marginBottom: 18,
   },
 
@@ -106,9 +123,9 @@ const s = StyleSheet.create({
     flex: 1,
   },
   swatchRect: {
-    height: 22,
+    height: 28,
     borderRadius: 2,
-    marginBottom: 4,
+    marginBottom: 5,
   },
   swatchRole: {
     fontFamily: "Helvetica",
@@ -122,13 +139,20 @@ const s = StyleSheet.create({
     fontFamily: "Helvetica",
     fontSize: 7.5,
     color: C.charcoal,
+    marginBottom: 3,
+  },
+  swatchUsage: {
+    fontFamily: "Helvetica",
+    fontSize: 6,
+    color: C.stone,
+    lineHeight: 1.4,
   },
 
   // ── Typography ──────────────────────────────────────────────────
   fontRow: {
     flexDirection: "row",
     alignItems: "baseline",
-    marginBottom: 6,
+    marginBottom: 10,
     gap: 8,
   },
   fontRoleLabel: {
@@ -138,16 +162,46 @@ const s = StyleSheet.create({
     color: C.stone,
     width: 36,
   },
+  fontDetails: {
+    flex: 1,
+  },
   fontName: {
     fontFamily: "Helvetica-Bold",
     fontSize: 8.5,
     color: C.ink,
+    marginBottom: 2,
+  },
+  fontMeta: {
+    fontFamily: "Helvetica",
+    fontSize: 6.5,
+    color: C.stone,
+  },
+  fontScaleRow: {
+    flexDirection: "row",
+    marginTop: 6,
+    gap: 10,
+  },
+  fontScaleItem: {
     flex: 1,
   },
-  fontWeight: {
+  fontScaleLabel: {
+    fontFamily: "Helvetica",
+    fontSize: 5.5,
+    letterSpacing: 0.8,
+    color: C.stone,
+    textTransform: "uppercase",
+    marginBottom: 2,
+  },
+  fontScaleValue: {
     fontFamily: "Helvetica",
     fontSize: 7.5,
+    color: C.charcoal,
+  },
+  googleFontsNote: {
+    fontFamily: "Helvetica",
+    fontSize: 6.5,
     color: C.stone,
+    marginTop: 10,
   },
 
   // ── Visual Rules ─────────────────────────────────────────────────
@@ -156,7 +210,7 @@ const s = StyleSheet.create({
   },
   ruleRow: {
     flexDirection: "row",
-    marginBottom: 7,
+    marginBottom: 8,
     gap: 8,
   },
   ruleIndex: {
@@ -178,7 +232,7 @@ const s = StyleSheet.create({
   assetRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 6,
+    marginBottom: 7,
     gap: 7,
   },
   assetDot: {
@@ -197,15 +251,21 @@ const s = StyleSheet.create({
     fontFamily: "Helvetica",
     fontSize: 7,
     color: C.stone,
-    marginBottom: 7,
+    marginBottom: 9,
   },
 
-  // ── First Action ────────────────────────────────────────────────
-  nextStepText: {
-    fontFamily: "Times-Roman",
-    fontSize: 9.5,
+  // ── First Move ──────────────────────────────────────────────────
+  firstMoveBox: {
+    backgroundColor: C.warm,
+    borderRadius: 3,
+    padding: 12,
+    marginTop: 2,
+  },
+  firstMoveText: {
+    fontFamily: "Helvetica",
+    fontSize: 8.5,
     color: C.charcoal,
-    lineHeight: 1.55,
+    lineHeight: 1.6,
   },
 
   // ── Footer ──────────────────────────────────────────────────────
@@ -232,18 +292,24 @@ const s = StyleSheet.create({
   },
 });
 
-// ─── Palette role labels ──────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const PALETTE_ROLES: Array<{ key: keyof BrandKitData["palette"]; label: string }> = [
-  { key: "primary",   label: "Primary" },
-  { key: "secondary", label: "Secondary" },
-  { key: "light",     label: "Light" },
-  { key: "dark",      label: "Dark" },
-];
+function buildFirstMoveText(data: BrandKitData): string {
+  const { display, body } = data.fontPairing;
+  const primary = data.palette.primary;
+  return (
+    `Open Canva → Brand Kit. Paste your four hex codes as palette colours. ` +
+    `Set ${display} as your heading font and ${body} as your body font. ` +
+    `Your visual foundation is ready — build your first asset using ${primary} as the lead element.`
+  );
+}
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function BrandKitDocument({ data }: { data: BrandKitData }) {
+  const hasIndustry = data.topAssets !== null && data.topAssets.length > 0;
+  const firstMoveText = buildFirstMoveText(data);
+
   return (
     <Document
       title={`Brand Kit — ${data.name}`}
@@ -261,6 +327,9 @@ export function BrandKitDocument({ data }: { data: BrandKitData }) {
           <Text style={s.typeCode}>{data.code}</Text>
         </View>
         <Text style={s.tagline}>{data.tagline}</Text>
+        <Text style={s.howToUse}>
+          Share this document with a designer, or use it to set up your brand in Canva or Figma.
+        </Text>
         <View style={s.divider} />
 
         {/* ── ESSENCE ───────────────────────────────────────────── */}
@@ -277,11 +346,12 @@ export function BrandKitDocument({ data }: { data: BrandKitData }) {
           <View style={s.col}>
             <Text style={s.label}>Colour Palette</Text>
             <View style={s.swatchRow}>
-              {PALETTE_ROLES.map(({ key, label }) => (
+              {PALETTE_ROLES.map(({ key, label, usage }) => (
                 <View key={key} style={s.swatchWrap}>
                   <View style={[s.swatchRect, { backgroundColor: data.palette[key] }]} />
                   <Text style={s.swatchRole}>{label}</Text>
                   <Text style={s.swatchHex}>{data.palette[key]}</Text>
+                  <Text style={s.swatchUsage}>{usage}</Text>
                 </View>
               ))}
             </View>
@@ -290,16 +360,41 @@ export function BrandKitDocument({ data }: { data: BrandKitData }) {
           {/* Typography */}
           <View style={s.col}>
             <Text style={s.label}>Typography</Text>
+
             <View style={s.fontRow}>
               <Text style={s.fontRoleLabel}>Display</Text>
-              <Text style={s.fontName}>{data.fontPairing.display}</Text>
-              <Text style={s.fontWeight}>{data.fontPairing.displayWeight}</Text>
+              <View style={s.fontDetails}>
+                <Text style={s.fontName}>{data.fontPairing.display}</Text>
+                <Text style={s.fontMeta}>Weight {data.fontPairing.displayWeight} · Headings &amp; titles</Text>
+              </View>
             </View>
+
             <View style={s.fontRow}>
               <Text style={s.fontRoleLabel}>Body</Text>
-              <Text style={s.fontName}>{data.fontPairing.body}</Text>
-              <Text style={s.fontWeight}>{data.fontPairing.bodyWeight}</Text>
+              <View style={s.fontDetails}>
+                <Text style={s.fontName}>{data.fontPairing.body}</Text>
+                <Text style={s.fontMeta}>Weight {data.fontPairing.bodyWeight} · Paragraphs &amp; captions</Text>
+              </View>
             </View>
+
+            {/* Size scale */}
+            <View style={s.fontScaleRow}>
+              {[
+                { label: "H1", value: "32–48 pt" },
+                { label: "H2", value: "20–28 pt" },
+                { label: "Body", value: "9–11 pt" },
+                { label: "Caption", value: "7–8 pt" },
+              ].map(({ label, value }) => (
+                <View key={label} style={s.fontScaleItem}>
+                  <Text style={s.fontScaleLabel}>{label}</Text>
+                  <Text style={s.fontScaleValue}>{value}</Text>
+                </View>
+              ))}
+            </View>
+
+            <Text style={s.googleFontsNote}>
+              Both fonts are free at fonts.google.com
+            </Text>
           </View>
 
         </View>
@@ -317,36 +412,46 @@ export function BrandKitDocument({ data }: { data: BrandKitData }) {
         </View>
         <View style={s.divider} />
 
-        {/* ── BUILD FIRST + FIRST ACTION (two columns) ──────────── */}
-        <View style={s.twoCol}>
+        {/* ── BUILD FIRST + FIRST MOVE ──────────────────────────── */}
+        {hasIndustry ? (
+          <View style={s.twoCol}>
+            {/* Build First (industry-specific) */}
+            <View style={s.col}>
+              <Text style={s.label}>Build First</Text>
+              {data.industryLabel && (
+                <Text style={s.industryContext}>For {data.industryLabel}</Text>
+              )}
+              {data.topAssets!.map((asset, i) => (
+                <View key={i} style={s.assetRow}>
+                  <View style={[s.assetDot, { backgroundColor: data.palette.primary }]} />
+                  <Text style={s.assetName}>{asset}</Text>
+                </View>
+              ))}
+            </View>
 
-          {/* Top assets */}
-          <View style={s.col}>
-            <Text style={s.label}>Build First</Text>
-            {data.industryLabel && (
-              <Text style={s.industryContext}>For {data.industryLabel}</Text>
-            )}
-            {data.topAssets.map((asset, i) => (
-              <View key={i} style={s.assetRow}>
-                <View style={[s.assetDot, { backgroundColor: data.palette.primary }]} />
-                <Text style={s.assetName}>{asset}</Text>
+            {/* First Move */}
+            <View style={s.col}>
+              <Text style={s.label}>First Move</Text>
+              <View style={s.firstMoveBox}>
+                <Text style={s.firstMoveText}>{firstMoveText}</Text>
               </View>
-            ))}
+            </View>
           </View>
-
-          {/* First action */}
-          <View style={s.col}>
-            <Text style={s.label}>First Action</Text>
-            <Text style={s.nextStepText}>{data.nextStep}</Text>
+        ) : (
+          /* No industry — First Move full-width */
+          <View>
+            <Text style={s.label}>First Move</Text>
+            <View style={s.firstMoveBox}>
+              <Text style={s.firstMoveText}>{firstMoveText}</Text>
+            </View>
           </View>
-
-        </View>
+        )}
 
         {/* ── FOOTER ────────────────────────────────────────────── */}
         <View style={s.footer}>
           <View style={s.footerDivider} />
           <View style={s.footerRow}>
-            <Text style={s.footerText}>Form Identity — form-identity.com</Text>
+            <Text style={s.footerText}>Form Identity — form-identity.vercel.app</Text>
             <Text style={s.footerText}>Brand Type: {data.code}</Text>
           </View>
         </View>
