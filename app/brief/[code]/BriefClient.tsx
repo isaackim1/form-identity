@@ -220,8 +220,8 @@ export default function BriefClient({ code, typeName, palette, visualRules }: Pr
           </div>
         </section>
 
-        {/* Layout Reference — LinkedIn Banner and One-Pager */}
-        {(asset === "linkedin-banner" || asset === "one-pager") && (
+        {/* Layout Reference — all three assets */}
+        {(asset === "linkedin-banner" || asset === "one-pager" || asset === "email-signature") && (
           <>
             <div className="brief-divider" />
             <section className="brief-section">

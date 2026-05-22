@@ -251,3 +251,96 @@ export function getOnePagerLayoutConfig(code: BrandTypeCode): OnePagerLayoutConf
   const familyId = getBrandTypeFamily(code);
   return OP_CONFIGS[familyId];
 }
+
+// ─── Email Signature landscape configs ────────────────────────────────────────
+
+export interface EmailSignatureLayoutConfig {
+  archetype: BlueprintArchetype;
+  familyName: string;
+  accentBarPx: number;
+  zones: ZoneDefinition[];
+  marginPct: number;
+  columns: number;
+  zoneColors: Record<string, PaletteRole>;
+}
+
+const ES_CONFIGS: Record<BlueprintArchetype, EmailSignatureLayoutConfig> = {
+  // dark identity anchor | type content | support column — strict three-column authority
+  "structured-authority": {
+    archetype: "structured-authority",
+    familyName: "Structured Authority",
+    accentBarPx: 3,
+    marginPct: 6,
+    columns: 12,
+    zones: [
+      { id: "identity", label: "Identity Column",        treatment: "fill",    flex: 32 },
+      { id: "content",  label: "Name / Title / Contact", treatment: "type",    flex: 48 },
+      { id: "support",  label: "Support Column",         treatment: "support", flex: 20 },
+    ],
+    zoneColors: { identity: "dark", content: "light", support: "secondary" },
+  },
+
+  // warm accent | name/role | contained contact block — modular warmth
+  "warm-module": {
+    archetype: "warm-module",
+    familyName: "Warm Module",
+    accentBarPx: 2,
+    marginPct: 5,
+    columns: 12,
+    zones: [
+      { id: "brand",   label: "Brand Accent",   treatment: "fill",    flex: 24 },
+      { id: "name",    label: "Name / Role",    treatment: "type",    flex: 48 },
+      { id: "contact", label: "Contact Column", treatment: "support", flex: 28 },
+    ],
+    zoneColors: { brand: "secondary", name: "light", contact: "light" },
+  },
+
+  // primary fill block | dark contact stack — maximum contrast, minimal zones
+  "bold-impact": {
+    archetype: "bold-impact",
+    familyName: "Bold Impact",
+    accentBarPx: 0,
+    marginPct: 4,
+    columns: 6,
+    zones: [
+      { id: "hero",    label: "Identity Fill", treatment: "fill", flex: 52 },
+      { id: "contact", label: "Contact Stack", treatment: "type", flex: 48 },
+    ],
+    zoneColors: { hero: "primary", contact: "dark" },
+  },
+
+  // deep margin | constrained identity strip | deep margin — whitespace frames everything
+  "minimal-precision": {
+    archetype: "minimal-precision",
+    familyName: "Minimal Precision",
+    accentBarPx: 1,
+    marginPct: 0,
+    columns: 12,
+    zones: [
+      { id: "margin-l", label: "Margin",           treatment: "whitespace", flex: 18 },
+      { id: "content",  label: "Identity Column",  treatment: "type",       flex: 64 },
+      { id: "margin-r", label: "Margin",           treatment: "whitespace", flex: 18 },
+    ],
+    zoneColors: { "margin-l": "light", content: "white", "margin-r": "light" },
+  },
+
+  // thin editorial accent rule | name / title flow | generous editorial space
+  "intimate-editorial": {
+    archetype: "intimate-editorial",
+    familyName: "Intimate Editorial",
+    accentBarPx: 2,
+    marginPct: 5,
+    columns: 9,
+    zones: [
+      { id: "accent", label: "Editorial Accent", treatment: "fill",       flex: 8  },
+      { id: "name",   label: "Name / Title",     treatment: "type",       flex: 58 },
+      { id: "space",  label: "Editorial Space",  treatment: "whitespace", flex: 34 },
+    ],
+    zoneColors: { accent: "secondary", name: "light", space: "light" },
+  },
+};
+
+export function getEmailSignatureLayoutConfig(code: BrandTypeCode): EmailSignatureLayoutConfig {
+  const familyId = getBrandTypeFamily(code);
+  return ES_CONFIGS[familyId];
+}

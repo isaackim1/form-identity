@@ -2971,6 +2971,12 @@ h1, h2, h3, h4, p { margin: 0; }
   max-width: 420px;
 }
 
+/* Email Signature canvas modifier — 3:1 landscape */
+.bp-canvas-wrap--signature {
+  aspect-ratio: 3 / 1;
+  min-height: 100px;
+}
+
 /* Portrait zone stack — double-class for specificity over .bp-zones */
 .bp-zones.bp-zones--column {
   flex-direction: column;

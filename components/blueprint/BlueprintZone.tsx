@@ -68,9 +68,12 @@ interface ExtendedProps extends Props {
   columns: number;
   isMicro?: boolean;
   showDivider?: boolean;
+  /** Which edge carries the hairline divider. "bottom" for portrait stacks,
+   *  "right" for landscape rows. Defaults to "bottom". */
+  dividerSide?: "bottom" | "right";
 }
 
-export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, columns, isMicro, showDivider }: ExtendedProps) {
+export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, columns, isMicro, showDivider, dividerSide = "bottom" }: ExtendedProps) {
   const bg = resolveBg(colorRole, palette);
   const onDark = isDark(colorRole);
   const barColor = onDark ? palette.light : palette.dark;
@@ -79,6 +82,7 @@ export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, 
   const innerPad = marginPct > 0 ? `${Math.max(marginPct, 4)}%` : "8%";
   const labelColor = onDark ? palette.light : palette.dark;
   const dividerColor = onDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
+  const dividerBorder = showDivider ? `1px solid ${dividerColor}` : undefined;
 
   return (
     <div
@@ -86,7 +90,8 @@ export function BlueprintZone({ zone, palette, colorRole, marginPct, isCompact, 
       style={{
         flex: zone.flex,
         backgroundColor: bg,
-        borderBottom: showDivider ? `1px solid ${dividerColor}` : undefined,
+        borderBottom: dividerSide === "bottom" ? dividerBorder : undefined,
+        borderRight:  dividerSide === "right"  ? dividerBorder : undefined,
       }}
     >
       <div style={zoneGridStyle({ columns, onDark })} />
