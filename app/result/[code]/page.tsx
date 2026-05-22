@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BrandCard, { getBrandTypeData } from "@/components/BrandCard";
-import BrandDirectionGrid from "@/components/BrandDirectionGrid";
-import RecommendedDesignSystem from "@/components/RecommendedDesignSystem";
-import TemplatePreviewCard from "@/components/TemplatePreviewCard";
 import ShareButton from "@/components/ShareButton";
 import EmailCapture from "@/components/EmailCapture";
-import IndustrySelector from "@/components/IndustrySelector";
 import { decodeAnswers, encodeAnswers, scoreQuiz, type Answers } from "@/lib/quiz-state";
 import { AXES, type ScoringResult, type StrengthLabel } from "@/lib/brand-type-engine";
 import { getBrandType } from "@/lib/brand-types";
 import { BRAND_VISUAL_RECOMMENDATIONS } from "@/lib/brand-visual-recommendations";
-import { INDUSTRY_ASSETS, type IndustryValue } from "@/lib/industry-assets";
-import { getIndustryTypeNote } from "@/lib/industry-type-notes";
 import { isSavedResultSlug } from "@/lib/result-slug";
 import { getSavedResultBySlug, type SavedResult } from "@/lib/results";
 import { notFound } from "next/navigation";
@@ -118,6 +112,32 @@ const AXIS_LABELS: Record<string, { name: string; poleA: string; poleB: string }
   AXES.map(ax => [ax.id, { name: ax.name, poleA: ax.poleA, poleB: ax.poleB }])
 );
 
+const AXIS_CODE_SIDE: Record<"E" | "S" | "O" | "T", { A: string; B: string }> = {
+  E: { A: "O", B: "I" },
+  S: { A: "C", B: "A" },
+  O: { A: "L", B: "R" },
+  T: { A: "D", B: "F" },
+};
+
+const PALETTE_LABELS: Array<"primary" | "secondary" | "light" | "dark"> = [
+  "primary",
+  "secondary",
+  "light",
+  "dark",
+];
+
+function getAxisSide(axis: "E" | "S" | "O" | "T", code: string): "A" | "B" {
+  return code[["E", "S", "O", "T"].indexOf(axis)] === AXIS_CODE_SIDE[axis].A ? "A" : "B";
+}
+
+function isLightHex(hex: string): boolean {
+  const value = hex.replace("#", "");
+  const r = parseInt(value.slice(0, 2), 16);
+  const g = parseInt(value.slice(2, 4), 16);
+  const b = parseInt(value.slice(4, 6), 16);
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.58;
+}
+
 function isAnswer(value: unknown): value is Answers[string] {
   if (!value || typeof value !== "object") return false;
   const candidate = value as Partial<Answers[string]>;
@@ -174,9 +194,6 @@ export default async function ResultPage({ params, searchParams }: Props) {
   if (!type || !brandType) notFound();
 
   const visual    = BRAND_VISUAL_RECOMMENDATIONS[code];
-  const industryKey    = industry as IndustryValue | undefined;
-  const industryAssets = industryKey ? INDUSTRY_ASSETS[industryKey] : null;
-  const typeColor = type.color;
 
   let strengths: StrengthLabel[] | undefined;
   let scoringResult: ReturnType<typeof scoreQuiz> | undefined;
@@ -206,8 +223,6 @@ export default async function ResultPage({ params, searchParams }: Props) {
       // Malformed answers — still show result by code
     }
   }
-
-  const industryNote = industryKey ? getIndustryTypeNote(industryKey, code) : "";
 
   const index = [
     "OCLD","OCRD","OCLF","OCRF","OALD","OARD","OALF","OARF",
@@ -255,187 +270,137 @@ export default async function ResultPage({ params, searchParams }: Props) {
           </div>
         </section>
 
-        {/* ── ACT 2 — INTERPRETATION (only when answers decoded) ── */}
-        {scoringResult && (
-          <section className="report-section interpretation-section">
-            <span className="report-section-label">Reading your result</span>
+        {/* ── ACT 2 — YOUR READING ─────────────────────────────── */}
+        <section className="report-section interpretation-section">
+          <span className="report-section-label">Your Reading</span>
+          <p className="reading-summary">{brandType.energy}</p>
 
-            <div className="interp-axes">
-              {(["E", "S", "O", "T"] as const).map(axis => {
-                const axResult = scoringResult.axes[axis];
-                const axLabel  = AXIS_LABELS[axis];
-                const isA      = axResult.direction === axLabel.poleA;
-                const side     = isA ? "A" : "B";
-                const sentence = AXIS_POLE_SENTENCES[axis][side][axResult.strength];
-                return (
-                  <div key={axis} className="interp-axis-row">
-                    <div className="interp-axis-meta">
-                      <span className="interp-axis-label">{AXIS_HUMAN_LABELS[axis]}</span>
-                      <span className="interp-axis-pole">{axResult.direction}</span>
-                      <span className="interp-axis-strength">{axResult.strength}</span>
-                    </div>
-                    <p className="interp-axis-sentence">{sentence}</p>
+          <div className="interp-axes">
+            {(["E", "S", "O", "T"] as const).map(axis => {
+              const axLabel = AXIS_LABELS[axis];
+              const fallbackSide = getAxisSide(axis, code);
+              const axResult = scoringResult?.axes[axis];
+              const side = axResult
+                ? (axResult.direction === axLabel.poleA ? "A" : "B")
+                : fallbackSide;
+              const direction = axResult?.direction ?? (side === "A" ? axLabel.poleA : axLabel.poleB);
+              const strength = axResult?.strength;
+              const sentence = AXIS_POLE_SENTENCES[axis][side][strength ?? "Clear"];
+              return (
+                <div key={axis} className="interp-axis-row">
+                  <div className="interp-axis-meta">
+                    <span className="interp-axis-label">{AXIS_HUMAN_LABELS[axis]}</span>
+                    <span className="interp-axis-pole">{direction}</span>
+                    {strength && <span className="interp-axis-strength">{strength}</span>}
                   </div>
+                  <p className="interp-axis-sentence">{sentence}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {scoringResult && scoringResult.adjacent.length > 0 && (
+            <div className="interp-adjacent">
+              <span className="interp-adjacent-label">Closest types</span>
+              {scoringResult.adjacent.map(adj => {
+                const adjType = getBrandTypeData(adj.code);
+                return (
+                  <p key={adj.code} className="interp-adjacent-note">
+                    Your {AXIS_LABELS[adj.axis].name.toLowerCase()} axis reads {adj.strength.toLowerCase()}, so you sit close to <strong>{adjType?.name ?? adj.code}</strong>.
+                  </p>
                 );
               })}
             </div>
+          )}
+        </section>
 
-            {scoringResult.adjacent.length > 0 && (
-              <div className="interp-adjacent">
-                <span className="interp-adjacent-label">Closest types</span>
-                {scoringResult.adjacent.map(adj => {
-                  const adjType = getBrandTypeData(adj.code);
+        {/* ── ACT 3 — YOUR DIRECTION ───────────────────────────── */}
+        <section className="report-section result-direction-section">
+          <span className="report-section-label">Your Direction</span>
+          <p className="direction-lede">{brandType.visualLogic}</p>
+
+          <div className="result-direction-stack">
+            <div className="result-direction-block">
+              <span className="result-direction-label">Palette</span>
+              <div className="result-palette-grid">
+                {PALETTE_LABELS.map(label => {
+                  const hex = brandType.palette[label];
+                  const isLight = isLightHex(hex);
                   return (
-                    <p key={adj.code} className="interp-adjacent-note">
-                      Your {AXIS_LABELS[adj.axis].name.toLowerCase()} axis reads {adj.strength.toLowerCase()}, so you sit close to <strong>{adjType?.name ?? adj.code}</strong>.
-                    </p>
+                    <div
+                      key={label}
+                      className="result-palette-swatch"
+                      style={{
+                        background: hex,
+                        color: isLight ? "#1A1A18" : "#F5F2EA",
+                        borderColor: isLight ? "#E0DBD0" : hex,
+                      }}
+                    >
+                      <span>{label}</span>
+                      <strong>{hex}</strong>
+                    </div>
                   );
                 })}
               </div>
-            )}
-          </section>
-        )}
+            </div>
 
-        {/* ── ACT 3 — BRAND BLUEPRINT ───────────────────────────── */}
-        <section className="report-section blueprint-section">
-          <BrandDirectionGrid brandType={brandType} typeColor={typeColor} />
-        </section>
-
-        {/* ── ACT 4 — DESIGN SYSTEM ─────────────────────────────── */}
-        {visual && (
-          <section className="report-section design-system-section">
-            <RecommendedDesignSystem
-              visual={visual}
-              typeName={type.name}
-              tagline={type.line}
-            />
-          </section>
-        )}
-
-        {/* ── ACT 5 — APPLICATIONS ──────────────────────────────── */}
-        <section className="report-section applications-section">
-          <span className="report-section-label">What to design first</span>
-          <p className="applications-selector-prompt">
-            Select your industry to see which assets to build first.
-          </p>
-
-          <IndustrySelector
-            code={code}
-            answers={encodedAnswers}
-            current={industry ?? ""}
-            resultSlug={resultSlug}
-          />
-
-          {!industryAssets && (
-            <div className="applications-empty-state" aria-live="polite">
-              <div className="applications-empty-copy">
-                <p className="applications-empty-title">Your asset roadmap will appear here.</p>
-                <p className="applications-empty-text">
-                  After you choose an industry, Form Identity will recommend the first templates and brand assets worth building for your business.
-                </p>
+            <div className="result-direction-block result-type-pairing">
+              <span className="result-direction-label">Typography</span>
+              <div>
+                <p className="type-pairing-name">{brandType.fontPairing.display}</p>
+                <span className="type-pairing-role">Display</span>
               </div>
-              <div className="applications-empty-preview" aria-hidden="true">
-                <span />
-                <span />
-                <span />
+              <div>
+                <p className="type-pairing-name">{brandType.fontPairing.body}</p>
+                <span className="type-pairing-role">Body</span>
               </div>
             </div>
-          )}
 
-          {industryAssets && (
-            <div className="applications-templates">
-              <p className="applications-context">For {industryAssets.label}</p>
+            <div className="result-direction-block">
+              <span className="result-direction-label">Visual rules</span>
+              <ol className="result-rule-list">
+                {brandType.visualRules.slice(0, 5).map(rule => (
+                  <li key={rule}>{rule}</li>
+                ))}
+              </ol>
+            </div>
 
-              {industryNote && (
-                <p className="industry-type-note">{industryNote}</p>
-              )}
-
-              <div className="template-group">
-                <span className="template-group-label">Primary</span>
-                <div className="template-grid">
-                  {industryAssets.primaryAssets.map((asset, i) => (
-                    <TemplatePreviewCard
-                      key={`p-${i}`}
-                      assetName={asset}
-                      category="primary"
-                      index={i + 1}
-                      typeColor={typeColor}
-                      brandTypeCode={code}
-                    />
+            <div className="result-direction-block image-direction-grid">
+              <div>
+                <span className="result-direction-label">What to shoot</span>
+                <ul className="result-plain-list">
+                  {(visual?.image.imageSubjects ?? [brandType.imageLogic]).slice(0, 4).map(item => (
+                    <li key={item}>{item}</li>
                   ))}
-                </div>
+                </ul>
               </div>
-
-              {industryAssets.secondaryAssets.length > 0 && (
-                <div className="template-group">
-                  <span className="template-group-label">Next</span>
-                  <div className="template-grid">
-                    {industryAssets.secondaryAssets.map((asset, i) => (
-                      <TemplatePreviewCard
-                        key={`s-${i}`}
-                        assetName={asset}
-                        category="secondary"
-                        index={i + 4}
-                        typeColor={typeColor}
-                        brandTypeCode={code}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {industryAssets.optionalAssets.length > 0 && (
-                <div className="template-group">
-                  <span className="template-group-label">Consider</span>
-                  <div className="template-grid">
-                    {industryAssets.optionalAssets.map((asset, i) => (
-                      <TemplatePreviewCard
-                        key={`o-${i}`}
-                        assetName={asset}
-                        category="optional"
-                        typeColor={typeColor}
-                        brandTypeCode={code}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
+              <div>
+                <span className="result-direction-label">What to avoid</span>
+                <ul className="result-plain-list">
+                  {(visual?.image.imageAvoid ?? brandType.avoid).slice(0, 4).map(item => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          )}
-        </section>
-
-        {/* ── CLOSING ───────────────────────────────────────────── */}
-        <section className="report-section closing-section">
-          <p className="closing-copy">
-            {industryKey
-              ? "You have your type, your visual direction, and your first build list. The system is there. The only thing left is to start."
-              : "You have your type and your visual direction. The system is there. The only thing left is to start."}
-          </p>
-          <a
-            href={`/api/brand-kit/${code}${industry ? `?industry=${encodeURIComponent(industry)}` : ""}`}
-            className="download-kit-btn"
-            download
-          >
-            Download Brand Kit
-          </a>
-          <Link
-            href={`/brief/${code}`}
-            className="brief-kit-link"
-          >
-            Build an asset brief →
-          </Link>
-        </section>
-
-        {/* ── ACT 6 — FINAL ACTION ──────────────────────────────── */}
-        <section className="report-section final-action-section">
-          <div className="final-actions">
-            <EmailCapture code={code} answers={encodedAnswers} industry={industry} resultSlug={resultSlug} />
-            <ShareButton code={code} typeName={type.name} tagline={type.line} resultSlug={resultSlug} />
           </div>
-          <div className="final-footer-link">
+        </section>
+
+        {/* ── ACT 4 — NEXT ─────────────────────────────────────── */}
+        <section className="report-section final-action-section">
+          <span className="report-section-label">Next</span>
+          <div className="result-next-primary">
+            <Link href={`/types/${code}`} className="result-type-link">
+              Read the full {type.name} profile
+            </Link>
             <Link href="/types" className="final-explore-link">
               Explore all 16 brand types
             </Link>
+          </div>
+
+          <div className="final-actions">
+            <ShareButton code={code} typeName={type.name} tagline={type.line} resultSlug={resultSlug} />
+            <EmailCapture code={code} answers={encodedAnswers} industry={industry} resultSlug={resultSlug} />
           </div>
         </section>
 
